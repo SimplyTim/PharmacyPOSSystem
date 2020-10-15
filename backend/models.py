@@ -8,7 +8,7 @@ db = SQLAlchemy(engine_options={"pool_recycle":60})
 class Product(db.Model):
     productID = db.Column('productID', db.String(32), primary_key=True)
     name = db.Column('name', db.String(50), nullable=False)
-    price = db.Column('price', db.Double, nullable=False)
+    price = db.Column('price', db.Float, nullable=False)
     stock = db.Column('stock', db.Integer, nullable=False)
 
     def toDict(self):
@@ -62,7 +62,7 @@ class Supplier(db.Model):
 class Transaction(db.Model):
     transactionID = db.Column('transactionID', db.Integer, primary_key=True)
     empID = db.Column('empID', db.Integer, db.ForeignKey('employee.empID'), nullable=False)
-    dateTime = db.Column('dateTime', db.DateTime, default=datetime.datetime.utcnow(), nullable=False)
+    dateTime = db.Column('dateTime', db.DateTime, default=datetime.datetime.utcnow, nullable=False)
 
     def toDict(self):
         return{
@@ -86,7 +86,7 @@ class TransactionDetail(db.Model):
 class ProductSupplier(db.Model):
     productSuppID = db.Column('productSuppID', db.Integer, primary_key=True)
     productID = db.Column('productID', db.String(32), db.ForeignKey('product.productID'), nullable=False)
-    supplierID = db.Column('productID', db.Integer, db.ForeignKey('supplier.supplierID', nullable=False))
+    supplierID = db.Column('supplierID', db.Integer, db.ForeignKey('supplier.supplierID'), nullable=False)
 
     def toDict(self):
         return{
