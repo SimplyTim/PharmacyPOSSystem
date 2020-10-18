@@ -10,7 +10,7 @@ from flask.views import MethodView
 import os
 
 from models import db, Product, Employee, Transaction, Supplier
-#from codes import db_uri, secret_key
+#from codes import DBURI, SECRETKEY
 DBURI = os.environ.get('DBURI', None)
 SECRETKEY = os.environ.get('SECREYKEY', None)
 
