@@ -24,7 +24,8 @@ sheet2 = wb2.sheet_by_index(0)
 
 for i in range(1, sheet2.nrows):
     tempList = sheet2.row_values(i)
-    newEmployee= Employee(empFirstName=str(tempList[0]), empLastName=str(tempList[1]), age=int(tempList[2]), empType=str(tempList[3]), password='123')
+    newEmployee= Employee(empFirstName=str(tempList[0]), empLastName=str(tempList[1]), age=int(tempList[2]), empType=str(tempList[3]))
+    newEmployee.set_password("123")
     db.session.add(newEmployee)
 db.session.commit()
 wb2.release_resources()
