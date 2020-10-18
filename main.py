@@ -10,9 +10,9 @@ from flask.views import MethodView
 import os
 
 from models import db, Product, Employee, Transaction, Supplier
-#from codes import DBURI, SECRETKEY
-DBURI = os.environ.get('DBURI', None)
-SECRETKEY = os.environ.get('SECREYKEY', None)
+from codes import DBURI, SECRETKEY
+#DBURI = os.environ.get('DBURI', None)
+#SECRETKEY = os.environ.get('SECREYKEY', None)
 
 ''' Begin boilerplate code '''
 def create_app():
@@ -47,11 +47,6 @@ jwt = JWT(app, authenticate, identity)
 @app.route('/')
 def index():
     return "Hello World!"
-
-@app.route('/identify')
-@jwt_required()
-def protected():
-  return json_dumps(current_identity.empId)
 
 @app.route('/employees', methods=['GET'])
 def getAllEmployees():
