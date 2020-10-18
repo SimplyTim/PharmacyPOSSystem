@@ -7,7 +7,7 @@ db = SQLAlchemy(engine_options={"pool_recycle":60})
 
 class Product(db.Model):
     productId = db.Column('productId', db.String(32), primary_key=True)
-    name = db.Column('name', db.String(50), nullable=False)
+    name = db.Column('name', db.String(512), nullable=False)
     price = db.Column('price', db.Float, nullable=False)
     stock = db.Column('stock', db.Integer, nullable=False)
 
