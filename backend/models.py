@@ -20,7 +20,7 @@ class Product(db.Model):
         }
 
 class Employee(db.Model):
-    empId = db.Column('empId', db.Integer, primary_key=True)
+    id = db.Column('id', db.Integer, primary_key=True)
     empFirstName = db.Column('empFirstName', db.String(25), nullable=False)
     empLastName = db.Column('empLastName', db.String(25), nullable=False)
     age = db.Column('age', db.Integer, nullable=False)
@@ -29,7 +29,7 @@ class Employee(db.Model):
 
     def toDict(self):
         return{
-            'empId': self.empId,
+            'id': self.empId,
             'empFirstName': self.empFirstName,
             'empLastName': self.empLastName,
             'age': self.age,
@@ -61,7 +61,7 @@ class Supplier(db.Model):
 
 class Transaction(db.Model):
     transactionId = db.Column('transactionId', db.Integer, primary_key=True)
-    empId = db.Column('empId', db.Integer, db.ForeignKey('employee.empId'), nullable=False)
+    empId = db.Column('empId', db.Integer, db.ForeignKey('employee.id'), nullable=False)
     dateTime = db.Column('dateTime', db.DateTime, default=datetime.datetime.utcnow, nullable=False)
 
     def toDict(self):
