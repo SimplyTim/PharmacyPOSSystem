@@ -48,6 +48,11 @@ jwt = JWT(app, authenticate, identity)
 def index():
     return "Hello World!"
 
+@app.route('/identify')
+@jwt_required()
+def protected():
+  return json_dumps(current_identity.empId)
+
 @app.route('/employees', methods=['GET'])
 def getAllEmployees():
     employees = Employee.query.all()
