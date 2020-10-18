@@ -5,7 +5,7 @@ import os
 
 db.drop_all()
 db.create_all(app=app)
-'''
+
 # Inserting into Products Table
 wb = xlrd.open_workbook(os.getcwd() + '\\backend\\pharmacyStock.xlsx', on_demand=True)
 sheet = wb.sheet_by_index(0)
@@ -26,5 +26,6 @@ for i in range(1, sheet2.nrows):
     tempList = sheet2.row_values(i)
     newEmployee= Employee(empFirstName=str(tempList[0]), empLastName=str(tempList[1]), age=int(tempList[2]), empType=str(tempList[3]), password='123')
     db.session.add(newEmployee)
+db.session.commit()
 wb2.release_resources()
-del wb2'''
+del wb2

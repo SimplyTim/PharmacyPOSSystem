@@ -48,3 +48,11 @@ jwt = JWT(app, authenticate, identity)
 def index():
     return "Hello World!"
 
+@app.route('/employees', methods=['GET'])
+def getAllEmployees():
+    employees = Employee.query.all()
+    if employees:
+        employees = [employee.toDict() for employee in employees]
+        return json.dumps(employees), 200
+    return "No users", 404
+
