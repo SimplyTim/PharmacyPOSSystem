@@ -1,14 +1,18 @@
 from models import db, Product, Employee, Transaction, Supplier
-from main import app
+from main import app 
+import xlrd 
 
 db.drop_all()
 db.create_all(app=app)
 
-newUser1 = Employee(empFirstName='Timothy', empLastName='Singh', age=22, empType='General')
-newUser1.set_password("timpass")
-newUser2 = Employee(empFirstName='Kumar', empLastName='Etwaroo', age=20, empType='General')
-newUser2.set_password("kumarpass")
+loc = "pharmacyStock.xlsx"
+wb = xlrd.open_workbook(loc)
+sheet = wb.sheet_by_index(0)
 
-db.session.add(newUser1)
-db.session.add(newUser2)
+for i in range(1, sheet.nrows):
+    tempList = sheet.row_values(i)
+    newProduct = Product(productId=str(tempList[0]), name=str(tempList[1]), price=float(tempList[2]), stock=int(tempList[3]))
+    db.session.add(newProduct)
+
+
 db.session.commit()
