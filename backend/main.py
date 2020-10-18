@@ -33,7 +33,7 @@ app.app_context().push()
 
 ''' Set up JWT here '''
 def authenticate(username, password):
-    user = Employee.query.filter(empId=username).first()
+    user = Employee.query.get(username)
     if user and user.check_password(password):
         return user
 
