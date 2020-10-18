@@ -12,7 +12,7 @@ import os
 from models import db, Product, Employee, Transaction, Supplier
 #from codes import DBURI, SECRETKEY
 DBURI = os.environ.get('DBURI', None)
-SECRETKEY = os.environ.get('SECREYKEY', None)
+SECRETKEY = os.environ.get('SECRETKEY', None)
 
 ''' Begin boilerplate code '''
 def create_app():
@@ -20,7 +20,6 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = DBURI
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SECRET_KEY'] = SECRETKEY
-    app.config['JWT_SECRET_KEY'] = "SECRETKEY"
     app.config['JWT_EXPIRATION_DELTA'] = timedelta(days = 7)
     CORS(app)
     db.init_app(app)
