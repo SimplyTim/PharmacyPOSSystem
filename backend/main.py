@@ -7,10 +7,12 @@ from datetime import timedelta
 from functools import wraps
 from flask_jwt import JWT, jwt_required, current_identity
 from flask.views import MethodView
-
+import os
 
 from models import db, Product, Employee, Transaction, Supplier
 #from codes import db_uri, secret_key
+DBURI = os.environ.get('DBURI', None)
+SECRETKEY = os.environ.get('SECREYKEY', None)
 
 ''' Begin boilerplate code '''
 def create_app():
