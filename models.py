@@ -29,7 +29,7 @@ class Employee(db.Model):
 
     def toDict(self):
         return{
-            'id': self.empId,
+            'id': self.id,
             'empFirstName': self.empFirstName,
             'empLastName': self.empLastName,
             'age': self.age,
