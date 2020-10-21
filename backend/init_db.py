@@ -30,3 +30,21 @@ for i in range(1, sheet2.nrows):
 db.session.commit()
 wb2.release_resources()
 del wb2
+
+# Inserting into Suppliers Table
+wb3 = xlrd.open_workbook(os.getcwd() + '\\backend\\suppliers.xlsx', on_demand=True)
+sheet3 = wb3.sheet_by_index(0)
+
+for i in range(1, sheet3.nrows):
+    tempList = sheet3.row_values(i)
+    supplierName = tempList[0]
+    supplierPhone1 = tempList[1]
+    supplierPhone2 = tempList[2]
+    supplierEmail = tempList[3]
+
+    newSupplier= Supplier(suppName=str(supplierName), phone1=str(supplierPhone1), phone2=str(supplierPhone2), email=str(supplierEmail))
+    db.session.add(newSupplier)
+db.session.commit()
+wb3.release_resources()
+del wb3
+
