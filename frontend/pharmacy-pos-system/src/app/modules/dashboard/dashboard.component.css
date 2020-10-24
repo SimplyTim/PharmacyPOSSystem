@@ -1,0 +1,14 @@
+mat-grid-tile {
+    background-color: F4F4F6;
+}
+
+.mat-display-1 {
+    background-color: #E6E6E9;
+    margin-bottom: .5em;
+    text-align: center;
+}
+
+img {
+    height: 150px;
+    width: 150px;
+}

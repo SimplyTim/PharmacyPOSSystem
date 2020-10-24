@@ -7,6 +7,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav'; 
 import { MatDividerModule } from '@angular/material/divider';
 import { InventoryComponent } from 'src/app/modules/inventory/inventory.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 @NgModule({
@@ -20,7 +24,10 @@ import { InventoryComponent } from 'src/app/modules/inventory/inventory.componen
     RouterModule, 
     SharedModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatSelectModule
   ]
 })
 export class DefaultModule { }
