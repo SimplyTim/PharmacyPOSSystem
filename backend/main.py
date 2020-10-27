@@ -48,6 +48,7 @@ jwt = JWT(app, authenticate, identity)
 def index():
     return "Hello World!"
 
+#Employees
 @app.route('/employees', methods=['GET'])
 @jwt_required
 def getAllEmployees():
@@ -61,7 +62,7 @@ def getAllEmployees():
 @jwt_required
 def addProduct():
     token = request.headers.get('Authorization')
-    currEmp = jwt.decode(token, SECRETKEY).toDict()
+    currEmp = json_dumps(current_identity)
     if currEmp['empType'] == 'Manager' or currEmp['empType'] == 'Data Entry':
         productData = request.get_json()
         newProduct = Product(productId=str(productData['productId']), name=str(productData['name']), price=float(productData['price']),stock=int(productData['stock']))
