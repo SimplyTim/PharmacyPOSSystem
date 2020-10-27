@@ -48,9 +48,9 @@ jwt = JWT(app, authenticate, identity)
 def index():
     return "Hello World!"
 
-#Employees
+#Employee Routes
 @app.route('/employees', methods=['GET'])
-@jwt_required
+@jwt_required()
 def getAllEmployees():
     employees = Employee.query.all()
     if employees:
@@ -58,6 +58,9 @@ def getAllEmployees():
         return json.dumps(employees), 200
     return "No users", 404
 
+
+
+#Product Routes
 @app.route('/product', methods=['POST'])
 @jwt_required()
 def addProduct():
@@ -73,3 +76,20 @@ def addProduct():
             return "Product already exists.", 400
         return "Product created successfully.", 200
     return "Not authorized to access this page.", 401
+
+@app.route('/products', methods=['GET'])
+@jwt_required()
+def getProducts():
+    products = Product.query.all()
+    if products:
+        products = [products.toDict() for product in products]
+        return json.dumps(products), 200
+    return "No users", 404
+
+@app.route('/products/<id>', methods=['GET'])
+@jwt_required()
+def getProducts():
+    product = Product.query.get(str(id))
+    if product:
+        return json.dumps(product.toDict()), 200
+    return "Product not found.", 404
