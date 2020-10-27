@@ -82,7 +82,7 @@ def addProduct():
 def getProducts():
     products = Product.query.all()
     if products:
-        products = [products.toDict() for product in products]
+        products = [product.toDict() for product in products]
         return json.dumps(products), 200
     return "No users", 404
 
