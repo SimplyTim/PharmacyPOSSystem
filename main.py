@@ -88,8 +88,8 @@ def getProducts():
 
 @app.route('/product/<id>', methods=['GET'])
 @jwt_required()
-def getProduct():
-    product = Product.query.query.filter_by(productId=id).first()
+def getProduct(id):
+    product = Product.query.get(str(id))
     if product:
         return json.dumps(product.toDict()), 200
     return "Product not found.", 404
