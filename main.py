@@ -58,18 +58,18 @@ def getAllEmployees():
     return "No users", 404
 
 @app.route('/product', methods=['POST'])
-#@jwt_required
+@jwt_required
 def addProduct():
-    #token = request.headers.get('Authorization')
-    #currEmp = jwt.decode(token, SECRETKEY).toDict()
-    #if currEmp['empType'] == 'Manager' or currEmp['empType'] == 'Data Entry':
-    productData = request.get_json()
-    newProduct = Product(productId=str(productData['productId']), name=str(productData['name']), price=float(productData['price']),stock=int(productData['stock']))
-    try:
-        db.session.add(newProduct)
-        db.session.commit()
-    except IntegrityError:
-        db.session.rollback()
-        return "Product already exists.", 400
-    return "Product created successfully.", 200
-    #return "Not authorized to access this page.", 401
+    token = request.headers.get('Authorization')
+    currEmp = jwt.decode(token, SECRETKEY).toDict()
+    if currEmp['empType'] == 'Manager' or currEmp['empType'] == 'Data Entry':
+        productData = request.get_json()
+        newProduct = Product(productId=str(productData['productId']), name=str(productData['name']), price=float(productData['price']),stock=int(productData['stock']))
+        try:
+            db.session.add(newProduct)
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            return "Product already exists.", 400
+        return "Product created successfully.", 200
+    return "Not authorized to access this page.", 401
