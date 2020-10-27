@@ -88,7 +88,7 @@ def getProducts():
 
 @app.route('/products/<id>', methods=['GET'])
 @jwt_required()
-def getProducts():
+def getProduct():
     product = Product.query.get(str(id))
     if product:
         return json.dumps(product.toDict()), 200
