@@ -10,9 +10,9 @@ from flask.views import MethodView
 import os
 
 from models import db, Product, Employee, Transaction, Supplier
-#from codes import DBURI, SECRETKEY
-DBURI = os.environ.get('DBURI', None)
-SECRETKEY = os.environ.get('SECRETKEY', None)
+from codes import DBURI, SECRETKEY
+#DBURI = os.environ.get('DBURI', None)
+#SECRETKEY = os.environ.get('SECRETKEY', None)
 
 ''' Begin boilerplate code '''
 def create_app():
@@ -93,3 +93,20 @@ def getProduct(id):
     if product:
         return json.dumps(product.toDict()), 200
     return "Product not found.", 404
+
+@app.route('/product/<id>', methods=['PUT'])
+@jwt_required()
+def editProduct(id):
+    currEmpType = current_identity.empType
+    if currEmpType == 'Manager' or currEmpType == 'Data Entry':
+        productToEdit = Product.query.get(str(id))
+        if productToEdit:
+            editData = request.get_json()
+            if productToEdit:
+                for key in editData:
+                    setattr(productToEdit, str(key), editData[str(key)])
+                db.session.add(productToEdit)
+                db.session.commit()
+            return "Product updated successfully.", 201
+        return "Product not found.", 404
+    return "Not authorized to access this page.", 401
