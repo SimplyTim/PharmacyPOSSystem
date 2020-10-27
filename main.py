@@ -61,8 +61,7 @@ def getAllEmployees():
 @app.route('/product', methods=['POST'])
 @jwt_required
 def addProduct():
-    token = request.headers.get('Authorization')
-    currEmpType = str(current_identity.empType)
+    currEmpType = current_identity.empType
     if currEmpType == 'Manager' or currEmpType == 'Data Entry':
         productData = request.get_json()
         newProduct = Product(productId=str(productData['productId']), name=str(productData['name']), price=float(productData['price']),stock=int(productData['stock']))
