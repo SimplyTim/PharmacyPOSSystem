@@ -59,7 +59,7 @@ def getAllEmployees():
     return "No users", 404
 
 @app.route('/product', methods=['POST'])
-@jwt_required
+@jwt_required()
 def addProduct():
     currEmpType = current_identity.empType
     if currEmpType == 'Manager' or currEmpType == 'Data Entry':
