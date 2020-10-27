@@ -10,9 +10,9 @@ from flask.views import MethodView
 import os
 
 from models import db, Product, Employee, Transaction, Supplier
-from codes import DBURI, SECRETKEY
-#DBURI = os.environ.get('DBURI', None)
-#SECRETKEY = os.environ.get('SECRETKEY', None)
+#from codes import DBURI, SECRETKEY
+DBURI = os.environ.get('DBURI', None)
+SECRETKEY = os.environ.get('SECRETKEY', None)
 
 ''' Begin boilerplate code '''
 def create_app():
@@ -49,6 +49,7 @@ def index():
     return "Hello World!"
 
 @app.route('/employees', methods=['GET'])
+@jwt_required
 def getAllEmployees():
     employees = Employee.query.all()
     if employees:
@@ -56,3 +57,19 @@ def getAllEmployees():
         return json.dumps(employees), 200
     return "No users", 404
 
+@app.route('/product', methods=['POST'])
+@jwt_required
+def addProduct():
+    token = request.headers.get('Authorization')
+    currEmp = jwt.decode(token, SECRETKEY).toDict()
+    if currEmp['empType'] == 'Manager' or currEmp['empType'] == 'Data Entry':
+        productData = request.get_json()
+        newProduct = Product(productId=str(productData['productId']), name=str(productData['name']), price=float(productData['price']),stock=int(productData['stock']))
+        try:
+            db.session.add(newProduct)
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            return "Product already exists.", 400
+        return "Product created successfully.", 200
+    return "Not authorized to access this page.", 401
