@@ -110,3 +110,16 @@ def editProduct(id):
             return "Product updated successfully.", 201
         return "Product not found.", 404
     return "Not authorized to access this page.", 401
+
+@app.route('/product/<id>', methods=['DELETE'])
+@jwt_required()
+def deleteProduct(id):
+    currEmpType = current_identity.empType
+    if currEmpType == 'Manager' or currEmpType == 'Data Entry':
+        productToDel = Product.query.get(str(id))
+        if productToDel:    
+            db.session.delete(productToDel)
+            db.session.commit()
+            return "Product deleted successfully.", 204
+        return "Product not found.", 404
+    return "Not authorized to access this page.", 401
