@@ -58,6 +58,12 @@ def getAllEmployees():
         return json.dumps(employees), 200
     return "No users", 404
 
+@app.route('/mydetails', methods=['GET'])
+@jwt_required()
+def getCurrentEmployee():
+    employee = current_identity.toDict()
+    return json.dumps(employee), 200
+
 
 
 #Product Routes
