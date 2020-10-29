@@ -34,7 +34,6 @@ class Employee(db.Model):
             'empLastName': self.empLastName,
             'age': self.age,
             'empType': self.empType,
-            'password': self.password
         }
 
     def set_password(self, password):
