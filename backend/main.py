@@ -10,9 +10,9 @@ from flask.views import MethodView
 import os
 
 from models import db, Product, Employee, Transaction, Supplier
-from codes import DBURI, SECRETKEY
-#DBURI = os.environ.get('DBURI', None)
-#SECRETKEY = os.environ.get('SECRETKEY', None)
+#from codes import DBURI, SECRETKEY
+DBURI = os.environ.get('DBURI', None)
+SECRETKEY = os.environ.get('SECRETKEY', None)
 
 ''' Begin boilerplate code '''
 def create_app():
@@ -48,7 +48,19 @@ jwt = JWT(app, authenticate, identity)
 def index():
     return "Hello World!"
 
+#Employee Routes
+@app.route('/employee', methods=['POST'])
+@jwt_required()
+def createNewEmployee():
+    employeeData = request.get_json()
+    newEmployee = Employee(empFirstName=employeeData['empFirstName'], empLastName=employeeData['empLastName'],age=employeeData['age'], empType=employeeData['empType'])
+    newEmployee.set_password(employeeData['password'])
+    db.session.add(newEmployee)
+    db.session.commit()
+    return "Employee created successfully.", 201
+
 @app.route('/employees', methods=['GET'])
+@jwt_required()
 def getAllEmployees():
     employees = Employee.query.all()
     if employees:
@@ -56,3 +68,74 @@ def getAllEmployees():
         return json.dumps(employees), 200
     return "No users", 404
 
+@app.route('/mydetails', methods=['GET'])
+@jwt_required()
+def getCurrentEmployee():
+    employee = current_identity.toDict()
+    return json.dumps(employee), 200
+
+
+
+#Product Routes
+@app.route('/product', methods=['POST'])
+@jwt_required()
+def addProduct():
+    currEmpType = current_identity.empType
+    if currEmpType == 'Manager' or currEmpType == 'Data Entry':
+        productData = request.get_json()
+        newProduct = Product(productId=str(productData['productId']), name=str(productData['name']), price=float(productData['price']),stock=int(productData['stock']))
+        try:
+            db.session.add(newProduct)
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            return "Product already exists.", 400
+        return "Product created successfully.", 200
+    return "Not authorized to access this page.", 401
+
+@app.route('/products', methods=['GET'])
+@jwt_required()
+def getProducts():
+    products = Product.query.all()
+    if products:
+        products = [product.toDict() for product in products]
+        return json.dumps(products), 200
+    return "No users", 404
+
+@app.route('/product/<id>', methods=['GET'])
+@jwt_required()
+def getProduct(id):
+    product = Product.query.get(str(id))
+    if product:
+        return json.dumps(product.toDict()), 200
+    return "Product not found.", 404
+
+@app.route('/product/<id>', methods=['PUT'])
+@jwt_required()
+def editProduct(id):
+    currEmpType = current_identity.empType
+    if currEmpType == 'Manager' or currEmpType == 'Data Entry':
+        productToEdit = Product.query.get(str(id))
+        if productToEdit:
+            editData = request.get_json()
+            if productToEdit:
+                for key in editData:
+                    setattr(productToEdit, str(key), editData[str(key)])
+                db.session.add(productToEdit)
+                db.session.commit()
+            return "Product updated successfully.", 201
+        return "Product not found.", 404
+    return "Not authorized to access this page.", 401
+
+@app.route('/product/<id>', methods=['DELETE'])
+@jwt_required()
+def deleteProduct(id):
+    currEmpType = current_identity.empType
+    if currEmpType == 'Manager' or currEmpType == 'Data Entry':
+        productToDel = Product.query.get(str(id))
+        if productToDel:    
+            db.session.delete(productToDel)
+            db.session.commit()
+            return "Product deleted successfully.", 204
+        return "Product not found.", 404
+    return "Not authorized to access this page.", 401
