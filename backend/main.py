@@ -49,6 +49,16 @@ def index():
     return "Hello World!"
 
 #Employee Routes
+@app.route('/employee', methods=['POST'])
+@jwt_required()
+def createNewEmployee():
+    employeeData = request.get_json()
+    newEmployee = Employee(empFirstName=employeeData['empFirstName'], empLastName=employeeData['empLastName'],age=employeeData['age'], empType=employeeData['empType'])
+    newEmployee.set_password(employeeData['password'])
+    db.session.add(newEmployee)
+    db.session.commit()
+    return "Employee created successfully.", 201
+
 @app.route('/employees', methods=['GET'])
 @jwt_required()
 def getAllEmployees():
