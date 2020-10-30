@@ -15,3 +15,8 @@
 .mat-card-header {
     justify-content: center;
 }
+
+#loginFail {
+    background-color: red;
+    color: white;
+}

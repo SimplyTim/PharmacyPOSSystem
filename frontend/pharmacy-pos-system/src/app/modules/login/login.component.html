@@ -4,6 +4,8 @@
   </mat-card-header>
 
   <mat-card-content>
+    <mat-card id="loginFail" *ngIf="showErrorMessage">Error. Please Check Username or Password</mat-card>
+    <br>
     <form class="form">
       <mat-form-field appearance="outline">
         <input matInput [(ngModel)]="loginUserData.username" name="username"  placeholder="Username" type="text">

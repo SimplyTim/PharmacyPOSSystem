@@ -10,6 +10,8 @@ export class AuthService {
 
   helper = new JwtHelperService();
   private _loginUrl = "https://pharmacypos.herokuapp.com/auth"
+  private _currentUserUrl = "https://pharmacypos.herokuapp.com/mydetails"
+
   constructor(private http: HttpClient, private router: Router) { }
 
   loginUser(user) {
@@ -30,7 +32,12 @@ export class AuthService {
 
   logoutUser() {
     localStorage.removeItem('token')
+    localStorage.removeItem('empType')
     this.router.navigate(['/login'])
+  }
+
+  getCurrentUser(){
+    return this.http.get<any>(this._currentUserUrl);
   }
 
 }

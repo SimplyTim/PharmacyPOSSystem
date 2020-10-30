@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { ManagerGuard } from './auth/manager.guard';
 import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { InventoryComponent } from './modules/inventory/inventory.component';
@@ -27,7 +28,8 @@ const routes: Routes = [{
     }, 
     {
       path: 'register', 
-      component: RegisterComponent
+      component: RegisterComponent,
+      canActivate: [ManagerGuard]
     }
   ]
 }];
