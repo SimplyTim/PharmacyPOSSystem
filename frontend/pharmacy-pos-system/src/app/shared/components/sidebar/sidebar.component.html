@@ -1,8 +1,8 @@
 <mat-nav-list>
     <div class="profile-card">
         <div class="header">
-            <h2>Insert name here</h2>
-            <h4>Email</h4>
+            <h2 >{{ username }}</h2>
+            <h4>{{ type }}</h4>
         </div>
         <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="profile picture">
     </div>
@@ -14,7 +14,6 @@
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/inventory">Stock Management</a>
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/inventory">Point Of Sale</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/register">Create Users</a>
 
 
     <mat-divider></mat-divider>

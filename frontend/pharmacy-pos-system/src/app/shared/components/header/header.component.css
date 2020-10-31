@@ -1,3 +1,7 @@
 ul li{
     list-style: none;
 }
+
+#appname:focus {
+    outline: 0;
+}

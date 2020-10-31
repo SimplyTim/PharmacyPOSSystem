@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
   private _loginUrl = "https://pharmacypos.herokuapp.com/auth"
   private _currentUserUrl = "https://pharmacypos.herokuapp.com/mydetails"
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
 
   loginUser(user) {
     return this.http.post(this._loginUrl, user)
@@ -33,7 +34,14 @@ export class AuthService {
   logoutUser() {
     localStorage.removeItem('token')
     localStorage.removeItem('empType')
+    localStorage.removeItem('empFirstName')
+    localStorage.removeItem('empLastName')
     this.router.navigate(['/login'])
+
+    this._snackBar.open("Logged Out Succesfully", "Close", {
+      duration: 2000,
+      panelClass: ['blue-snackbar']
+    });
   }
 
   getCurrentUser(){

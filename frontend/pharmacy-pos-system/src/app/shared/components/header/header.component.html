@@ -3,35 +3,35 @@
         <button mat-icon-button (click)="onButtonClick($event)">
             <mat-icon>menu</mat-icon>
         </button>
-        <span> App Logo </span>
+        <div id="appname" routerLink="/">POS</div>
 
         <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
             <ul fxLayout="row" fxLayoutGap="20px">
                 <li>
-                    <button mat-icon-button>
+                    <button mat-icon-button [matMenuTriggerFor]="settings">
                         <mat-icon>settings</mat-icon>
                     </button>
-                </li>
-                <li>
-                    <button mat-icon-button>
-                        <mat-icon>help_outline</mat-icon>
-                    </button>
+                    <mat-menu #settings="matMenu">
+                        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/register">
+                            <mat-icon>add</mat-icon>
+                            Create User
+                        </button>
+                    </mat-menu>
                 </li>
                 <li>
                     <button mat-button [matMenuTriggerFor]="menu">
                         <mat-icon>person_outline</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                    <button *ngIf="!authService.loggedIn()" mat-menu-item routerLinkActive="list-item-active" routerLink="/login">
-                        <mat-icon>login</mat-icon>
-                        Login
-                    </button>
+                        <button *ngIf="!authService.loggedIn()" mat-menu-item routerLinkActive="list-item-active" routerLink="/login">
+                            <mat-icon>login</mat-icon>
+                            Login
+                        </button>
 
-                    <button *ngIf="authService.loggedIn()" mat-menu-item (click)="authService.logoutUser()">
-                        <mat-icon>login</mat-icon>
-                        Logout
-                    </button>
-                    
+                        <button *ngIf="authService.loggedIn()" mat-menu-item (click)="authService.logoutUser()">
+                            <mat-icon>login</mat-icon>
+                            Logout
+                        </button>
                     </mat-menu>
                 </li>
             </ul>
