@@ -10,5 +10,44 @@ mat-grid-tile {
 
 img {
     height: 150px;
-    width: 150px;
+}
+
+.tile:hover {
+    transform: scale(1.04);
+}
+
+.dashboardCard{
+    background-color: #0762A4; 
+    width: 90%; 
+    height: 80%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboardCard2{
+    background-color: #DAD9D9; 
+    width: 90%; 
+    height: 80%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboardCard h1 {
+    color: white;
+    margin-left: 3%;
+    font-size: 30px;
+}
+
+.dashboardCard2 h1 {
+    color: #0762A4;
+    margin-left: 3%;
+    font-size: 30px;
+}
+
+.tile:focus {
+    outline: 0;
 }

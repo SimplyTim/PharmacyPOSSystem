@@ -1,10 +1,37 @@
-<div class="mat-display-1">Welcome</div>
-
 <mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile>
-      <img src="../../../assets/img/70-700374_transactions-logo-fund-transfer-icon-png-clipart (1).png" alt="">
+    <mat-grid-tile class="tile" routerLink="/inventory">
+      <mat-card class="dashboardCard">
+        <div>
+          <img src="../../../assets/img/pos.png" alt="pos">
+        </div>
+        <h1>Point of Sale</h1>
+        </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-    <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
-  </mat-grid-list>
+
+    <mat-grid-tile class="tile" routerLink="/inventory">
+      <mat-card class="dashboardCard2">
+        <div>
+          <img src="../../../assets/img/inventory-blue.png" alt="pos">
+        </div>
+        <h1>Inventory</h1>
+        </mat-card>
+    </mat-grid-tile>
+    
+    <mat-grid-tile class="tile" routerLink="/inventory">
+      <mat-card class="dashboardCard2">
+        <div>
+          <img src="../../../assets/img/transactions-blue.png" alt="pos">
+        </div>
+        <h1>Transactions</h1>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile class="tile" routerLink="/inventory">
+      <mat-card class="dashboardCard">
+        <div>
+          <img src="../../../assets/img/account.png" alt="pos">
+        </div>
+        <h1>Account</h1>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

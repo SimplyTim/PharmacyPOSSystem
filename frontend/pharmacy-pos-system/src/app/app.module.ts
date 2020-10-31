@@ -15,6 +15,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth/auth.guard';
 import { TokenInterceptorService } from './auth/token-interceptor.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 
 @NgModule({
@@ -22,6 +26,7 @@ import { TokenInterceptorService } from './auth/token-interceptor.service';
     AppComponent,
     RegisterComponent,
     LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,9 @@ import { TokenInterceptorService } from './auth/token-interceptor.service';
     FormsModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    MatGridListModule
   ],
   providers: [AuthGuard, 
   {

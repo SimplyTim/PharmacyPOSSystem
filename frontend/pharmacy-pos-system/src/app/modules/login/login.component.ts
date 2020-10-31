@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   showErrorMessage = false;
   loginUserData = {username: '', password: ''}
-  constructor(private _auth: AuthService, private _router: Router) { }
+  constructor(private _auth: AuthService, private _router: Router, private _snackBar: MatSnackBar) { 
+    this._auth.logoutUser() //makes sure the user is logged out if they navigate to the login page
+  }
 
   ngOnInit(): void {
   }
@@ -23,7 +25,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.access_token)
         this.getCurrentUser();
         
-        this._router.navigate([''])
+        this._router.navigate(['/'])
+
+        this._snackBar.open("Logged In Succesfully", "Close", {
+          duration: 2000,
+          panelClass: ['blue-snackbar']
+        });
       },
       error => {
         this.showErrorMessage = true;
@@ -34,7 +41,8 @@ export class LoginComponent implements OnInit {
   getCurrentUser(){
     this._auth.getCurrentUser().subscribe(
       (res:any) => {
-        console.log(res)
+        localStorage.setItem('empFirstName', res.empFirstName)
+        localStorage.setItem('empLastName', res.empLastName)
         localStorage.setItem('empType', res.empType)
       },
       error => {
