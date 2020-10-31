@@ -9,6 +9,7 @@ import { InventoryComponent } from 'src/app/modules/inventory/inventory.componen
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -16,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
   declarations: [
     DefaultComponent, 
     InventoryComponent
+    
   ],
   imports: [
     CommonModule, 
@@ -25,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDividerModule,
     MatGridListModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule, 
+    MatTableModule
   ]
 })
 export class DefaultModule { }
