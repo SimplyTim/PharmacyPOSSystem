@@ -18,7 +18,8 @@ import { TokenInterceptorService } from './auth/token-interceptor.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatButtonModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatGridListModule
+    MatGridListModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [AuthGuard, 
   {

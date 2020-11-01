@@ -1,1 +1,42 @@
-<p>Only a manager should be able to see this page! If you are logged in with another type of user and see this page blame Akeel!</p>
+<mat-card class="register-card">
+    <mat-card-header>
+      <mat-card-title>Add Employee</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <mat-card id="registerFail" *ngIf="showErrorMessage">Error</mat-card>
+      <br>
+      <form [formGroup]="employeeDataForm" (ngSubmit)="onSubmit()" #myFGD="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+          <input matInput formControlName="empFirstName"  placeholder="First Name" required type="text">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="empLastName" required type="text">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" required type="pattern" min="16" max="120">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>Employee Type</mat-label>
+            <mat-select formControlName="empType" required>
+                <mat-option value="Manager">Manager</mat-option>
+                <mat-option value="Data Entry">Data Entry</mat-option>
+                <mat-option value="Sales">Sales</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" required type="text">
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!employeeDataForm.valid">Register</button>
+      </form>
+    </mat-card-content>
+  </mat-card> 

@@ -12,6 +12,8 @@ export class AuthService {
   helper = new JwtHelperService();
   private _loginUrl = "https://pharmacypos.herokuapp.com/auth"
   private _currentUserUrl = "https://pharmacypos.herokuapp.com/mydetails"
+  private _registerUrl = "https://pharmacypos.herokuapp.com/employee"
+
 
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
 
@@ -46,6 +48,18 @@ export class AuthService {
 
   getCurrentUser(){
     return this.http.get<any>(this._currentUserUrl);
+  }
+
+  getUserType(){
+    return localStorage.getItem('empType')
+  }
+
+  getUserName(){
+    return localStorage.getItem('empFirstName') + " " + localStorage.getItem('empLastName')
+  }
+
+  registerUser(userdetails){
+    return this.http.post(this._registerUrl, userdetails, {responseType: 'text'})
   }
 
 }
