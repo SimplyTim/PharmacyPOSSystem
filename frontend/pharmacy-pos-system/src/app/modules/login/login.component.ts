@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
 
   showErrorMessage = false;
-  loginUserData = {username: '', password: ''}
+
+  loginUserData = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl('')
+  })
+
   constructor(private _auth: AuthService, private _router: Router, private _snackBar: MatSnackBar) { 
     this._auth.logoutUser() //makes sure the user is logged out if they navigate to the login page
   }
@@ -19,8 +25,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginUser(){
-    this._auth.loginUser(this.loginUserData).subscribe(
+  onSubmit(){
+    this._auth.loginUser(this.loginUserData.value).subscribe(
       (res:any) => {
         localStorage.setItem('token', res.access_token)
         this.getCurrentUser();

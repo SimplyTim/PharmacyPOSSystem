@@ -6,17 +6,18 @@
   <mat-card-content>
     <mat-card id="loginFail" *ngIf="showErrorMessage">Error. Please Check Username or Password</mat-card>
     <br>
-    <form class="form">
+    <form [formGroup]="loginUserData" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline">
-        <input matInput [(ngModel)]="loginUserData.username" name="username"  placeholder="Username" type="text">
+        <mat-label>Employee ID</mat-label>
+        <input matInput formControlName="username" required type="text">
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline">
-        <input matInput [(ngModel)]="loginUserData.password" name="password"  placeholder="Password" type="password">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" required type="password">
       </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!loginUserData.valid">Login</button>
     </form>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="loginUser()">Login</button>
-  </mat-card-actions>
 </mat-card> 
