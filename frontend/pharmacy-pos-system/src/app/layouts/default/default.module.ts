@@ -10,13 +10,31 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-
+import { ManagementComponent } from 'src/app/modules/management/management.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
+import { LoginComponent } from 'src/app/modules/login/login.component';
+import { RegisterComponent } from 'src/app/modules/register/register.component';
+import { AuthGuard } from '../../auth/auth.guard';
+import { TokenInterceptorService } from '../../auth/token-interceptor.service';
 
 
 @NgModule({
   declarations: [
     DefaultComponent, 
-    InventoryComponent
+    InventoryComponent, 
+    ManagementComponent,
+    RegisterComponent,
+    LoginComponent,
+    DashboardComponent
     
   ],
   imports: [
@@ -28,7 +46,29 @@ import { MatTableModule } from '@angular/material/table';
     MatGridListModule,
     MatFormFieldModule,
     MatSelectModule, 
-    MatTableModule
-  ]
+    MatTableModule, 
+    ReactiveFormsModule, 
+    MatInputModule, 
+    MatSelectModule, 
+    MatButtonModule, 
+    MatCheckboxModule, 
+    MatChipsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    ReactiveFormsModule,
+    MatSelectModule
+  ],
+  providers: [AuthGuard, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
 })
 export class DefaultModule { }
