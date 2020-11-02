@@ -9,7 +9,7 @@ from flask_jwt import JWT, jwt_required, current_identity
 from flask.views import MethodView
 import os
 
-from models import db, Product, Employee, Transaction, Supplier
+from models import db, Product, Employee, Transaction, Supplier, Markup
 #from codes import DBURI, SECRETKEY
 DBURI = os.environ.get('DBURI', None)
 SECRETKEY = os.environ.get('SECRETKEY', None)
@@ -118,11 +118,10 @@ def editProduct(id):
         productToEdit = Product.query.get(str(id))
         if productToEdit:
             editData = request.get_json()
-            if productToEdit:
-                for key in editData:
-                    setattr(productToEdit, str(key), editData[str(key)])
-                db.session.add(productToEdit)
-                db.session.commit()
+            for key in editData:
+                setattr(productToEdit, str(key), editData[str(key)])
+            db.session.add(productToEdit)
+            db.session.commit()
             return "Product updated successfully.", 201
         return "Product not found.", 404
     return "Not authorized to access this page.", 401
@@ -138,4 +137,33 @@ def deleteProduct(id):
             db.session.commit()
             return "Product deleted successfully.", 204
         return "Product not found.", 404
+    return "Not authorized to access this page.", 401
+
+
+#Automatic Markup
+@app.route('/getmarkup', methods=['GET'])
+@jwt_required()
+def getMarkup():
+    currEmpType = current_identity.empType
+    if currEmpType == 'Manager':
+        currMarkup = Markup.query.get('markup1')
+        if currMarkup:
+            return json.dumps(currMarkup.toDict()), 200
+        return "Markup not found.", 404
+    return "Not authorized to access this page.", 401
+
+@app.route('/setmarkup', methods=['PUT'])
+@jwt_required()
+def setMarkup():
+    currEmpType = current_identity.empType
+    if currEmpType == 'Manager':
+        markupToEdit = Markup.query.get('markup1')
+        if markupToEdit:
+            editData = request.get_json()
+            for key in editData:
+                setattr(markupToEdit, str(key), editData[str(key)])
+            db.session.add(markupToEdit)
+            db.session.commit()
+            return "Markup updated successfully.", 201
+        return "Markup not found.", 404
     return "Not authorized to access this page.", 401

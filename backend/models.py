@@ -94,6 +94,14 @@ class ProductSupplier(db.Model):
             'supplierId': self.supplierID 
         }   
 
+class Markup(db.Model):
+    markupId = db.Column('markupId', db.String(10), primary_key=True)
+    markupVal = db.Column('markupVal', db.Float, nullable=False)
 
+    def toDict(self):
+        return{
+            'markupId': self.markupId,
+            'markupVal': self.markupVal
+        }
 
 

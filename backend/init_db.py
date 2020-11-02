@@ -1,4 +1,4 @@
-from models import db, Product, Employee, Transaction, Supplier
+from models import db, Product, Employee, Transaction, Supplier, Markup
 from main import app 
 import xlrd 
 import os
@@ -47,4 +47,8 @@ for i in range(1, sheet3.nrows):
 db.session.commit()
 wb3.release_resources()
 del wb3
+
+newMarkup = Markup(markupId='markup1', markupVal=8.0)
+db.session.add(newMarkup)
+db.session.commit()
 
