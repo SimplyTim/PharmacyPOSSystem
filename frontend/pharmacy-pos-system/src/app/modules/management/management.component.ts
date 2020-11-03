@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms'; 
 
 @Component({
   selector: 'app-management',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagementComponent implements OnInit {
 
-  constructor() { }
+  public myForm: FormGroup; 
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+
+    this.myForm = this.formBuilder.group({
+      productId: '', 
+      name: '',
+      price: 0.00,
+      stock: 0
+    })
+
+    this.myForm.valueChanges.subscribe(
+      (x) => console.log(x)
+    );
+
   }
 
 }

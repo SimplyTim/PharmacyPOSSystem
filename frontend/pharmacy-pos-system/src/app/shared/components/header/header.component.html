@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <button mat-icon-button (click)="onButtonClick($event)">
+        <button *ngIf="authService.loggedIn()" mat-icon-button (click)="onButtonClick($event)">
             <mat-icon>menu</mat-icon>
         </button>
-        <div id="appname" routerLink="/">POS</div>
+        <div id="appname" routerLink="/">Point of Sale System</div>
 
         <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
             <ul fxLayout="row" fxLayoutGap="20px">
@@ -28,7 +28,7 @@
                             Login
                         </button>
 
-                        <button *ngIf="authService.loggedIn()" mat-menu-item (click)="authService.logoutUser()">
+                        <button *ngIf="authService.loggedIn()" mat-menu-item (click)="logout()">
                             <mat-icon>login</mat-icon>
                             Logout
                         </button>

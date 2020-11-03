@@ -1,3 +1,4 @@
+import { componentFactoryName } from '@angular/compiler';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
@@ -6,6 +7,7 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { InventoryComponent } from './modules/inventory/inventory.component';
 import { LoginComponent } from './modules/login/login.component';
+import { ManagementComponent } from './modules/management/management.component';
 import { RegisterComponent } from './modules/register/register.component';
 
 const routes: Routes = [{
@@ -30,6 +32,10 @@ const routes: Routes = [{
       path: 'register', 
       component: RegisterComponent,
       canActivate: [ManagerGuard]
+    },
+    {
+      path: 'stock-management',
+      component: ManagementComponent
     }
   ]
 }];

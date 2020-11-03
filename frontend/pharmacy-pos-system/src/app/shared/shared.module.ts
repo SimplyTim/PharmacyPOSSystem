@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     MatMenuModule,
     MatListModule,
-    RouterModule
+    RouterModule,
+    MatGridListModule,
+    MatCardModule
   ], 
   exports: [
     HeaderComponent, 

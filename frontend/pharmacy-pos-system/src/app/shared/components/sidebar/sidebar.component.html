@@ -1,18 +1,19 @@
 <mat-nav-list>
-    <div class="profile-card">
-        <div class="header">
-            <h2 >{{ username }}</h2>
-            <h4>{{ type }}</h4>
-        </div>
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="profile picture">
-    </div>
+    <mat-card class="example-card mat-elevation-z0">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title id="username">{{ username }}</mat-card-title>
+            <mat-card-subtitle id="type">{{ type }}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
 
     <mat-divider></mat-divider>
 
     <h2 matSubheader>Pages</h2>
 
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/inventory">Stock Management</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/inventory">View Inventory</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/stock-management">Manage Stock</a>
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/inventory">Point Of Sale</a>
 
 
