@@ -1,3 +1,9 @@
+<mat-form-field appearance="outline">
+  <mat-label>Search</mat-label>
+  <input matInput [ngModel]="globalFilter" (ngModelChange)="applyFilter($event)">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
   
@@ -5,9 +11,9 @@
             The actual rendered columns are set as a property on the row definition" -->
   
       <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <ng-container matColumnDef="productId">
+        <mat-header-cell *matHeaderCellDef> Product ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.productId}} </mat-cell>
       </ng-container>
   
       <!-- Name Column -->
@@ -17,19 +23,21 @@
       </ng-container>
   
       <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
       </ng-container>
   
       <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      <ng-container matColumnDef="stock">
+        <mat-header-cell *matHeaderCellDef> Stock </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.stock}} </mat-cell>
       </ng-container>
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[8]" showFirstLastButtons></mat-paginator>
   </div>
   

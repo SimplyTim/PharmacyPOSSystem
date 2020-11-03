@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-default',
@@ -7,15 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultComponent implements OnInit {
 
-  public sideBarOpen: boolean = true; 
+  public sideBarOpen: boolean = false; 
 
-  constructor() { }
+  constructor(private _auth: AuthService) { }
 
   ngOnInit(): void {
+    if(this._auth.loggedIn() === true){
+      this.setSideBarOpen(true);
+    }
   }
 
   public toggleSideBar(event):void{
     this.sideBarOpen = !this.sideBarOpen; 
+  }
+
+  public setSideBarOpen(status: boolean){
+    this.sideBarOpen = status;
   }
 
 }
