@@ -3,14 +3,11 @@
     margin-right: 20px; 
 }
 
-.profile-card {
-    text-align: center;
-    padding: 0 20px 20px 20px; 
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
 }
 
-.profile-card img{
-    width: 100px;
-    height:100px;
-    object-fit: cover;
-    border-radius: 50%;
+mat-card-subtitle{
+    margin-bottom: 0px;
 }

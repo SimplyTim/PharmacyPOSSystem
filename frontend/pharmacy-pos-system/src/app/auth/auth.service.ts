@@ -13,6 +13,7 @@ export class AuthService {
   private _loginUrl = "https://pharmacypos.herokuapp.com/auth"
   private _currentUserUrl = "https://pharmacypos.herokuapp.com/mydetails"
   private _registerUrl = "https://pharmacypos.herokuapp.com/employee"
+  private _productsURL = "https://pharmacypos.herokuapp.com/products"
 
 
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
@@ -60,6 +61,10 @@ export class AuthService {
 
   registerUser(userdetails){
     return this.http.post(this._registerUrl, userdetails, {responseType: 'text'})
+  }
+
+  getProducts(){
+    return this.http.get<any>(this._productsURL);
   }
 
 }

@@ -25,6 +25,8 @@ import { LoginComponent } from 'src/app/modules/login/login.component';
 import { RegisterComponent } from 'src/app/modules/register/register.component';
 import { AuthGuard } from '../../auth/auth.guard';
 import { TokenInterceptorService } from '../../auth/token-interceptor.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { TokenInterceptorService } from '../../auth/token-interceptor.service';
     MatSnackBarModule,
     MatGridListModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatIconModule
   ],
   providers: [AuthGuard, 
     {
