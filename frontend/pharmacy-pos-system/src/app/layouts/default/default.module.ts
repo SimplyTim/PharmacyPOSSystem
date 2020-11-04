@@ -27,7 +27,7 @@ import { AuthGuard } from '../../auth/auth.guard';
 import { TokenInterceptorService } from '../../auth/token-interceptor.service';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -66,7 +66,8 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule, 
+    MatAutocompleteModule
   ],
   providers: [AuthGuard, 
     {

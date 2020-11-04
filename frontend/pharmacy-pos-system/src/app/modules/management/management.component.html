@@ -4,11 +4,26 @@
     <hr>
 
     <mat-form-field>
+
         <input matInput placeholder="Product ID" formControlName="productId">
+
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput placeholder="Product Name" formControlName="name">
+        <input matInput placeholder="Product Name" formControlName="name" [matAutocomplete]="auto">
+
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let product of filteredOptions | async" [value]="product">
+              {{product}}
+            </mat-option>
+        </mat-autocomplete>
+
+        <!-- <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let product of productNames" [value]="product">
+              {{product}}
+            </mat-option>
+          </mat-autocomplete> -->
+
     </mat-form-field>
 
     <mat-form-field>
@@ -18,5 +33,8 @@
     <mat-form-field>
         <input matInput placeholder="Product Quantity" formControlName="stock">
     </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="createProduct()">Create Product</button>
+    <button mat-raised-button color="primary" (click)="updateProduct()">Update Product</button>
 
 </form>

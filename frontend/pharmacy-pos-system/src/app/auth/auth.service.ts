@@ -3,6 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
+
+type productStructure = {
+  "productId": string, 
+  "name": string,
+  "price": number,
+  "stock": number
+}; 
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +18,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AuthService {
 
   helper = new JwtHelperService();
-  private _loginUrl = "https://pharmacypos.herokuapp.com/auth"
-  private _currentUserUrl = "https://pharmacypos.herokuapp.com/mydetails"
-  private _registerUrl = "https://pharmacypos.herokuapp.com/employee"
-  private _productsURL = "https://pharmacypos.herokuapp.com/products"
-
+  private _loginUrl = "https://pharmacypos.herokuapp.com/auth";
+  private _currentUserUrl = "https://pharmacypos.herokuapp.com/mydetails";
+  private _registerUrl = "https://pharmacypos.herokuapp.com/employee";
+  private _productsURL = "https://pharmacypos.herokuapp.com/products";
+  private _createProductURL = "https://pharmacypos.herokuapp.com/product";
+  private _updateProductURL = "https://pharmacypos.herokuapp.com/product";
 
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
 
@@ -65,6 +74,16 @@ export class AuthService {
 
   getProducts(){
     return this.http.get<any>(this._productsURL);
+  }
+
+  
+
+  createProduct(product: productStructure){
+    return this.http.post(this._createProductURL, product,  {responseType: 'text'}); 
+  }
+
+  updateProduct(productID, productUpdate){
+    return this.http.put(`${this._updateProductURL}/${productID}`, productUpdate,  {responseType: 'text'}); 
   }
 
 }
