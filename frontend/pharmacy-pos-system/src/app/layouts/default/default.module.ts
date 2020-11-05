@@ -27,7 +27,8 @@ import { AuthGuard } from '../../auth/auth.guard';
 import { TokenInterceptorService } from '../../auth/token-interceptor.service';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SettingsComponent } from 'src/app/modules/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     ManagementComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent, 
+    SettingsComponent
     
   ],
   imports: [
@@ -68,6 +70,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatPaginatorModule,
     MatIconModule, 
     MatAutocompleteModule
+    
   ],
   providers: [AuthGuard, 
     {

@@ -21,6 +21,7 @@ var AuthService = /** @class */ (function () {
         this._productsURL = "https://pharmacypos.herokuapp.com/products";
         this._createProductURL = "https://pharmacypos.herokuapp.com/product";
         this._updateProductURL = "https://pharmacypos.herokuapp.com/product";
+        this._rootURL = "https://pharmacypos.herokuapp.com";
     }
     AuthService.prototype.loginUser = function (user) {
         return this.http.post(this._loginUrl, user);
@@ -67,6 +68,21 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.updateProduct = function (productID, productUpdate) {
         return this.http.put(this._updateProductURL + "/" + productID, productUpdate, { responseType: 'text' });
+    };
+    AuthService.prototype.updateMarkup = function (markup) {
+        return this.http.put(this._rootURL + "/setmarkup", markup, { responseType: 'text' });
+    };
+    AuthService.prototype.getMarkupValue = function () {
+        var _this = this;
+        if (!this.markupValue) {
+            this.http.get(this._rootURL + "/getmarkup").subscribe(function (res) {
+                _this.markupValue = res.markupVal;
+            });
+        }
+        return this.markupValue;
+    };
+    AuthService.prototype.setMarkupValue = function (value) {
+        this.markupValue = value;
     };
     AuthService = __decorate([
         core_1.Injectable({

@@ -17,17 +17,14 @@
               {{product}}
             </mat-option>
         </mat-autocomplete>
-
-        <!-- <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let product of productNames" [value]="product">
-              {{product}}
-            </mat-option>
-          </mat-autocomplete> -->
-
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput placeholder="Product Price" formControlName="price">
+        <input matInput placeholder="Cost Price" formControlName="costPrice">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Product Selling Price" formControlName="price">
     </mat-form-field>
 
     <mat-form-field>

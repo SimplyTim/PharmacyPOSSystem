@@ -30,6 +30,7 @@ var ManagementComponent = /** @class */ (function () {
         this.myForm = this.formBuilder.group({
             productId: '',
             name: '',
+            costPrice: 0.00,
             price: 0.00,
             stock: 0
         });
@@ -41,6 +42,17 @@ var ManagementComponent = /** @class */ (function () {
                     _this.myForm.get('stock').setValue("" + element.stock);
                 }
             });
+        });
+        this.myForm.get('costPrice').valueChanges.subscribe(function (value) {
+            if (!value)
+                return;
+            _this.myForm.get('price').setValue('');
+            var markupPercentage = (_this._auth.getMarkupValue() / 100);
+            if (!markupPercentage)
+                return;
+            var markupPrice = markupPercentage * value;
+            var sellingPrice = Number(markupPrice) + Number(value);
+            _this.myForm.get('price').setValue(sellingPrice);
         });
         this.filteredOptions = this.myForm.get('name').valueChanges
             .pipe(operators_1.startWith(''), operators_1.map(function (value) { return _this._filter(value); }));
