@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormArray} from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { MatSelectionListChange } from '@angular/material/list';
 
 @Component({
   selector: 'app-management',
@@ -37,6 +38,7 @@ export class ManagementComponent implements OnInit {
     this.myForm = this.formBuilder.group({
       productId: '', 
       name: '',
+      costPrice: 0.00,
       price: 0.00,
       stock: 0
     })
@@ -50,6 +52,18 @@ export class ManagementComponent implements OnInit {
             this.myForm.get('stock').setValue(`${element.stock}`); 
           }
         });
+      }
+    );
+
+    this.myForm.get('costPrice').valueChanges.subscribe(
+      (value) => {
+        if(!value) return; 
+        this.myForm.get('price').setValue('');  
+        let markupPercentage: number = (this._auth.getMarkupValue()/100) as number; 
+        if(!markupPercentage) return; 
+        let markupPrice: number = markupPercentage * value; 
+        let sellingPrice: number =  Number(markupPrice) + Number(value);
+        this.myForm.get('price').setValue(sellingPrice); 
       }
     );
 

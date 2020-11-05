@@ -24,6 +24,8 @@ export class AuthService {
   private _productsURL = "https://pharmacypos.herokuapp.com/products";
   private _createProductURL = "https://pharmacypos.herokuapp.com/product";
   private _updateProductURL = "https://pharmacypos.herokuapp.com/product";
+  private _rootURL = "https://pharmacypos.herokuapp.com";
+  private markupValue: number; 
 
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
 
@@ -84,6 +86,25 @@ export class AuthService {
 
   updateProduct(productID, productUpdate){
     return this.http.put(`${this._updateProductURL}/${productID}`, productUpdate,  {responseType: 'text'}); 
+  }
+
+  updateMarkup(markup){
+    return this.http.put(`${this._rootURL}/setmarkup`, markup,  {responseType: 'text'}); 
+  }
+
+  getMarkupValue():number {
+    if(!this.markupValue){
+      this.http.get<{markupId: number, markupVal: number}>(`${this._rootURL}/getmarkup`).subscribe(
+        (res:any) => {
+          this.markupValue = res.markupVal; 
+        }
+      )
+    }
+    return this.markupValue; 
+  }
+
+  setMarkupValue(value: number){
+    this.markupValue = value; 
   }
 
 }

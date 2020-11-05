@@ -9,6 +9,7 @@ import { InventoryComponent } from './modules/inventory/inventory.component';
 import { LoginComponent } from './modules/login/login.component';
 import { ManagementComponent } from './modules/management/management.component';
 import { RegisterComponent } from './modules/register/register.component';
+import { SettingsComponent } from './modules/settings/settings.component';
 
 const routes: Routes = [{
   path: '', 
@@ -36,6 +37,10 @@ const routes: Routes = [{
     {
       path: 'stock-management',
       component: ManagementComponent
+    },
+    {
+      path: 'settings', 
+      component: SettingsComponent
     }
   ]
 }];
