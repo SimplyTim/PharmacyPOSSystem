@@ -9,7 +9,7 @@ from flask_jwt import JWT, jwt_required, current_identity
 from flask.views import MethodView
 import os
 
-from models import db, Product, Employee, Transaction, Supplier, Markup
+from models import db, Product, Employee, Transaction, Supplier, Markup, TransactionDetail
 #from codes import DBURI, SECRETKEY
 DBURI = os.environ.get('DBURI', None)
 SECRETKEY = os.environ.get('SECRETKEY', None)
@@ -75,7 +75,6 @@ def getCurrentEmployee():
     return json.dumps(employee), 200
 
 
-
 #Product Routes
 @app.route('/product', methods=['POST'])
 @jwt_required()
@@ -83,13 +82,13 @@ def addProduct():
     currEmpType = current_identity.empType
     if currEmpType == 'Manager' or currEmpType == 'Data Entry':
         productData = request.get_json()
-        newProduct = Product(productId=str(productData['productId']), name=str(productData['name']), price=float(productData['price']),stock=int(productData['stock']))
-        try:
-            db.session.add(newProduct)
-            db.session.commit()
-        except IntegrityError:
-            db.session.rollback()
-            return "Product already exists.", 400
+        for product in productData:
+            newProduct = Product(productId=str(product['productId']), name=str(product['name']), price=float(product['price']),stock=int(product['stock']))
+            try:
+                db.session.add(newProduct)
+            except IntegrityError:
+                db.session.rollback()
+        db.session.commit()
         return "Product created successfully.", 200
     return "Not authorized to access this page.", 401
 
@@ -140,6 +139,17 @@ def deleteProduct(id):
     return "Not authorized to access this page.", 401
 
 
+#Suppliers
+@app.route('/supplier', methods=['POST'])
+@jwt_required()
+def createNewSupplier():
+    suppData = request.get_json()
+    newSupplier = Supplier(suppName=suppData['suppName'], phone1=suppData['phone1'], phone2=suppData['phone2'], email=suppData['email'])
+    db.session.add(newSupplier)
+    db.session.commit()
+    return "Supplier created successfully.", 201
+
+
 #Automatic Markup
 @app.route('/getmarkup', methods=['GET'])
 @jwt_required()
@@ -167,3 +177,70 @@ def setMarkup():
             return "Markup updated successfully.", 201
         return "Markup not found.", 404
     return "Not authorized to access this page.", 401
+
+#Transactions
+@app.route('/transaction', methods=['POST'])
+@jwt_required()
+def createNewTransaction():
+    currEmpType = current_identity.empType
+    if currEmpType == 'Manager' or currEmpType == "Sales":
+        newTrans = Transaction(empId=current_identity.id)
+        db.session.add(newTrans)
+        db.session.commit()
+        return "Transaction created successfully.", 201
+
+@app.route('/transactioninfo/<id>', methods=['GET'])
+@jwt_required()
+def viewTransaction(id):
+    trans = Transaction.query.get(int(id))
+    if trans:
+        return json.dumps(trans.toDict()), 200
+    return "Transaction not found.", 404
+
+@app.route('/transactioninfo', methods=['GET'])
+@jwt_required()
+def viewTransactions():
+    trans = Transaction.query.all()
+    if trans:
+        transDicts = [tran.toDict() for tran in trans]
+        return json.dumps(transDicts), 200
+    return "No transactions", 404 #balls.
+
+#Transaction Detail
+@app.route('/addtotrans/<id>', methods=['POST', 'PUT'])
+@jwt_required()
+def addProductToTrans(id):
+    transToUpdate = Transaction.query.get(int(id))
+    currEmp = current_identity
+    if transToUpdate:
+        if transToUpdate.empId == currEmp.id or currEmp.empType == 'Manager':
+            productsToAdd = request.get_json()
+            for product in productsToAdd:
+                td = TransactionDetail(transactionId=str(id), productId=product['productId'])
+                
+                #Updating item count. Assuming the product id exists
+                productToChange = Product.query.get(product['productId'])
+                currCount = int(productToChange.stock)
+                if currCount > 0:
+                    setattr(productToChange, 'stock', currCount-1)
+                db.session.add(td)
+                db.session.add(productToChange)
+                db.session.commit()
+            return "Products added to transaction.", 201
+        return "Not authorized to edit this transaction.", 401
+    return "Transaction Id not found.", 404
+
+
+@app.route('/transaction/<id>', methods=['GET'])
+@jwt_required()
+def viewTransProducts(id):
+    transToView = TransactionDetail.query.filter_by(transactionId=int(id))
+    prods = []
+    if transToView:
+        for tranItem in transToView:
+            prodId = tranItem.productId
+            prod = Product.query.get(str(prodId))
+            prods.append(prod.toDict())
+        return json.dumps(prods), 201
+    return "Transaction Id not found.", 404
+
