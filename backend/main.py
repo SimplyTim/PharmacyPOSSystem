@@ -82,14 +82,15 @@ def addProduct():
     currEmpType = current_identity.empType
     if currEmpType == 'Manager' or currEmpType == 'Data Entry':
         productData = request.get_json()
-        for product in productData:
-            newProduct = Product(productId=str(product['productId']), name=str(product['name']), price=float(product['price']),stock=int(product['stock']))
-            try:
+        try:
+            for product in productData:
+                newProduct = Product(productId=str(product['productId']), name=str(product['name']), price=float(product['price']),stock=int(product['stock']))
                 db.session.add(newProduct)
-            except IntegrityError:
-                db.session.rollback()
-        db.session.commit()
-        return "Product created successfully.", 200
+            db.session.commit()
+            return "Products created successfully.", 200
+        except IntegrityError:
+            db.session.rollback()
+            return "Error occurred in adding one or more products.", 401
     return "Not authorized to access this page.", 401
 
 @app.route('/products', methods=['GET'])
