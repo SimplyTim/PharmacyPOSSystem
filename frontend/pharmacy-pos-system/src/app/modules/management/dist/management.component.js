@@ -16,6 +16,9 @@ var ManagementComponent = /** @class */ (function () {
     }
     ManagementComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.myForm = this.formBuilder.group({
+            products: this.formBuilder.array([])
+        });
         this._auth.getProducts().subscribe(function (res) {
             _this.productList = res;
             _this.productNames = [];
@@ -23,43 +26,39 @@ var ManagementComponent = /** @class */ (function () {
                 var product = _a[_i];
                 _this.productNames.push(product.name);
             }
-            console.log(_this.productNames);
         }, function (error) {
             console.log(error);
         });
-        this.myForm = this.formBuilder.group({
-            productId: '',
-            name: '',
-            costPrice: 0.00,
-            price: 0.00,
-            stock: 0
+        // this.filteredOptions = this.productForms.valueChanges
+        //   .pipe(
+        //     startWith(''),
+        //     map(value => this._filter(value.name))
+        //   );
+    };
+    Object.defineProperty(ManagementComponent.prototype, "productForms", {
+        get: function () {
+            return this.myForm.get('products');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    ManagementComponent.prototype.addProduct = function () {
+        var product = this.formBuilder.group({
+            productId: [],
+            name: [],
+            costPrice: [],
+            price: [],
+            stock: []
         });
-        this.myForm.get('name').valueChanges.subscribe(function (value) {
-            _this.productList.forEach(function (element) {
-                if (value === element.name) {
-                    _this.myForm.get('productId').setValue("" + element.productId);
-                    _this.myForm.get('price').setValue("" + element.price);
-                    _this.myForm.get('stock').setValue("" + element.stock);
-                }
-            });
-        });
-        this.myForm.get('costPrice').valueChanges.subscribe(function (value) {
-            if (!value)
-                return;
-            _this.myForm.get('price').setValue('');
-            var markupPercentage = (_this._auth.getMarkupValue() / 100);
-            if (!markupPercentage)
-                return;
-            var markupPrice = markupPercentage * value;
-            var sellingPrice = Number(markupPrice) + Number(value);
-            _this.myForm.get('price').setValue(sellingPrice);
-        });
-        this.filteredOptions = this.myForm.get('name').valueChanges
-            .pipe(operators_1.startWith(''), operators_1.map(function (value) { return _this._filter(value); }));
+        this.productForms.push(product);
+    };
+    ManagementComponent.prototype.deleteProduct = function (i) {
+        this.productForms.removeAt(i);
     };
     ManagementComponent.prototype._filter = function (value) {
         if (!value || value === '')
             return this.productNames;
+        console.log(value);
         var filterValue = value.toString().toLowerCase();
         return this.productNames.filter(function (option) { return option.toLowerCase().includes(filterValue); });
     };
@@ -77,6 +76,35 @@ var ManagementComponent = /** @class */ (function () {
         }, function (error) {
             console.log(error);
         });
+    };
+    ManagementComponent.prototype.autofill = function (i) {
+        var _this = this;
+        var productValues = this.productForms.at(i).value;
+        console.log(productValues);
+        this.productList.forEach(function (element) {
+            if (element.name === productValues.name) {
+                _this.productForms.at(i).get('productId').setValue("" + element.productId);
+                _this.productForms.at(i).get('price').setValue("" + element.price);
+                _this.productForms.at(i).get('stock').setValue("" + element.stock);
+            }
+        });
+    };
+    ManagementComponent.prototype.calculateSP = function (i) {
+        var productValues = this.productForms.at(i).value;
+        console.log(productValues);
+        this.productForms.at(i).get('price').setValue('');
+        var markupPercentage = (this._auth.getMarkupValue() / 100);
+        if (!markupPercentage)
+            return;
+        var markupPrice = markupPercentage * productValues.costPrice;
+        var sellingPrice = Number(markupPrice) + Number(productValues.costPrice);
+        console.log(sellingPrice);
+        this.productForms.at(i).get('price').setValue(sellingPrice);
+    };
+    ManagementComponent.prototype.autocomplete = function (i) {
+        var _this = this;
+        this.filteredOptions = this.productForms.at(i).get('name').valueChanges
+            .pipe(operators_1.startWith(''), operators_1.map(function (value) { return _this._filter(value); }));
     };
     ManagementComponent = __decorate([
         core_1.Component({

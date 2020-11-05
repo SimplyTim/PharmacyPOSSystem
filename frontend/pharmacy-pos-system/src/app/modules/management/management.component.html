@@ -2,36 +2,42 @@
     Value: {{ myForm.value | json }}
 
     <hr>
+    <div formArrayName="products">
+        <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" matAutocompleteOrigin #origin="matAutocompleteOrigin" (change)="autofill(i); calculateSP(i)">
 
-    <mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Product ID" formControlName="productId">
+            </mat-form-field>
 
-        <input matInput placeholder="Product ID" formControlName="productId">
+            <mat-form-field>
+                <input matInput placeholder="Product Name" formControlName="name" [matAutocomplete]="auto"
+                [matAutocompleteConnectedTo]="origin" (ngModelChange)="autocomplete(i); autofill(i);">
 
-    </mat-form-field>
+                
+            </mat-form-field>
 
-    <mat-form-field>
-        <input matInput placeholder="Product Name" formControlName="name" [matAutocomplete]="auto">
+            <mat-form-field>
+                <input matInput placeholder="Cost Price" formControlName="costPrice">
+            </mat-form-field>
 
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let product of filteredOptions | async" [value]="product">
-              {{product}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Product Selling Price" formControlName="price">
+            </mat-form-field>
 
-    <mat-form-field>
-        <input matInput placeholder="Cost Price" formControlName="costPrice">
-    </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Product Quantity" formControlName="stock">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="deleteProduct(i)">Cancel Product Entry</button>
+            
+        </div>
+    </div>
 
-    <mat-form-field>
-        <input matInput placeholder="Product Selling Price" formControlName="price">
-    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let product of filteredOptions | async" [value]="product">
+        {{product}}
+        </mat-option>
+    </mat-autocomplete>
 
-    <mat-form-field>
-        <input matInput placeholder="Product Quantity" formControlName="stock">
-    </mat-form-field>
-
+    <button mat-raised-button color="primary" (click)="addProduct()">Add Product</button>
     <button mat-raised-button color="primary" (click)="createProduct()">Create Product</button>
-    <button mat-raised-button color="primary" (click)="updateProduct()">Update Product</button>
-
 </form>
