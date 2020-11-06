@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.ManagementComponent = void 0;
 var core_1 = require("@angular/core");
-var operators_1 = require("rxjs/operators");
 var ManagementComponent = /** @class */ (function () {
     function ManagementComponent(formBuilder, _auth) {
         this.formBuilder = formBuilder;
@@ -29,11 +28,6 @@ var ManagementComponent = /** @class */ (function () {
         }, function (error) {
             console.log(error);
         });
-        // this.filteredOptions = this.productForms.valueChanges
-        //   .pipe(
-        //     startWith(''),
-        //     map(value => this._filter(value.name))
-        //   );
     };
     Object.defineProperty(ManagementComponent.prototype, "productForms", {
         get: function () {
@@ -80,7 +74,6 @@ var ManagementComponent = /** @class */ (function () {
     ManagementComponent.prototype.autofill = function (i) {
         var _this = this;
         var productValues = this.productForms.at(i).value;
-        console.log(productValues);
         this.productList.forEach(function (element) {
             if (element.name === productValues.name) {
                 _this.productForms.at(i).get('productId').setValue("" + element.productId);
@@ -91,7 +84,6 @@ var ManagementComponent = /** @class */ (function () {
     };
     ManagementComponent.prototype.calculateSP = function (i) {
         var productValues = this.productForms.at(i).value;
-        console.log(productValues);
         this.productForms.at(i).get('price').setValue('');
         var markupPercentage = (this._auth.getMarkupValue() / 100);
         if (!markupPercentage)
@@ -101,10 +93,12 @@ var ManagementComponent = /** @class */ (function () {
         console.log(sellingPrice);
         this.productForms.at(i).get('price').setValue(sellingPrice);
     };
-    ManagementComponent.prototype.autocomplete = function (i) {
-        var _this = this;
-        this.filteredOptions = this.productForms.at(i).get('name').valueChanges
-            .pipe(operators_1.startWith(''), operators_1.map(function (value) { return _this._filter(value); }));
+    ManagementComponent.prototype.autoComplete = function (i) {
+        var productEntry = this.productForms.at(i).value.name;
+        this.filteredOptions = this._filter(productEntry);
+    };
+    ManagementComponent.prototype.initialiseList = function () {
+        this.filteredOptions = this.productNames;
     };
     ManagementComponent = __decorate([
         core_1.Component({

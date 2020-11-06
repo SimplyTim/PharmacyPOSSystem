@@ -3,16 +3,20 @@
 
     <hr>
     <div formArrayName="products">
-        <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" matAutocompleteOrigin #origin="matAutocompleteOrigin" (change)="autofill(i); calculateSP(i)">
+        <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" (change)="autofill(i); calculateSP(i)">
 
             <mat-form-field>
                 <input matInput placeholder="Product ID" formControlName="productId">
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput placeholder="Product Name" formControlName="name" [matAutocomplete]="auto"
-                [matAutocompleteConnectedTo]="origin" (ngModelChange)="autocomplete(i); autofill(i);">
-
+                <input matInput placeholder="Product Name" formControlName="name" (blur)="initialiseList();" [matAutocomplete]="auto" (ngModelChange)="autoComplete(i); autofill(i)">
+                
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
                 
             </mat-form-field>
 
@@ -32,11 +36,6 @@
         </div>
     </div>
 
-    <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let product of filteredOptions | async" [value]="product">
-        {{product}}
-        </mat-option>
-    </mat-autocomplete>
 
     <button mat-raised-button color="primary" (click)="addProduct()">Add Product</button>
     <button mat-raised-button color="primary" (click)="createProduct()">Create Product</button>

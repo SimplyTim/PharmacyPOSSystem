@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms'; 
 import { AuthService } from '../../auth/auth.service';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-management',
@@ -14,7 +12,7 @@ export class ManagementComponent implements OnInit {
   public myForm: FormGroup; 
   public productList; 
   public productNames: string[]; 
-  filteredOptions: Observable<string[]>;
+  filteredOptions: string[];
 
   constructor(private formBuilder: FormBuilder, private _auth: AuthService) { }
 
@@ -36,12 +34,6 @@ export class ManagementComponent implements OnInit {
         console.log(error)
       }
     )
-
-    // this.filteredOptions = this.productForms.valueChanges
-    //   .pipe(
-    //     startWith(''),
-    //     map(value => this._filter(value.name))
-    //   );
   }
 
   get productForms(){
@@ -97,7 +89,6 @@ export class ManagementComponent implements OnInit {
 
   public autofill(i){
     let productValues = this.productForms.at(i).value; 
-    console.log(productValues); 
     this.productList.forEach(element => {
       if(element.name === productValues.name){
         this.productForms.at(i).get('productId').setValue(`${element.productId}`); 
@@ -108,8 +99,7 @@ export class ManagementComponent implements OnInit {
   }
 
   public calculateSP(i){
-    let productValues = this.productForms.at(i).value; 
-    console.log(productValues); 
+    let productValues = this.productForms.at(i).value;  
     this.productForms.at(i).get('price').setValue('');  
     let markupPercentage: number = (this._auth.getMarkupValue()/100) as number; 
     if(!markupPercentage) return; 
@@ -117,14 +107,15 @@ export class ManagementComponent implements OnInit {
     let sellingPrice: number =  Number(markupPrice) + Number(productValues.costPrice);
     console.log(sellingPrice); 
     this.productForms.at(i).get('price').setValue(sellingPrice);
-  } 
+  }
 
-  autocomplete(i){
-    this.filteredOptions = this.productForms.at(i).get('name').valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    ); 
+  autoComplete(i){
+    let productEntry = this.productForms.at(i).value.name; 
+    this.filteredOptions = this._filter(productEntry); 
+  }
+
+  initialiseList(){
+    this.filteredOptions = this.productNames;  
   }
 
 }
