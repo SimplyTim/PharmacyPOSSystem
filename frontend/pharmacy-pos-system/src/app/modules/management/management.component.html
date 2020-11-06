@@ -3,14 +3,14 @@
 
     <hr>
     <div formArrayName="products">
-        <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" (change)="autofill(i); calculateSP(i)">
+        <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" (change)="calculateSP(i)" (ngModelChange)="autoComplete(i);">
 
             <mat-form-field>
-                <input matInput placeholder="Product ID" formControlName="productId">
+                <input matInput placeholder="Product ID" formControlName="productId" (change)="autofill(i)" >
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput placeholder="Product Name" formControlName="name" (blur)="initialiseList();" [matAutocomplete]="auto" (ngModelChange)="autoComplete(i); autofill(i)">
+                <input matInput placeholder="Product Name" formControlName="name" (blur)="initialiseList(); autofill(i)" [matAutocomplete]="auto">
                 
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions" [value]="option">

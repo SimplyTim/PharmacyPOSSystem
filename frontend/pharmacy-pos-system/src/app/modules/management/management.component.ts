@@ -12,6 +12,7 @@ export class ManagementComponent implements OnInit {
   public myForm: FormGroup; 
   public productList; 
   public productNames: string[]; 
+  public productItemNumbers: string[]; 
   filteredOptions: string[];
 
   constructor(private formBuilder: FormBuilder, private _auth: AuthService) { }
@@ -26,8 +27,10 @@ export class ManagementComponent implements OnInit {
       (res:any) => {
         this.productList = res;
         this.productNames = []; 
+        this.productItemNumbers = []; 
         for(let product of this.productList){
           this.productNames.push(product.name); 
+          this.productItemNumbers.push(product.productId); 
         } 
       },
       error => {
@@ -59,7 +62,6 @@ export class ManagementComponent implements OnInit {
 
   private _filter(value: string): string[] {
     if (!value || value==='') return this.productNames;
-    console.log(value); 
     const filterValue = value.toString().toLowerCase();
     return this.productNames.filter(option => option.toLowerCase().includes(filterValue));
   }
@@ -90,8 +92,9 @@ export class ManagementComponent implements OnInit {
   public autofill(i){
     let productValues = this.productForms.at(i).value; 
     this.productList.forEach(element => {
-      if(element.name === productValues.name){
-        this.productForms.at(i).get('productId').setValue(`${element.productId}`); 
+      if(element.name === productValues.name || element.productId == productValues.productId){
+        this.productForms.at(i).get('productId').setValue(`${element.productId}`);
+        this.productForms.at(i).get('name').setValue(`${element.name}`);
         this.productForms.at(i).get('price').setValue(`${element.price}`); 
         this.productForms.at(i).get('stock').setValue(`${element.stock}`); 
       }
@@ -100,7 +103,6 @@ export class ManagementComponent implements OnInit {
 
   public calculateSP(i){
     let productValues = this.productForms.at(i).value;  
-    this.productForms.at(i).get('price').setValue('');  
     let markupPercentage: number = (this._auth.getMarkupValue()/100) as number; 
     if(!markupPercentage) return; 
     let markupPrice: number = markupPercentage * productValues.costPrice; 

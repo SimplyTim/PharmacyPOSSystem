@@ -21,9 +21,11 @@ var ManagementComponent = /** @class */ (function () {
         this._auth.getProducts().subscribe(function (res) {
             _this.productList = res;
             _this.productNames = [];
+            _this.productItemNumbers = [];
             for (var _i = 0, _a = _this.productList; _i < _a.length; _i++) {
                 var product = _a[_i];
                 _this.productNames.push(product.name);
+                _this.productItemNumbers.push(product.productId);
             }
         }, function (error) {
             console.log(error);
@@ -52,7 +54,6 @@ var ManagementComponent = /** @class */ (function () {
     ManagementComponent.prototype._filter = function (value) {
         if (!value || value === '')
             return this.productNames;
-        console.log(value);
         var filterValue = value.toString().toLowerCase();
         return this.productNames.filter(function (option) { return option.toLowerCase().includes(filterValue); });
     };
@@ -75,8 +76,9 @@ var ManagementComponent = /** @class */ (function () {
         var _this = this;
         var productValues = this.productForms.at(i).value;
         this.productList.forEach(function (element) {
-            if (element.name === productValues.name) {
+            if (element.name === productValues.name || element.productId == productValues.productId) {
                 _this.productForms.at(i).get('productId').setValue("" + element.productId);
+                _this.productForms.at(i).get('name').setValue("" + element.name);
                 _this.productForms.at(i).get('price').setValue("" + element.price);
                 _this.productForms.at(i).get('stock').setValue("" + element.stock);
             }
@@ -84,7 +86,6 @@ var ManagementComponent = /** @class */ (function () {
     };
     ManagementComponent.prototype.calculateSP = function (i) {
         var productValues = this.productForms.at(i).value;
-        this.productForms.at(i).get('price').setValue('');
         var markupPercentage = (this._auth.getMarkupValue() / 100);
         if (!markupPercentage)
             return;
