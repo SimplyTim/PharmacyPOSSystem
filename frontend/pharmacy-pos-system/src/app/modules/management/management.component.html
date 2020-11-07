@@ -2,7 +2,7 @@
     <!-- Value: {{ myForm.value | json }} -->
     
 
-    <mat-grid-list cols="6" rowHeight="2:1">
+    <mat-grid-list cols="6" rowHeight="3:1">
 
         <div formArrayName="products">
             <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" (change)="calculateSP(i)" (ngModelChange)="autoComplete(i);">
@@ -12,9 +12,9 @@
                     </mat-form-field>
                 </mat-grid-tile>  
 
-                <mat-grid-tile colspan="3">
-                    <mat-form-field>
-                        <input matInput placeholder="Product Name" formControlName="name" (blur)="initialiseList(); autofill(i)" [matAutocomplete]="auto">
+                <mat-grid-tile colspan="3" >
+                    <mat-form-field class="product-name-input">
+                        <input matInput  placeholder="Product Name" formControlName="name" (blur)="initialiseList(); autofill(i)" [matAutocomplete]="auto">
                         
                         <mat-autocomplete #auto="matAutocomplete">
                             <mat-option *ngFor="let option of filteredOptions" [value]="option">
@@ -43,22 +43,21 @@
                     </mat-form-field>
                 </mat-grid-tile>
 
-                <mat-grid-tile>
+                <mat-grid-tile colspan="5">
                     <button mat-raised-button color="primary" (click)="deleteProduct(i)">Cancel Product Entry</button>
                 </mat-grid-tile>
                 
             </div>
         </div>
-
     </mat-grid-list>
 
 
-    <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-list cols="2" rowHeight="10:1" class="utility-buttons">
         <mat-grid-tile>
-            <button mat-raised-button color="primary" (click)="addProduct()">Add Product</button>
+            <button mat-raised-button color="primary" (click)="addProduct()" class="add-button">Add Product</button>
         </mat-grid-tile>
         <mat-grid-tile>
-            <button mat-raised-button color="primary" (click)="updateStock()">Update Stock</button>
+            <button mat-raised-button color="primary" (click)="updateStock()" class="update-stock">Update Stock</button>
         </mat-grid-tile>
     </mat-grid-list>
     
