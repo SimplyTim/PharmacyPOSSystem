@@ -1,6 +1,16 @@
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms'; 
+import { element } from 'protractor';
 import { AuthService } from '../../auth/auth.service';
+
+export type product = {
+  "productId": string, 
+  "name": string, 
+  "costPrice": number, 
+  "price": number, 
+  "stock": number
+}
 
 @Component({
   selector: 'app-management',
@@ -66,9 +76,8 @@ export class ManagementComponent implements OnInit {
     return this.productNames.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  createProduct():void{
-    console.log(this.myForm.value); 
-    this._auth.createProduct(this.myForm.value).subscribe(
+  createProduct(createdProducts):void{
+    this._auth.createProduct(createdProducts).subscribe(
       (res:any) => {
         console.log(res); 
       }, 
@@ -78,7 +87,7 @@ export class ManagementComponent implements OnInit {
     )
   }
 
-  updateProduct(){
+  updateProduct(updatedProducts){
     this._auth.updateProduct(this.myForm.value.productId, {stock: this.myForm.value.stock}).subscribe(
       (res:any) => {
         console.log(res); 
@@ -87,6 +96,39 @@ export class ManagementComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  updateStock(){
+    let productsEntered = this.productForms.value as Array<Object>;
+    let productsCreated = []; 
+    let productsUpdated = []; 
+
+    productsEntered.forEach(element => {
+      let inProductList: boolean = false; 
+      let enteredProduct = element as product; 
+
+      for(let item of this.productList){
+        if(item.productId === enteredProduct.productId){
+          productsUpdated.push(enteredProduct); 
+          inProductList = true; 
+          break; 
+        }
+      }
+
+      if(!inProductList){
+        productsCreated.push(enteredProduct); 
+      }
+
+    }); 
+
+    
+    if(productsCreated.length !== 0){
+      this.createProduct(productsCreated); 
+    }
+    if(productsUpdated.length !== 0){
+      console.log(productsUpdated); 
+      this.updateProduct(productsUpdated);  
+    }
   }
 
   public autofill(i){

@@ -57,20 +57,47 @@ var ManagementComponent = /** @class */ (function () {
         var filterValue = value.toString().toLowerCase();
         return this.productNames.filter(function (option) { return option.toLowerCase().includes(filterValue); });
     };
-    ManagementComponent.prototype.createProduct = function () {
-        console.log(this.myForm.value);
-        this._auth.createProduct(this.myForm.value).subscribe(function (res) {
+    ManagementComponent.prototype.createProduct = function (createdProducts) {
+        this._auth.createProduct(createdProducts).subscribe(function (res) {
             console.log(res);
         }, function (error) {
             console.log(error);
         });
     };
-    ManagementComponent.prototype.updateProduct = function () {
+    ManagementComponent.prototype.updateProduct = function (updatedProducts) {
         this._auth.updateProduct(this.myForm.value.productId, { stock: this.myForm.value.stock }).subscribe(function (res) {
             console.log(res);
         }, function (error) {
             console.log(error);
         });
+    };
+    ManagementComponent.prototype.updateStock = function () {
+        var _this = this;
+        var productsEntered = this.productForms.value;
+        var productsCreated = [];
+        var productsUpdated = [];
+        productsEntered.forEach(function (element) {
+            var inProductList = false;
+            var enteredProduct = element;
+            for (var _i = 0, _a = _this.productList; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item.productId === enteredProduct.productId) {
+                    productsUpdated.push(enteredProduct);
+                    inProductList = true;
+                    break;
+                }
+            }
+            if (!inProductList) {
+                productsCreated.push(enteredProduct);
+            }
+        });
+        if (productsCreated.length !== 0) {
+            this.createProduct(productsCreated);
+        }
+        if (productsUpdated.length !== 0) {
+            console.log(productsUpdated);
+            this.updateProduct(productsUpdated);
+        }
     };
     ManagementComponent.prototype.autofill = function (i) {
         var _this = this;
