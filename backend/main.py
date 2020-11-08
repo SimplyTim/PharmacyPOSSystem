@@ -110,20 +110,24 @@ def getProduct(id):
         return json.dumps(product.toDict()), 200
     return "Product not found.", 404
 
-@app.route('/product/<id>', methods=['PUT'])
+@app.route('/product', methods=['PUT'])
 @jwt_required()
-def editProduct(id):
+def editProduct():
     currEmpType = current_identity.empType
     if currEmpType == 'Manager' or currEmpType == 'Data Entry':
-        productToEdit = Product.query.get(str(id))
-        if productToEdit:
-            editData = request.get_json()
-            for key in editData:
-                setattr(productToEdit, str(key), editData[str(key)])
-            db.session.add(productToEdit)
+        editData = request.get_json()
+        try: 
+            for edit in editData:
+                productToEdit = Product.query.get(edit['productId'])
+                setattr(productToEdit, 'name', str(edit['name']))
+                setattr(productToEdit, 'stock', int(edit['stock']))
+                setattr(productToEdit, 'price', float(edit['price']))
+                db.session.add(productToEdit)
             db.session.commit()
             return "Product updated successfully.", 201
-        return "Product not found.", 404
+        except IntegrityError:
+            db.session.rollback()
+            return "Error occurred in updating one or more products.", 401
     return "Not authorized to access this page.", 401
 
 @app.route('/product/<id>', methods=['DELETE'])
