@@ -88,7 +88,7 @@ export class ManagementComponent implements OnInit {
   }
 
   updateProduct(updatedProducts){
-    this._auth.updateProduct(this.myForm.value.productId, {stock: this.myForm.value.stock}).subscribe(
+    this._auth.updateProduct(updatedProducts).subscribe(
       (res:any) => {
         console.log(res); 
       }, 

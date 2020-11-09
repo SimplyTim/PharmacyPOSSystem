@@ -65,7 +65,7 @@ var ManagementComponent = /** @class */ (function () {
         });
     };
     ManagementComponent.prototype.updateProduct = function (updatedProducts) {
-        this._auth.updateProduct(this.myForm.value.productId, { stock: this.myForm.value.stock }).subscribe(function (res) {
+        this._auth.updateProduct(updatedProducts).subscribe(function (res) {
             console.log(res);
         }, function (error) {
             console.log(error);

@@ -66,8 +66,8 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.createProduct = function (product) {
         return this.http.post(this._createProductURL, product, { responseType: 'text' });
     };
-    AuthService.prototype.updateProduct = function (productID, productUpdate) {
-        return this.http.put(this._updateProductURL + "/" + productID, productUpdate, { responseType: 'text' });
+    AuthService.prototype.updateProduct = function (productUpdate) {
+        return this.http.put(this._rootURL + "/product", productUpdate, { responseType: 'text' });
     };
     AuthService.prototype.updateMarkup = function (markup) {
         return this.http.put(this._rootURL + "/setmarkup", markup, { responseType: 'text' });

@@ -84,8 +84,8 @@ export class AuthService {
     return this.http.post(this._createProductURL, product,  {responseType: 'text'}); 
   }
 
-  updateProduct(productID, productUpdate){
-    return this.http.put(`${this._updateProductURL}/${productID}`, productUpdate,  {responseType: 'text'}); 
+  updateProduct(productUpdate){
+    return this.http.put(`${this._rootURL}/product`, productUpdate,  {responseType: 'text'}); 
   }
 
   updateMarkup(markup){
