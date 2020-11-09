@@ -10,9 +10,9 @@ from flask.views import MethodView
 import os
 
 from models import db, Product, Employee, Transaction, Supplier, Markup, TransactionDetail
-#from codes import DBURI, SECRETKEY
-DBURI = os.environ.get('DBURI', None)
-SECRETKEY = os.environ.get('SECRETKEY', None)
+from codes import DBURI, SECRETKEY
+#DBURI = os.environ.get('DBURI', None)
+#SECRETKEY = os.environ.get('SECRETKEY', None)
 
 ''' Begin boilerplate code '''
 def create_app():
@@ -148,11 +148,52 @@ def deleteProduct(id):
 @app.route('/supplier', methods=['POST'])
 @jwt_required()
 def createNewSupplier():
-    suppData = request.get_json()
-    newSupplier = Supplier(suppName=suppData['suppName'], phone1=suppData['phone1'], phone2=suppData['phone2'], email=suppData['email'])
-    db.session.add(newSupplier)
-    db.session.commit()
-    return "Supplier created successfully.", 201
+    empType = current_identity.empType
+    if empType == "Manager" or empType == "Data Entry":
+        suppData = request.get_json()
+        newSupplier = Supplier(suppName=suppData['suppName'], phone1=suppData['phone1'], phone2=suppData['phone2'], email=suppData['email'])
+        db.session.add(newSupplier)
+        db.session.commit()
+        return "Supplier created successfully.", 201
+    return "Not authorized to access this page.", 401
+
+@app.route('/supplier/<id>', methods=['GET'])
+@jwt_required()
+def getSuppliers(id):
+    supplier = Supplier.query.get(str(id))
+    if supplier:
+        return json.dumps(supplier.toDict()), 200
+    return "Product not found.", 404
+
+@app.route('/suppliers', methods=['GET'])
+@jwt_required()
+def getAllSuppliers():
+    suppliers = Supplier.query.all()
+    if suppliers:
+        suppliers = [supplier.toDict() for supplier in suppliers]
+        return json.dumps(suppliers), 200
+    return "No users", 404
+
+@app.route('/supplier', methods=['PUT'])
+@jwt_required()
+def editSupplier():
+    currEmpType = current_identity.empType
+    if currEmpType == 'Manager' or currEmpType == 'Data Entry':
+        editData = request.get_json()
+        try: 
+            for edit in editData:
+                supplierToEdit = Supplier.query.get(edit['suppId'])
+                setattr(supplierToEdit, 'suppName', str(edit['suppName']))
+                setattr(supplierToEdit, 'phone1', str(edit['phone1']))
+                setattr(supplierToEdit, 'phone2', str(edit['phone2']))
+                setattr(supplierToEdit, 'email', str(edit['email']))
+                db.session.add(supplierToEdit)
+            db.session.commit()
+            return "Suppliers updated successfully.", 201
+        except IntegrityError:
+            db.session.rollback()
+            return "Error occurred in updating one or more suppliers.", 401
+    return "Not authorized to access this page.", 401
 
 
 #Automatic Markup
@@ -183,6 +224,7 @@ def setMarkup():
         return "Markup not found.", 404
     return "Not authorized to access this page.", 401
 
+
 #Transactions
 @app.route('/transaction', methods=['POST'])
 @jwt_required()
@@ -211,6 +253,7 @@ def viewTransactions():
         return json.dumps(transDicts), 200
     return "No transactions", 404 #balls.
 
+
 #Transaction Detail
 @app.route('/addtotrans/<id>', methods=['POST', 'PUT'])
 @jwt_required()
@@ -235,7 +278,6 @@ def addProductToTrans(id):
         return "Not authorized to edit this transaction.", 401
     return "Transaction Id not found.", 404
 
-
 @app.route('/transaction/<id>', methods=['GET'])
 @jwt_required()
 def viewTransProducts(id):
@@ -248,4 +290,3 @@ def viewTransProducts(id):
             prods.append(prod.toDict())
         return json.dumps(prods), 201
     return "Transaction Id not found.", 404
-
