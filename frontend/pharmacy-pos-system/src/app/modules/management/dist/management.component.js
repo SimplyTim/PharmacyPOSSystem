@@ -123,6 +123,7 @@ var ManagementComponent = /** @class */ (function () {
     };
     ManagementComponent.prototype.autoComplete = function (i) {
         var productEntry = this.productForms.at(i).value.name;
+        console.log(productEntry);
         this.filteredOptions = this._filter(productEntry);
     };
     ManagementComponent.prototype.initialiseList = function () {

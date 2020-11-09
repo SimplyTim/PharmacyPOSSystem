@@ -3,10 +3,8 @@
     
     <mat-card>
         <mat-grid-list cols="8" rowHeight="2:1">
-        
             <div formArrayName="products">
-                
-                <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" (change)="calculateSP(i)" (ngModelChange)="autoComplete(i);">
+                <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" (change)="calculateSP(i)" >
                     
                     <mat-grid-tile>
                         <mat-form-field>
@@ -16,9 +14,9 @@
 
                     <mat-grid-tile colspan="3" >
                         <mat-form-field class="product-name-input">
-                            <input matInput  placeholder="Product Name" formControlName="name" (blur)="initialiseList(); autofill(i)" [matAutocomplete]="auto">
+                            <input matInput (ngModelChange)="autoComplete(i);" placeholder="Product Name" formControlName="name" (blur)="initialiseList(); autofill(i)" [matAutocomplete]="auto">
                             
-                            <mat-autocomplete #auto="matAutocomplete">
+                            <mat-autocomplete #auto="matAutocomplete">      
                                 <mat-option *ngFor="let option of filteredOptions" [value]="option">
                                 {{option}}
                                 </mat-option>
@@ -48,10 +46,8 @@
                     <mat-grid-tile>
                         <button mat-raised-button color="primary" (click)="deleteProduct(i)">Cancel Product Entry</button>
                     </mat-grid-tile>
-                
                 </div>
             </div>
-            
         </mat-grid-list>
     </mat-card>
 

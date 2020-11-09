@@ -155,6 +155,7 @@ export class ManagementComponent implements OnInit {
 
   autoComplete(i){
     let productEntry = this.productForms.at(i).value.name; 
+    console.log(productEntry); 
     this.filteredOptions = this._filter(productEntry); 
   }
 
