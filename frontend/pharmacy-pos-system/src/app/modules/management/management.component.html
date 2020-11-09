@@ -1,55 +1,59 @@
 <form [formGroup]="myForm">
     <!-- Value: {{ myForm.value | json }} -->
     
-
-    <mat-grid-list cols="6" rowHeight="3:1">
-
-        <div formArrayName="products">
-            <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" (change)="calculateSP(i)" (ngModelChange)="autoComplete(i);">
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <input matInput placeholder="Product ID" formControlName="productId" (change)="autofill(i)" >
-                    </mat-form-field>
-                </mat-grid-tile>  
-
-                <mat-grid-tile colspan="3" >
-                    <mat-form-field class="product-name-input">
-                        <input matInput  placeholder="Product Name" formControlName="name" (blur)="initialiseList(); autofill(i)" [matAutocomplete]="auto">
-                        
-                        <mat-autocomplete #auto="matAutocomplete">
-                            <mat-option *ngFor="let option of filteredOptions" [value]="option">
-                            {{option}}
-                            </mat-option>
-                        </mat-autocomplete>
-                        
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <input matInput placeholder="Cost Price" formControlName="costPrice">
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <input matInput placeholder="Product Selling Price" formControlName="price">
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <input matInput placeholder="Product Quantity" formControlName="stock">
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile colspan="5">
-                    <button mat-raised-button color="primary" (click)="deleteProduct(i)">Cancel Product Entry</button>
-                </mat-grid-tile>
+    <mat-card>
+        <mat-grid-list cols="8" rowHeight="3:1">
+        
+            <div formArrayName="products">
                 
+                <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" (change)="calculateSP(i)" (ngModelChange)="autoComplete(i);">
+                    
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput placeholder="Product ID" formControlName="productId" (change)="autofill(i)" >
+                        </mat-form-field>
+                    </mat-grid-tile>  
+
+                    <mat-grid-tile colspan="3" >
+                        <mat-form-field class="product-name-input">
+                            <input matInput  placeholder="Product Name" formControlName="name" (blur)="initialiseList(); autofill(i)" [matAutocomplete]="auto">
+                            
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                                {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput placeholder="Cost Price" formControlName="costPrice">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput placeholder="Product Selling Price" formControlName="price">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput placeholder="Product Quantity" formControlName="stock">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <button mat-raised-button color="primary" (click)="deleteProduct(i)">Cancel Product Entry</button>
+                    </mat-grid-tile>
+                
+                </div>
             </div>
-        </div>
-    </mat-grid-list>
+            
+        </mat-grid-list>
+    </mat-card>
 
 
     <mat-grid-list cols="2" rowHeight="10:1" class="utility-buttons">
