@@ -1,0 +1,22 @@
+mat-grid-tile {
+    background: #F4F4F6;
+}
+
+.utility-buttons{
+    margin-top: 2em;
+}
+
+mat-form-field{
+    display: inline-block;
+    width: 60%;
+}
+
+mat-form-field{
+    display: inline-block;
+    width: 60%;
+}
+
+.product-name-input{
+    display: inline-block;
+    width: 80%;
+}
