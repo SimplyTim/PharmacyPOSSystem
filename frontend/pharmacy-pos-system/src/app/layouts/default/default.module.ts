@@ -29,6 +29,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SettingsComponent } from 'src/app/modules/settings/settings.component';
+import { PointOfSaleComponent } from 'src/app/modules/point-of-sale/point-of-sale.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SettingsComponent } from 'src/app/modules/settings/settings.component';
     RegisterComponent,
     LoginComponent,
     DashboardComponent, 
-    SettingsComponent
+    SettingsComponent,
+    PointOfSaleComponent
     
   ],
   imports: [
