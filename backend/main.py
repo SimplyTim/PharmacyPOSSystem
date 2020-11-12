@@ -87,7 +87,7 @@ def addProduct():
                 newProduct = Product(productId=str(product['productId']), name=str(product['name']), price=float(product['price']),stock=int(product['stock']))
                 db.session.add(newProduct)
             db.session.commit()
-            return "Products created successfully.", 200
+            return "Products created successfully.", 201
         except IntegrityError:
             db.session.rollback()
             return "Error occurred in adding one or more products.", 401
