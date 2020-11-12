@@ -288,5 +288,5 @@ def viewTransProducts(id):
             prodId = tranItem.productId
             prod = Product.query.get(str(prodId))
             prods.append(prod.toDict())
-        return json.dumps(prods), 201
+        return json.dumps(prods), 200
     return "Transaction Id not found.", 404
