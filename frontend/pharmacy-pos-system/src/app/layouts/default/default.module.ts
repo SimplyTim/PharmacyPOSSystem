@@ -29,6 +29,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SettingsComponent } from 'src/app/modules/settings/settings.component';
+import { MatDialogModule } from '@angular/material/dialog'; 
 
 @NgModule({
   declarations: [
@@ -69,8 +70,8 @@ import { SettingsComponent } from 'src/app/modules/settings/settings.component';
     MatSelectModule,
     MatPaginatorModule,
     MatIconModule, 
-    MatAutocompleteModule
-    
+    MatAutocompleteModule, 
+    MatDialogModule
   ],
   providers: [AuthGuard, 
     {

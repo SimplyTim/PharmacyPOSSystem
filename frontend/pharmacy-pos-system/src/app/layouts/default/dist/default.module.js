@@ -38,6 +38,7 @@ var paginator_1 = require("@angular/material/paginator");
 var icon_1 = require("@angular/material/icon");
 var autocomplete_1 = require("@angular/material/autocomplete");
 var settings_component_1 = require("src/app/modules/settings/settings.component");
+var dialog_1 = require("@angular/material/dialog");
 var DefaultModule = /** @class */ (function () {
     function DefaultModule() {
     }
@@ -80,7 +81,8 @@ var DefaultModule = /** @class */ (function () {
                 select_1.MatSelectModule,
                 paginator_1.MatPaginatorModule,
                 icon_1.MatIconModule,
-                autocomplete_1.MatAutocompleteModule
+                autocomplete_1.MatAutocompleteModule,
+                dialog_1.MatDialogModule
             ],
             providers: [auth_guard_1.AuthGuard,
                 {
