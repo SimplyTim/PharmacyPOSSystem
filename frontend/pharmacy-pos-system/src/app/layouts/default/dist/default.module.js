@@ -39,6 +39,7 @@ var icon_1 = require("@angular/material/icon");
 var autocomplete_1 = require("@angular/material/autocomplete");
 var settings_component_1 = require("src/app/modules/settings/settings.component");
 var dialog_1 = require("@angular/material/dialog");
+var point_of_sale_component_1 = require("src/app/modules/point-of-sale/point-of-sale.component");
 var DefaultModule = /** @class */ (function () {
     function DefaultModule() {
     }
@@ -51,7 +52,8 @@ var DefaultModule = /** @class */ (function () {
                 register_component_1.RegisterComponent,
                 login_component_1.LoginComponent,
                 dashboard_component_1.DashboardComponent,
-                settings_component_1.SettingsComponent
+                settings_component_1.SettingsComponent,
+                point_of_sale_component_1.PointOfSaleComponent
             ],
             imports: [
                 common_1.CommonModule,
