@@ -31,6 +31,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SettingsComponent } from 'src/app/modules/settings/settings.component';
 import { MatDialogModule } from '@angular/material/dialog'; 
 import { PointOfSaleComponent } from 'src/app/modules/point-of-sale/point-of-sale.component';
+import { CourseDialogComponent } from 'src/app/modules/management/course-dialog/course-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PointOfSaleComponent } from 'src/app/modules/point-of-sale/point-of-sal
     LoginComponent,
     DashboardComponent, 
     SettingsComponent,
-    PointOfSaleComponent
+    PointOfSaleComponent,
+    CourseDialogComponent
     
   ],
   imports: [
@@ -81,5 +83,6 @@ import { PointOfSaleComponent } from 'src/app/modules/point-of-sale/point-of-sal
       useClass: TokenInterceptorService,
       multi: true
     }],
+  entryComponents: [CourseDialogComponent], 
 })
 export class DefaultModule { }

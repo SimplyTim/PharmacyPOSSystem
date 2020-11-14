@@ -8,8 +8,8 @@
                     
                     <mat-grid-tile>
                         <mat-form-field>
-                            <input matInput placeholder="Product ID" formControlName="productId" (change)="autofill(i)" >
-                        </mat-form-field>
+                            <input matInput placeholder="Product ID" formControlName="productId" (change)="autofill(i)">
+                        </mat-form-field>       
                     </mat-grid-tile>  
 
                     <mat-grid-tile colspan="3" >
@@ -44,7 +44,7 @@
                     </mat-grid-tile>
 
                     <mat-grid-tile>
-                        <button mat-raised-button color="primary" (click)="deleteProduct(i)">Cancel Product Entry</button>
+                        <button type="button" mat-raised-button color="primary" (click)="deleteProduct(i)">Cancel Product Entry</button>
                     </mat-grid-tile>
                 </div>
             </div>
@@ -54,10 +54,10 @@
 
     <mat-grid-list cols="2" rowHeight="10:1" class="utility-buttons">
         <mat-grid-tile>
-            <button mat-raised-button color="primary" (click)="addProduct()" class="add-button">Add Product</button>
+            <button type="button" mat-raised-button color="primary" (click)="addProduct()" class="add-button">Add Product</button>
         </mat-grid-tile>
         <mat-grid-tile>
-            <button mat-raised-button color="primary" (click)="updateStock()" class="update-stock">Update Stock</button>
+            <button type="button" mat-raised-button color="primary" (click)="updateStock()" class="update-stock">Update Stock</button>
         </mat-grid-tile>
     </mat-grid-list>
     

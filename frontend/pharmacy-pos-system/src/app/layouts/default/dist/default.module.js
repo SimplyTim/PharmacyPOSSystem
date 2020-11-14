@@ -40,6 +40,7 @@ var autocomplete_1 = require("@angular/material/autocomplete");
 var settings_component_1 = require("src/app/modules/settings/settings.component");
 var dialog_1 = require("@angular/material/dialog");
 var point_of_sale_component_1 = require("src/app/modules/point-of-sale/point-of-sale.component");
+var course_dialog_component_1 = require("src/app/modules/management/course-dialog/course-dialog.component");
 var DefaultModule = /** @class */ (function () {
     function DefaultModule() {
     }
@@ -53,7 +54,8 @@ var DefaultModule = /** @class */ (function () {
                 login_component_1.LoginComponent,
                 dashboard_component_1.DashboardComponent,
                 settings_component_1.SettingsComponent,
-                point_of_sale_component_1.PointOfSaleComponent
+                point_of_sale_component_1.PointOfSaleComponent,
+                course_dialog_component_1.CourseDialogComponent
             ],
             imports: [
                 common_1.CommonModule,
@@ -91,7 +93,8 @@ var DefaultModule = /** @class */ (function () {
                     provide: http_1.HTTP_INTERCEPTORS,
                     useClass: token_interceptor_service_1.TokenInterceptorService,
                     multi: true
-                }]
+                }],
+            entryComponents: [course_dialog_component_1.CourseDialogComponent]
         })
     ], DefaultModule);
     return DefaultModule;
