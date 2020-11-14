@@ -234,7 +234,7 @@ def createNewTransaction():
         newTrans = Transaction(empId=current_identity.id)
         db.session.add(newTrans)
         db.session.commit()
-        return "Transaction created successfully.", 201
+        return json.dumps(newTrans.toDict()), 201
 
 @app.route('/transactioninfo/<id>', methods=['GET'])
 @jwt_required()
