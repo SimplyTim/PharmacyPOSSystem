@@ -29,7 +29,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SettingsComponent } from 'src/app/modules/settings/settings.component';
+<<<<<<< HEAD
 import { MatDialogModule } from '@angular/material/dialog'; 
+=======
+import { PointOfSaleComponent } from 'src/app/modules/point-of-sale/point-of-sale.component';
+>>>>>>> d9a877a9e6dfcb6ee8cc058873aee8c46747953e
 
 @NgModule({
   declarations: [
@@ -39,7 +43,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     RegisterComponent,
     LoginComponent,
     DashboardComponent, 
-    SettingsComponent
+    SettingsComponent,
+    PointOfSaleComponent
     
   ],
   imports: [
