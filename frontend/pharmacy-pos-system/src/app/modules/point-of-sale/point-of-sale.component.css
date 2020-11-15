@@ -10,7 +10,7 @@
 }
 
 mat-form-field{
-    width: 90%;
+    width: 100%;
 }
 
 .w-100{
@@ -19,7 +19,13 @@ mat-form-field{
 
 .sidebutton{
     margin-bottom: 5%;
-    height: 50px;
+    font-size: medium;
+    height: 80px;
+}
+
+.text-inside-grid {
+    position: absolute;
+    left: 0px;
 }
 
 /*Custom Scrollbar - Credits to W3Schools*/

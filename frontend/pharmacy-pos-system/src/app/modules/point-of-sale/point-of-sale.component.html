@@ -2,28 +2,30 @@
     <mat-grid-tile colspan="4" rowspan="3">
         <div class='internalMatGrid'>
             <mat-card class="card">
-                <mat-grid-list cols="5" rowHeight="2:1" [gutterSize]="0">
+                <mat-grid-list cols="5" rowHeight="3:1">
+                    <mat-grid-tile colspan="2"><div class="text-inside-grid"><h2>Product</h2></div></mat-grid-tile>
+                    <mat-grid-tile colspan="1"><div class="text-inside-grid"><h2>Price</h2></div></mat-grid-tile>
+                    <mat-grid-tile colspan="1"><div class="text-inside-grid"><h2>Quantity</h2></div></mat-grid-tile>
+                    
                     <form [formGroup]="itemsForm">
                         <div formArrayName="products">
                             <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i">
                                 <mat-grid-tile colspan="2">
-                                    <mat-form-field appearance="outline">
-                                        <input matInput formControlName="name">
-                                        <mat-label>Name</mat-label>
+                                    <mat-form-field appearance="none">
+                                        <input matInput formControlName="name" [readonly]="true">
                                     </mat-form-field>
                                 </mat-grid-tile>
                 
                                 <mat-grid-tile>
-                                    <mat-form-field appearance="outline">
-                                        <input matInput formControlName="price" type="number">
-                                        <mat-label>Price</mat-label>
+                                    <mat-form-field appearance="none">
+                                        <input matInput formControlName="price" type="number" [readonly]="true">
+                                        <span matPrefix>$&nbsp;</span>
                                     </mat-form-field>
                                 </mat-grid-tile>
                 
                                 <mat-grid-tile>
-                                    <mat-form-field appearance="outline">
-                                        <input matInput formControlName="quantity" type="number" (ngModelChange)="calculatePrice(i)">
-                                        <mat-label>Quantity</mat-label>
+                                    <mat-form-field appearance="standard">
+                                        <input matInput formControlName="quantity" type="number" (ngModelChange)="calculatePrice(i)" min="1">
                                     </mat-form-field>
                                 </mat-grid-tile>
                                 
@@ -53,15 +55,21 @@
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
 
-                <button [disabled]="!activeTransaction" mat-raised-button color="primary" (click)="addProduct()" class="w-100 sidebutton">Manually Add Product</button>
+                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="clearAllProducts()" class="w-100 sidebutton">
+                    Clear All<mat-icon>clear_all</mat-icon>
+                </button>
 
-                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="clearAllProducts()" class="w-100 sidebutton">Clear All Products</button>
+                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="cancelTransaction()" class="w-100 sidebutton">
+                    Cancel <mat-icon>clear</mat-icon>
+                </button>
 
-                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="cancelTransaction()" class="w-100 sidebutton">Cancel Transaction</button>
+                <button [disabled]="activeTransaction" mat-raised-button color="primary" class="w-100 sidebutton" (click)="newTransaction()">
+                    New<mat-icon>add</mat-icon>
+                </button>
 
-                <button [disabled]="activeTransaction" mat-raised-button color="primary" class="w-100 sidebutton" (click)="newTransaction()">New Transaction</button>
-
-                <button [disabled]="!activeTransaction" mat-raised-button color="primary" class="w-100 sidebutton">Complete Transaction</button>    
+                <button [disabled]="!itemQuantity" mat-raised-button color="primary" class="w-100 sidebutton">
+                    Complete<mat-icon>attach_money</mat-icon> 
+                </button>    
             </mat-card>
         </div>
     </mat-grid-tile>
@@ -69,7 +77,10 @@
     <mat-grid-tile colspan="4" rowspan="1">
         <div class="internalMatGrid">
             <mat-card id="card">
-                <h2>Total: ${{totalPrice}}</h2>
+                <mat-grid-list cols="4" rowHeight="7:1">
+                    <mat-grid-tile colspan="2"><div class="text-inside-grid"><h2>Total: ${{totalPrice}} </h2></div></mat-grid-tile>
+                    <mat-grid-tile colspan="2"><div class="text-inside-grid"><h2>Quantity: {{itemQuantity}}</h2></div></mat-grid-tile>
+                </mat-grid-list>
             </mat-card>
         </div>
     </mat-grid-tile>

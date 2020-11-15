@@ -22,6 +22,7 @@ export class PointOfSaleComponent implements OnInit {
   public productNames: string[]; 
   public productItemNumbers: string[];
   totalPrice = 0;
+  itemQuantity = 0;
   filteredOptions: string[];
   @ViewChild('focus') input: ElementRef;
 
@@ -51,6 +52,7 @@ export class PointOfSaleComponent implements OnInit {
   deleteProduct(i){
     this.productForms.removeAt(i); 
     this.calculateTotalPrice();
+    this.calculateItemQuantity();
   }
 
   newTransaction(){
@@ -89,6 +91,7 @@ export class PointOfSaleComponent implements OnInit {
     })
 
     this.totalPrice = 0;
+    this.itemQuantity = 0;
   }
 
   clearAllProducts(){
@@ -96,20 +99,37 @@ export class PointOfSaleComponent implements OnInit {
       products: this.formBuilder.array([])
     })
     this.totalPrice = 0;
+    this.itemQuantity = 0;
   }
 
   autoCompleteID(value){
+    let itemFound = false;
+
     this.productList.forEach(element => {
       if(value === element.productId && element.stock > 0){
-        const product = this.formBuilder.group({
-          id: [element.productId],
-          name: [element.name], 
-          price: [element.price], 
-          quantity: [1]
-        })
-        this.productForms.push(product);
+
+        this.productForms.controls.forEach((element, index) => {
+          if(element.value.id == value){
+            this.productForms.at(index).get('quantity').setValue(element.value.quantity + 1);
+            itemFound = true;
+          }
+        });
+
+        if(itemFound == false){
+          const product = this.formBuilder.group({
+            id: [element.productId],
+            name: [element.name], 
+            price: [element.price], 
+            quantity: [1]
+          })
+
+          this.productForms.push(product);
+        }
+        
         this.input.nativeElement.value = "";
         this.calculateTotalPrice();
+
+        this.calculateItemQuantity();
       }
     });
   }
@@ -124,6 +144,7 @@ export class PointOfSaleComponent implements OnInit {
         this.productForms.at(i).get('price').setValue(price);
 
         this.calculateTotalPrice();
+        this.calculateItemQuantity();
       }
     });
   }
@@ -138,6 +159,19 @@ export class PointOfSaleComponent implements OnInit {
     });
 
     this.totalPrice = total;
+  }
+
+  calculateItemQuantity(){
+    let items = this.itemsForm.get('products').value as Array<Object>;
+    let qty = 0;
+
+    items.forEach(element => {
+      let product = element as product; 
+
+      qty += product.quantity;
+    });
+
+    this.itemQuantity = qty;
   }
 
 }
