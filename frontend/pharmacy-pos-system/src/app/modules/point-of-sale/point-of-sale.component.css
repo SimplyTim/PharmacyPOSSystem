@@ -26,6 +26,7 @@ mat-form-field{
 .text-inside-grid {
     position: absolute;
     left: 0px;
+    color: rgb(85, 83, 83);
 }
 
 /*Custom Scrollbar - Credits to W3Schools*/

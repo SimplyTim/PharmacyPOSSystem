@@ -41,11 +41,13 @@ const routes: Routes = [{
     },
     {
       path: 'settings', 
-      component: SettingsComponent
+      component: SettingsComponent,
+      canActivate: [ManagerGuard]
     },
     {
       path: 'pos', 
-      component: PointOfSaleComponent
+      component: PointOfSaleComponent,
+      canActivate: [AuthGuard]
     }
   ]
 }];

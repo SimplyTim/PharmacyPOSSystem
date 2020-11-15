@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AuthService } from '../../auth/auth.service';
+import { SuccessDialogComponent } from './success-dialog/success-dialog.component'
 
 export type product = {
   "id": string,
@@ -9,24 +11,31 @@ export type product = {
   "quantity": number
 }
 
+export interface DialogData {
+  change: number;
+}
+
 @Component({
   selector: 'app-point-of-sale',
   templateUrl: './point-of-sale.component.html',
   styleUrls: ['./point-of-sale.component.css']
 })
 export class PointOfSaleComponent implements OnInit {
-
   public itemsForm: FormGroup; 
   public activeTransaction = false;
   public productList; 
   public productNames: string[]; 
   public productItemNumbers: string[];
   totalPrice = 0;
+  amoutPaid = 0;
   itemQuantity = 0;
+  transactionValid = false;
   filteredOptions: string[];
   @ViewChild('focus') input: ElementRef;
 
-  constructor(private formBuilder: FormBuilder, private _auth: AuthService) { }
+  @ViewChild('payment') payment: ElementRef;
+
+  constructor(private formBuilder: FormBuilder, private _auth: AuthService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.itemsForm = this.formBuilder.group({
@@ -72,6 +81,10 @@ export class PointOfSaleComponent implements OnInit {
         }
         
         this.activeTransaction = true;
+        this.totalPrice = 0;
+        this.itemQuantity = 0;
+        this.transactionValid = false;
+        this.payment.nativeElement.value = "";
         setTimeout(()=>{
           this.input.nativeElement.focus();
         },0);
@@ -82,9 +95,10 @@ export class PointOfSaleComponent implements OnInit {
     )
   }
 
-  cancelTransaction(){
+  clearTransaction(){
     this.activeTransaction = false;
     this.input.nativeElement.value = "";
+    this.payment.nativeElement.value = "";
 
     this.itemsForm = this.formBuilder.group({
       products: this.formBuilder.array([])
@@ -92,6 +106,7 @@ export class PointOfSaleComponent implements OnInit {
 
     this.totalPrice = 0;
     this.itemQuantity = 0;
+    this.transactionValid = false;
   }
 
   clearAllProducts(){
@@ -100,6 +115,8 @@ export class PointOfSaleComponent implements OnInit {
     })
     this.totalPrice = 0;
     this.itemQuantity = 0;
+    this.transactionValid = false;
+    this.payment.nativeElement.value = "";
   }
 
   autoCompleteID(value){
@@ -155,7 +172,7 @@ export class PointOfSaleComponent implements OnInit {
 
     productsEntered.forEach(element => {
       let enteredProduct = element as product; 
-      total += enteredProduct.price;
+      total += (enteredProduct.price * enteredProduct.quantity);
     });
 
     this.totalPrice = total;
@@ -172,6 +189,66 @@ export class PointOfSaleComponent implements OnInit {
     });
 
     this.itemQuantity = qty;
+  }
+
+  createTransaction(){
+    let allProductIDs = [];
+    let transID;
+
+    let items = this.itemsForm.get('products').value as Array<Object>;
+
+    items.forEach(element => {
+      let product = element as product; 
+
+      for(let i=0; i<product.quantity;i++){
+        allProductIDs.push({"productId": product.id})
+      }
+     
+    });
+
+    this._auth.createTransaction().subscribe(
+      (res:any) => {
+        transID = res.transactionId;
+        this.addProductsToTransaction(allProductIDs, transID);
+      }, 
+      (error:any) => {
+        console.log(error);
+      }
+    )
+  }
+
+  addProductsToTransaction(allProductIDs, transID){
+    this._auth.addProductsToTransaction(allProductIDs, transID).subscribe(
+      (res:any) => {
+        console.log(res);
+        let change = this.amoutPaid - this.totalPrice;
+        this.newTransaction();
+        this.openDialog(change.toFixed(2));
+      }, 
+      (error:any) => {
+        console.log(error);
+      }
+    )
+  }
+
+  amountPaid(value){
+    if(value >= this.totalPrice){
+      this.transactionValid = true;
+      this.amoutPaid = value;
+    }else{
+      this.transactionValid = false;
+    }
+  }
+
+  openDialog(change): void {
+    const dialogRef = this.dialog.open(SuccessDialogComponent, {
+      width: '300px',
+      data: {"change": change}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.input.nativeElement.focus();
+    });
   }
 
 }

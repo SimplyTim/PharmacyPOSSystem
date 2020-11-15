@@ -40,7 +40,7 @@
         </div>
     </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="4">
+    <mat-grid-tile colspan="1" rowspan="5">
         <div class="internalMatGrid">
             <mat-card id="card">
                 <mat-form-field appearance="outline" class="w-100">
@@ -56,20 +56,26 @@
                 </mat-form-field>
 
                 <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="clearAllProducts()" class="w-100 sidebutton">
-                    Clear All<mat-icon>clear_all</mat-icon>
+                    Clear All Products<mat-icon>clear_all</mat-icon>
                 </button>
 
-                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="cancelTransaction()" class="w-100 sidebutton">
-                    Cancel <mat-icon>clear</mat-icon>
+                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="clearTransaction()" class="w-100 sidebutton">
+                    Cancel Transaction<mat-icon>clear</mat-icon>
                 </button>
 
                 <button [disabled]="activeTransaction" mat-raised-button color="primary" class="w-100 sidebutton" (click)="newTransaction()">
-                    New<mat-icon>add</mat-icon>
+                    New Transaction<mat-icon>add</mat-icon>
                 </button>
 
-                <button [disabled]="!itemQuantity" mat-raised-button color="primary" class="w-100 sidebutton">
-                    Complete<mat-icon>attach_money</mat-icon> 
-                </button>    
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput [disabled]="!itemQuantity" #payment [ngModel]="" (ngModelChange)="amountPaid($event)" type="number">
+                    <mat-label>Amount Paid</mat-label>
+                    <mat-icon matSuffix>attach_money</mat-icon>
+                </mat-form-field>
+
+                <button [disabled]="!transactionValid" mat-raised-button color="primary" class="w-100 sidebutton" (click)="createTransaction()">
+                    Finish Transaction<mat-icon>attach_money</mat-icon> 
+                </button>  
             </mat-card>
         </div>
     </mat-grid-tile>

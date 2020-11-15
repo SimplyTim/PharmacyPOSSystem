@@ -32,6 +32,7 @@ import { SettingsComponent } from 'src/app/modules/settings/settings.component';
 import { MatDialogModule } from '@angular/material/dialog'; 
 import { PointOfSaleComponent } from 'src/app/modules/point-of-sale/point-of-sale.component';
 import { CourseDialogComponent } from 'src/app/modules/management/course-dialog/course-dialog.component';
+import { SuccessDialogComponent } from 'src/app/modules/point-of-sale/success-dialog/success-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CourseDialogComponent } from 'src/app/modules/management/course-dialog/
     DashboardComponent, 
     SettingsComponent,
     PointOfSaleComponent,
-    CourseDialogComponent
+    CourseDialogComponent,
+    SuccessDialogComponent
     
   ],
   imports: [
@@ -83,6 +85,6 @@ import { CourseDialogComponent } from 'src/app/modules/management/course-dialog/
       useClass: TokenInterceptorService,
       multi: true
     }],
-  entryComponents: [CourseDialogComponent], 
+  entryComponents: [CourseDialogComponent, SuccessDialogComponent], 
 })
 export class DefaultModule { }
