@@ -44,7 +44,14 @@
         <div class="internalMatGrid">
             <mat-card id="card">
                 <mat-form-field appearance="outline" class="w-100">
-                    <input matInput [disabled]="!activeTransaction">
+                    <input matInput [ngModel]="" (ngModelChange)="autoComplete($event)" [disabled]="!activeTransaction" (blur)="initialiseList()" [matAutocomplete]="auto">
+
+                    <mat-autocomplete #auto="matAutocomplete">      
+                        <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                        {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+
                     <mat-label>Item Name</mat-label>
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>

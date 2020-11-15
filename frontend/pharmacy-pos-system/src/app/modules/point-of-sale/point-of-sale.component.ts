@@ -119,9 +119,25 @@ export class PointOfSaleComponent implements OnInit {
     this.payment.nativeElement.value = "";
   }
 
+  private _filter(value: string): string[] {
+    if (!value || value==='') return this.productNames;
+    const filterValue = value.toString().toLowerCase();
+    return this.productNames.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  autoComplete(value){
+    console.log(value); 
+    console.log("Hello"); 
+    let productEntry = value; 
+    this.filteredOptions = this._filter(productEntry); 
+  }
+
+  initialiseList(){
+    this.filteredOptions = this.productNames;  
+  }
+
   autoCompleteID(value){
     let itemFound = false;
-
     this.productList.forEach(element => {
       if(value === element.productId && element.stock > 0){
 
