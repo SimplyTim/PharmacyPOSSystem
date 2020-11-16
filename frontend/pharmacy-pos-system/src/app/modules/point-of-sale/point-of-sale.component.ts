@@ -64,6 +64,8 @@ export class PointOfSaleComponent implements OnInit {
     this.productForms.removeAt(i); 
     this.calculateTotalPrice();
     this.calculateItemQuantity();
+    this.payment.nativeElement.value = "";
+    this.transactionValid = false;
   }
 
   newTransaction(){
@@ -211,6 +213,8 @@ export class PointOfSaleComponent implements OnInit {
 
         this.calculateTotalPrice();
         this.calculateItemQuantity();
+        this.payment.nativeElement.value = "";
+        this.transactionValid = false;
       }
     });
   }
@@ -292,7 +296,8 @@ export class PointOfSaleComponent implements OnInit {
   openDialog(change): void {
     const dialogRef = this.dialog.open(SuccessDialogComponent, {
       width: '300px',
-      data: {"change": change}
+      data: {"change": change},
+      autoFocus: false 
     });
 
     dialogRef.afterClosed().subscribe(result => {

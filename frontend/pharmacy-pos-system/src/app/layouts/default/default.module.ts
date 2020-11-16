@@ -33,6 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PointOfSaleComponent } from 'src/app/modules/point-of-sale/point-of-sale.component';
 import { CourseDialogComponent } from 'src/app/modules/management/course-dialog/course-dialog.component';
 import { SuccessDialogComponent } from 'src/app/modules/point-of-sale/success-dialog/success-dialog.component';
+import { TransactionDialogComponent } from 'src/app/modules/transactions/transaction-dialog/transaction-dialog.component';
 import { TransactionsComponent } from 'src/app/modules/transactions/transactions.component';
 
 
@@ -48,7 +49,8 @@ import { TransactionsComponent } from 'src/app/modules/transactions/transactions
     PointOfSaleComponent,
     CourseDialogComponent,
     SuccessDialogComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    TransactionDialogComponent
     
   ],
   imports: [
@@ -88,6 +90,6 @@ import { TransactionsComponent } from 'src/app/modules/transactions/transactions
       useClass: TokenInterceptorService,
       multi: true
     }],
-  entryComponents: [CourseDialogComponent, SuccessDialogComponent], 
+  entryComponents: [CourseDialogComponent, SuccessDialogComponent, TransactionDialogComponent], 
 })
 export class DefaultModule { }

@@ -1,1 +1,45 @@
-<p>transactions works!</p>
+<mat-form-field appearance="outline" >
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input #focus>
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+  
+<div class="example-container mat-elevation-z8">
+
+    <mat-table #table [dataSource]="dataSource">
+    <!-- ID Column -->
+    <ng-container matColumnDef="transactionId">
+        <mat-header-cell *matHeaderCellDef> Transaction ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.transactionId}} </mat-cell>
+    </ng-container>
+
+    <!-- Employee Column -->
+    <ng-container matColumnDef="empId">
+        <mat-header-cell *matHeaderCellDef> Employee ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.empId}} </mat-cell>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="dateTime">
+        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dateTime}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="modification">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+            <button mat-raised-button color="primary" class="tableButton" (click)="row(element.transactionId, element.empId, element.dateTime)">View</button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" colspan="6" *matNoDataRow>
+        <td class="mat-cell">No data matching the search "{{input.value}}"</td>
+    </tr>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[8]" showFirstLastButtons></mat-paginator>
+</div>
