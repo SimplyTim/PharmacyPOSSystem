@@ -1,37 +1,65 @@
 <form [formGroup]="myForm">
-    Value: {{ myForm.value | json }}
+    <!-- Value: {{ myForm.value | json }} -->
+    
+    <mat-card>
+        <mat-grid-list cols="8" rowHeight="2:1">
+            <div formArrayName="products">
+                <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i" (change)="calculateSP(i)" >
+                    
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput placeholder="Product ID" formControlName="productId" (change)="autofill(i)">
+                        </mat-form-field>       
+                    </mat-grid-tile>  
 
-    <hr>
+                    <mat-grid-tile colspan="3" >
+                        <mat-form-field class="product-name-input">
+                            <input matInput (ngModelChange)="autoComplete(i);" placeholder="Product Name" formControlName="name" (blur)="initialiseList(); autofill(i)" [matAutocomplete]="auto">
+                            
+                            <mat-autocomplete #auto="matAutocomplete">      
+                                <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                                {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            
+                        </mat-form-field>
+                    </mat-grid-tile>
 
-    <mat-form-field>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput placeholder="Cost Price" formControlName="costPrice">
+                        </mat-form-field>
+                    </mat-grid-tile>
 
-        <input matInput placeholder="Product ID" formControlName="productId">
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput placeholder="Selling Price" formControlName="price">
+                        </mat-form-field>
+                    </mat-grid-tile>
 
-    </mat-form-field>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <input matInput placeholder="Quantity" formControlName="stock">
+                        </mat-form-field>
+                    </mat-grid-tile>
 
-    <mat-form-field>
-        <input matInput placeholder="Product Name" formControlName="name" [matAutocomplete]="auto">
+                    <mat-grid-tile>
+                        <button type="button" mat-raised-button color="primary" (click)="deleteProduct(i)">Cancel Product Entry</button>
+                    </mat-grid-tile>
+                </div>
+            </div>
+        </mat-grid-list>
+    </mat-card>
 
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let product of filteredOptions | async" [value]="product">
-              {{product}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
 
-    <mat-form-field>
-        <input matInput placeholder="Cost Price" formControlName="costPrice">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Product Selling Price" formControlName="price">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Product Quantity" formControlName="stock">
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" (click)="createProduct()">Create Product</button>
-    <button mat-raised-button color="primary" (click)="updateProduct()">Update Product</button>
-
+    <mat-grid-list cols="2" rowHeight="10:1" class="utility-buttons">
+        <mat-grid-tile>
+            <button type="button" mat-raised-button color="primary" (click)="addProduct()" class="add-button">Add Product</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button type="button" mat-raised-button color="primary" (click)="updateStock()" class="update-stock">Update Stock</button>
+        </mat-grid-tile>
+    </mat-grid-list>
+    
+    
 </form>

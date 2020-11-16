@@ -15,6 +15,8 @@ export class DefaultComponent implements OnInit {
   ngOnInit(): void {
     if(this._auth.loggedIn() === true){
       this.setSideBarOpen(true);
+    }else{
+      this._auth.logoutUser();
     }
   }
 

@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms'; 
 import { AuthService } from '../../auth/auth.service';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import { MatSelectionListChange } from '@angular/material/list';
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
+
+export type product = {
+  "productId": string, 
+  "name": string, 
+  "costPrice": number, 
+  "price": number, 
+  "stock": number
+}
 
 @Component({
   selector: 'app-management',
@@ -15,64 +22,53 @@ export class ManagementComponent implements OnInit {
   public myForm: FormGroup; 
   public productList; 
   public productNames: string[]; 
-  filteredOptions: Observable<string[]>;
+  public productItemNumbers: string[]; 
+  filteredOptions: string[];
 
-  constructor(private formBuilder: FormBuilder, private _auth: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private _auth: AuthService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+
+    this.myForm = this.formBuilder.group({
+      products: this.formBuilder.array([])
+    })
 
     this._auth.getProducts().subscribe(
       (res:any) => {
         this.productList = res;
         this.productNames = []; 
+        this.productItemNumbers = []; 
         for(let product of this.productList){
           this.productNames.push(product.name); 
+          this.productItemNumbers.push(product.productId); 
         } 
-        console.log(this.productNames);
       },
       error => {
         console.log(error)
       }
     )
-
-    this.myForm = this.formBuilder.group({
-      productId: '', 
-      name: '',
-      costPrice: 0.00,
-      price: 0.00,
-      stock: 0
-    })
-
-    this.myForm.get('name').valueChanges.subscribe(
-      (value) => {
-        this.productList.forEach(element => {
-          if(value === element.name){
-            this.myForm.get('productId').setValue(`${element.productId}`); 
-            this.myForm.get('price').setValue(`${element.price}`); 
-            this.myForm.get('stock').setValue(`${element.stock}`); 
-          }
-        });
-      }
-    );
-
-    this.myForm.get('costPrice').valueChanges.subscribe(
-      (value) => {
-        if(!value) return; 
-        this.myForm.get('price').setValue('');  
-        let markupPercentage: number = (this._auth.getMarkupValue()/100) as number; 
-        if(!markupPercentage) return; 
-        let markupPrice: number = markupPercentage * value; 
-        let sellingPrice: number =  Number(markupPrice) + Number(value);
-        this.myForm.get('price').setValue(sellingPrice); 
-      }
-    );
-
-    this.filteredOptions = this.myForm.get('name').valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
   }
+
+  get productForms(){
+    return this.myForm.get('products') as FormArray; 
+  }
+
+  addProduct(){
+
+    const product = this.formBuilder.group({
+      productId: [], 
+      name: [], 
+      costPrice: [], 
+      price: [], 
+      stock: []
+    })
+    this.productForms.push(product); 
+  }
+
+  deleteProduct(i){
+    this.productForms.removeAt(i); 
+  }
+
 
   private _filter(value: string): string[] {
     if (!value || value==='') return this.productNames;
@@ -80,9 +76,8 @@ export class ManagementComponent implements OnInit {
     return this.productNames.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  createProduct():void{
-    console.log(this.myForm.value); 
-    this._auth.createProduct(this.myForm.value).subscribe(
+  createProduct(createdProducts):void{
+    this._auth.createProduct(createdProducts).subscribe(
       (res:any) => {
         console.log(res); 
       }, 
@@ -92,8 +87,8 @@ export class ManagementComponent implements OnInit {
     )
   }
 
-  updateProduct(){
-    this._auth.updateProduct(this.myForm.value.productId, {stock: this.myForm.value.stock}).subscribe(
+  updateProduct(updatedProducts){
+    this._auth.updateProduct(updatedProducts).subscribe(
       (res:any) => {
         console.log(res); 
       }, 
@@ -103,6 +98,82 @@ export class ManagementComponent implements OnInit {
     )
   }
 
-  
+  updateStock(){
+    let productsEntered = this.productForms.value as Array<Object>;
+    let productsCreated = []; 
+    let productsUpdated = []; 
+
+    productsEntered.forEach(element => {
+      let inProductList: boolean = false; 
+      let enteredProduct = element as product; 
+
+      for(let item of this.productList){
+        if(item.productId === enteredProduct.productId){
+          productsUpdated.push(enteredProduct); 
+          inProductList = true; 
+          break; 
+        }
+      }
+
+      if(!inProductList){
+        productsCreated.push(enteredProduct); 
+      }
+
+      this.openDialog(); 
+      this.ngOnInit();
+
+    }); 
+
+    
+    if(productsCreated.length !== 0){
+      this.createProduct(productsCreated); 
+    }
+    if(productsUpdated.length !== 0){
+      console.log(productsUpdated); 
+      this.updateProduct(productsUpdated);  
+    }
+  }
+
+  public autofill(i){
+    let productValues = this.productForms.at(i).value; 
+    this.productList.forEach(element => {
+      if(element.name === productValues.name || element.productId == productValues.productId){
+        this.productForms.at(i).get('productId').setValue(`${element.productId}`);
+        this.productForms.at(i).get('name').setValue(`${element.name}`);
+        this.productForms.at(i).get('price').setValue(`${element.price}`); 
+        this.productForms.at(i).get('stock').setValue(`${element.stock}`); 
+      }
+    });
+  }
+
+  public calculateSP(i){
+    let productValues = this.productForms.at(i).value;  
+    let markupPercentage: number = (this._auth.getMarkupValue()/100) as number; 
+    if(!markupPercentage) return; 
+    let markupPrice: number = markupPercentage * productValues.costPrice; 
+    let sellingPrice: number =  Number(markupPrice) + Number(productValues.costPrice);
+    console.log(sellingPrice); 
+    this.productForms.at(i).get('price').setValue(sellingPrice);
+  }
+
+  autoComplete(i){
+    let productEntry = this.productForms.at(i).value.name; 
+    console.log(productEntry); 
+    this.filteredOptions = this._filter(productEntry); 
+  }
+
+  initialiseList(){
+    this.filteredOptions = this.productNames;  
+  }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(CourseDialogComponent, dialogConfig);
+}
 
 }

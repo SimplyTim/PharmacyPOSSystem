@@ -1,0 +1,100 @@
+<mat-grid-list cols="5" rowHeight="1.7:1">
+    <mat-grid-tile colspan="4" rowspan="3">
+        <div class='internalMatGrid'>
+            <mat-card class="card">
+                <mat-grid-list cols="5" rowHeight="3:1">
+                    <mat-grid-tile colspan="2"><div class="text-inside-grid">Product</div></mat-grid-tile>
+                    <mat-grid-tile colspan="1"><div class="text-inside-grid">Price</div></mat-grid-tile>
+                    <mat-grid-tile colspan="1"><div class="text-inside-grid">Quantity</div></mat-grid-tile>
+                    
+                    <form [formGroup]="itemsForm">
+                        <div formArrayName="products">
+                            <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i">
+                                <mat-grid-tile colspan="2">
+                                    <mat-form-field appearance="none">
+                                        <input matInput formControlName="name" [readonly]="true">
+                                    </mat-form-field>
+                                </mat-grid-tile>
+                
+                                <mat-grid-tile>
+                                    <mat-form-field appearance="none">
+                                        <input matInput formControlName="price" type="number" [readonly]="true">
+                                        <span matPrefix>$&nbsp;</span>
+                                    </mat-form-field>
+                                </mat-grid-tile>
+                
+                                <mat-grid-tile>
+                                    <mat-form-field appearance="standard">
+                                        <input matInput formControlName="quantity" type="number" (ngModelChange)="calculatePrice(i)" min="1">
+                                    </mat-form-field>
+                                </mat-grid-tile>
+                                
+                                <mat-grid-tile>
+                                    <button mat-raised-button color="warn" (click)="deleteProduct(i)">Remove</button>
+                                </mat-grid-tile>
+                            </div>
+                        </div>
+                    </form>
+                </mat-grid-list>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="1" rowspan="5">
+        <div class="internalMatGrid">
+            <mat-card id="card">
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput #name [ngModel]="" (ngModelChange)="autoComplete($event)" (ngModelChange)="autoCompleteName($event)" [disabled]="!activeTransaction" (blur)="initialiseList()" [matAutocomplete]="auto">
+
+                    <mat-autocomplete #auto="matAutocomplete">      
+                        <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                        {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+
+                    <mat-label>Item Name</mat-label>
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput [disabled]="!activeTransaction" #focus [ngModel]="" (ngModelChange)="autoCompleteID($event)">
+                    <mat-label>Item ID</mat-label>
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+
+                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="clearAllProducts()" class="w-100 sidebutton">
+                    Clear All Products<mat-icon>clear_all</mat-icon>
+                </button>
+
+                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="clearTransaction()" class="w-100 sidebutton">
+                    Cancel Transaction<mat-icon>clear</mat-icon>
+                </button>
+
+                <button [disabled]="activeTransaction" mat-raised-button color="primary" class="w-100 sidebutton" (click)="newTransaction()">
+                    New Transaction<mat-icon>add</mat-icon>
+                </button>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput [disabled]="!itemQuantity" #payment [ngModel]="" (ngModelChange)="amountPaid($event)" type="number">
+                    <mat-label>Amount Paid</mat-label>
+                    <mat-icon matSuffix>attach_money</mat-icon>
+                </mat-form-field>
+
+                <button [disabled]="!transactionValid" mat-raised-button color="primary" class="w-100 sidebutton" (click)="createTransaction()">
+                    Finish Transaction<mat-icon>attach_money</mat-icon> 
+                </button>  
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="4" rowspan="1">
+        <div class="internalMatGrid">
+            <mat-card id="card">
+                <mat-grid-list cols="4" rowHeight="7:1">
+                    <mat-grid-tile colspan="2"><div class="text-inside-grid">Total: ${{totalPrice}}</div></mat-grid-tile>
+                    <mat-grid-tile colspan="2"><div class="text-inside-grid">Quantity: {{itemQuantity}}</div></mat-grid-tile>
+                </mat-grid-list>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

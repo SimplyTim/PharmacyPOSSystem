@@ -1,16 +1,13 @@
-<mat-form-field appearance="outline">
+<mat-form-field appearance="outline" >
   <mat-label>Search</mat-label>
-  <input matInput [ngModel]="globalFilter" (ngModelChange)="applyFilter($event)">
+  <input matInput (keyup)="applyFilter($event)" #input #focus>
   <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>
 
 <div class="example-container mat-elevation-z8">
+  
     <mat-table #table [dataSource]="dataSource">
-  
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-  
-      <!-- Position Column -->
+      <!-- ID Column -->
       <ng-container matColumnDef="productId">
         <mat-header-cell *matHeaderCellDef> Product ID </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.productId}} </mat-cell>
@@ -22,13 +19,13 @@
         <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
       </ng-container>
   
-      <!-- Weight Column -->
+      <!-- Price Column -->
       <ng-container matColumnDef="price">
         <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
       </ng-container>
   
-      <!-- Symbol Column -->
+      <!-- Stock Column -->
       <ng-container matColumnDef="stock">
         <mat-header-cell *matHeaderCellDef> Stock </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.stock}} </mat-cell>
@@ -36,6 +33,11 @@
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" colspan="6" *matNoDataRow>
+        <td class="mat-cell">No data matching the search "{{input.value}}"</td>
+      </tr>
     </mat-table>
 
     <mat-paginator [pageSizeOptions]="[8]" showFirstLastButtons></mat-paginator>

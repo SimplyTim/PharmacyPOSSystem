@@ -38,6 +38,9 @@ var paginator_1 = require("@angular/material/paginator");
 var icon_1 = require("@angular/material/icon");
 var autocomplete_1 = require("@angular/material/autocomplete");
 var settings_component_1 = require("src/app/modules/settings/settings.component");
+var dialog_1 = require("@angular/material/dialog");
+var point_of_sale_component_1 = require("src/app/modules/point-of-sale/point-of-sale.component");
+var course_dialog_component_1 = require("src/app/modules/management/course-dialog/course-dialog.component");
 var DefaultModule = /** @class */ (function () {
     function DefaultModule() {
     }
@@ -50,7 +53,9 @@ var DefaultModule = /** @class */ (function () {
                 register_component_1.RegisterComponent,
                 login_component_1.LoginComponent,
                 dashboard_component_1.DashboardComponent,
-                settings_component_1.SettingsComponent
+                settings_component_1.SettingsComponent,
+                point_of_sale_component_1.PointOfSaleComponent,
+                course_dialog_component_1.CourseDialogComponent
             ],
             imports: [
                 common_1.CommonModule,
@@ -80,14 +85,16 @@ var DefaultModule = /** @class */ (function () {
                 select_1.MatSelectModule,
                 paginator_1.MatPaginatorModule,
                 icon_1.MatIconModule,
-                autocomplete_1.MatAutocompleteModule
+                autocomplete_1.MatAutocompleteModule,
+                dialog_1.MatDialogModule
             ],
             providers: [auth_guard_1.AuthGuard,
                 {
                     provide: http_1.HTTP_INTERCEPTORS,
                     useClass: token_interceptor_service_1.TokenInterceptorService,
                     multi: true
-                }]
+                }],
+            entryComponents: [course_dialog_component_1.CourseDialogComponent]
         })
     ], DefaultModule);
     return DefaultModule;
