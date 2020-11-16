@@ -33,6 +33,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PointOfSaleComponent } from 'src/app/modules/point-of-sale/point-of-sale.component';
 import { CourseDialogComponent } from 'src/app/modules/management/course-dialog/course-dialog.component';
 import { SuccessDialogComponent } from 'src/app/modules/point-of-sale/success-dialog/success-dialog.component';
+import { TransactionsComponent } from 'src/app/modules/transactions/transactions.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { SuccessDialogComponent } from 'src/app/modules/point-of-sale/success-di
     SettingsComponent,
     PointOfSaleComponent,
     CourseDialogComponent,
-    SuccessDialogComponent
+    SuccessDialogComponent,
+    TransactionsComponent
     
   ],
   imports: [

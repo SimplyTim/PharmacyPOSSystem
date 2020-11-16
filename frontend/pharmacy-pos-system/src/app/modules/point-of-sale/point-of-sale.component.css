@@ -27,6 +27,7 @@ mat-form-field{
     position: absolute;
     left: 0px;
     color: rgb(85, 83, 83);
+    font-size: large;
 }
 
 /*Custom Scrollbar - Credits to W3Schools*/

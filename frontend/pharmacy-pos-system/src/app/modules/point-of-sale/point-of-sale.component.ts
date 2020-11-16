@@ -35,6 +35,8 @@ export class PointOfSaleComponent implements OnInit {
 
   @ViewChild('payment') payment: ElementRef;
 
+  @ViewChild('name') name: ElementRef;
+
   constructor(private formBuilder: FormBuilder, private _auth: AuthService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -85,6 +87,7 @@ export class PointOfSaleComponent implements OnInit {
         this.itemQuantity = 0;
         this.transactionValid = false;
         this.payment.nativeElement.value = "";
+        this.name.nativeElement.value = "";
         setTimeout(()=>{
           this.input.nativeElement.focus();
         },0);
@@ -99,6 +102,7 @@ export class PointOfSaleComponent implements OnInit {
     this.activeTransaction = false;
     this.input.nativeElement.value = "";
     this.payment.nativeElement.value = "";
+    this.name.nativeElement.value = "";
 
     this.itemsForm = this.formBuilder.group({
       products: this.formBuilder.array([])
@@ -126,8 +130,6 @@ export class PointOfSaleComponent implements OnInit {
   }
 
   autoComplete(value){
-    console.log(value); 
-    console.log("Hello"); 
     let productEntry = value; 
     this.filteredOptions = this._filter(productEntry); 
   }
@@ -167,6 +169,37 @@ export class PointOfSaleComponent implements OnInit {
     });
   }
 
+  autoCompleteName(value){
+    let itemFound = false;
+    this.productList.forEach(element => {
+      if(value === element.name && element.stock > 0){
+
+        this.productForms.controls.forEach((element, index) => {
+          if(element.value.name == value){
+            this.productForms.at(index).get('quantity').setValue(element.value.quantity + 1);
+            itemFound = true;
+          }
+        });
+
+        if(itemFound == false){
+          const product = this.formBuilder.group({
+            id: [element.productId],
+            name: [element.name], 
+            price: [element.price], 
+            quantity: [1]
+          })
+
+          this.productForms.push(product);
+        }
+        
+        this.name.nativeElement.value = "";
+        this.calculateTotalPrice();
+
+        this.calculateItemQuantity();
+      }
+    });
+  }
+
   calculatePrice(i){
     let product = this.productForms.at(i); 
     
@@ -174,7 +207,7 @@ export class PointOfSaleComponent implements OnInit {
       if(product.value.id === element.productId){
         const price = element.price * product.value.quantity
 
-        this.productForms.at(i).get('price').setValue(price);
+        this.productForms.at(i).get('price').setValue(price.toFixed(2));
 
         this.calculateTotalPrice();
         this.calculateItemQuantity();
@@ -191,7 +224,7 @@ export class PointOfSaleComponent implements OnInit {
       total += (enteredProduct.price * enteredProduct.quantity);
     });
 
-    this.totalPrice = total;
+    this.totalPrice = Number(total.toFixed(2));
   }
 
   calculateItemQuantity(){
