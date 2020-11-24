@@ -8,10 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.ManagementComponent = void 0;
 var core_1 = require("@angular/core");
+var dialog_1 = require("@angular/material/dialog");
+var course_dialog_component_1 = require("./course-dialog/course-dialog.component");
 var ManagementComponent = /** @class */ (function () {
-    function ManagementComponent(formBuilder, _auth) {
+    function ManagementComponent(formBuilder, _auth, dialog) {
         this.formBuilder = formBuilder;
         this._auth = _auth;
+        this.dialog = dialog;
     }
     ManagementComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -90,6 +93,8 @@ var ManagementComponent = /** @class */ (function () {
             if (!inProductList) {
                 productsCreated.push(enteredProduct);
             }
+            _this.openDialog();
+            _this.ngOnInit();
         });
         if (productsCreated.length !== 0) {
             this.createProduct(productsCreated);
@@ -128,6 +133,12 @@ var ManagementComponent = /** @class */ (function () {
     };
     ManagementComponent.prototype.initialiseList = function () {
         this.filteredOptions = this.productNames;
+    };
+    ManagementComponent.prototype.openDialog = function () {
+        var dialogConfig = new dialog_1.MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        this.dialog.open(course_dialog_component_1.CourseDialogComponent, dialogConfig);
     };
     ManagementComponent = __decorate([
         core_1.Component({

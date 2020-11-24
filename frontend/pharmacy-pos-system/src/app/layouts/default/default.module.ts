@@ -29,6 +29,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SettingsComponent } from 'src/app/modules/settings/settings.component';
+import { MatDialogModule } from '@angular/material/dialog'; 
+import { PointOfSaleComponent } from 'src/app/modules/point-of-sale/point-of-sale.component';
+import { CourseDialogComponent } from 'src/app/modules/management/course-dialog/course-dialog.component';
+import { SuccessDialogComponent } from 'src/app/modules/point-of-sale/success-dialog/success-dialog.component';
+import { TransactionDialogComponent } from 'src/app/modules/transactions/transaction-dialog/transaction-dialog.component';
+import { TransactionsComponent } from 'src/app/modules/transactions/transactions.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +45,12 @@ import { SettingsComponent } from 'src/app/modules/settings/settings.component';
     RegisterComponent,
     LoginComponent,
     DashboardComponent, 
-    SettingsComponent
+    SettingsComponent,
+    PointOfSaleComponent,
+    CourseDialogComponent,
+    SuccessDialogComponent,
+    TransactionsComponent,
+    TransactionDialogComponent
     
   ],
   imports: [
@@ -69,8 +81,8 @@ import { SettingsComponent } from 'src/app/modules/settings/settings.component';
     MatSelectModule,
     MatPaginatorModule,
     MatIconModule, 
-    MatAutocompleteModule
-    
+    MatAutocompleteModule, 
+    MatDialogModule
   ],
   providers: [AuthGuard, 
     {
@@ -78,5 +90,6 @@ import { SettingsComponent } from 'src/app/modules/settings/settings.component';
       useClass: TokenInterceptorService,
       multi: true
     }],
+  entryComponents: [CourseDialogComponent, SuccessDialogComponent, TransactionDialogComponent], 
 })
 export class DefaultModule { }

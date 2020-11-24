@@ -1,8 +1,8 @@
-import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms'; 
-import { element } from 'protractor';
 import { AuthService } from '../../auth/auth.service';
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 
 export type product = {
   "productId": string, 
@@ -25,7 +25,7 @@ export class ManagementComponent implements OnInit {
   public productItemNumbers: string[]; 
   filteredOptions: string[];
 
-  constructor(private formBuilder: FormBuilder, private _auth: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private _auth: AuthService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -119,6 +119,9 @@ export class ManagementComponent implements OnInit {
         productsCreated.push(enteredProduct); 
       }
 
+      this.openDialog(); 
+      this.ngOnInit();
+
     }); 
 
     
@@ -162,5 +165,15 @@ export class ManagementComponent implements OnInit {
   initialiseList(){
     this.filteredOptions = this.productNames;  
   }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(CourseDialogComponent, dialogConfig);
+}
 
 }

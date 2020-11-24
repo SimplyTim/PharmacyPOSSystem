@@ -1,6 +1,4 @@
-//credit to https://stackblitz.com/edit/angular-hbakxo-5jeaic?file=app%2Ftable-filtering-example.ts for search filter funtions
-
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from '../../auth/auth.service';
@@ -19,12 +17,7 @@ export interface Element {
 })
 export class InventoryComponent implements OnInit {
   dataSource;
-
-  globalFilter = '';
-  filteredValues = {
-    productId: '', name: '', price: '',
-    stock: ''
-  };
+  @ViewChild('focus') input: ElementRef;
 
   constructor(private _auth: AuthService) { }
 
@@ -38,7 +31,10 @@ export class InventoryComponent implements OnInit {
         console.log(res)
         this.dataSource = new MatTableDataSource<Element>(res);
         this.dataSource.paginator = this.paginator;
-        this.dataSource.filterPredicate = this.customFilterPredicate();
+
+        setTimeout(()=>{
+          this.input.nativeElement.focus();
+        },0);
       },
       error => {
         console.log(error)
@@ -46,29 +42,15 @@ export class InventoryComponent implements OnInit {
     )
   }
 
-  applyFilter(filter) {
-    this.globalFilter = filter;
-    this.dataSource.filter = JSON.stringify(this.filteredValues);
-  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-  customFilterPredicate() {
-    const myFilterPredicate = (data: Element, filter: string): boolean => {
-      var globalMatch = !this.globalFilter;
-
-      if (this.globalFilter) {
-        globalMatch = data.name.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
-      }
-
-      if (!globalMatch) {
-        return;
-      }
-
-      let searchString = JSON.parse(filter);
-      return data.name.toString().trim().indexOf(searchString.name) !== -1 &&
-        data.name.toString().trim().toLowerCase().indexOf(searchString.name.toLowerCase()) !== -1;
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
     }
-    return myFilterPredicate;
   }
+
 }
 
 

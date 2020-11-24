@@ -10,6 +10,8 @@ import { LoginComponent } from './modules/login/login.component';
 import { ManagementComponent } from './modules/management/management.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { SettingsComponent } from './modules/settings/settings.component';
+import { PointOfSaleComponent } from './modules/point-of-sale/point-of-sale.component';
+import { TransactionsComponent } from './modules/transactions/transactions.component';
 
 const routes: Routes = [{
   path: '', 
@@ -36,11 +38,23 @@ const routes: Routes = [{
     },
     {
       path: 'stock-management',
-      component: ManagementComponent
+      component: ManagementComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'settings', 
-      component: SettingsComponent
+      component: SettingsComponent,
+      canActivate: [ManagerGuard]
+    },
+    {
+      path: 'pos', 
+      component: PointOfSaleComponent,
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'transactions', 
+      component: TransactionsComponent,
+      canActivate: [AuthGuard]
     }
   ]
 }];

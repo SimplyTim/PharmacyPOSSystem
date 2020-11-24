@@ -87,7 +87,7 @@ def addProduct():
                 newProduct = Product(productId=str(product['productId']), name=str(product['name']), price=float(product['price']),stock=int(product['stock']))
                 db.session.add(newProduct)
             db.session.commit()
-            return "Products created successfully.", 200
+            return "Products created successfully.", 201
         except IntegrityError:
             db.session.rollback()
             return "Error occurred in adding one or more products.", 401
@@ -234,7 +234,7 @@ def createNewTransaction():
         newTrans = Transaction(empId=current_identity.id)
         db.session.add(newTrans)
         db.session.commit()
-        return "Transaction created successfully.", 201
+        return json.dumps(newTrans.toDict()), 201
 
 @app.route('/transactioninfo/<id>', methods=['GET'])
 @jwt_required()
@@ -288,5 +288,5 @@ def viewTransProducts(id):
             prodId = tranItem.productId
             prod = Product.query.get(str(prodId))
             prods.append(prod.toDict())
-        return json.dumps(prods), 201
+        return json.dumps(prods), 200
     return "Transaction Id not found.", 404

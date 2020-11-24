@@ -24,7 +24,11 @@ export class AuthService {
   private _productsURL = "https://pharmacypos.herokuapp.com/products";
   private _createProductURL = "https://pharmacypos.herokuapp.com/product";
   private _updateProductURL = "https://pharmacypos.herokuapp.com/product";
+  private _createTransactionURL = "https://pharmacypos.herokuapp.com/transaction";
+  private _addProductsToTransactionURL = "https://pharmacypos.herokuapp.com/addtotrans";
   private _rootURL = "https://pharmacypos.herokuapp.com";
+  private _viewTransactionURL = "https://pharmacypos.herokuapp.com/transactioninfo";
+  private _viewTransactionDetail = "https://pharmacypos.herokuapp.com/transaction";
   private markupValue: number; 
 
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
@@ -105,6 +109,22 @@ export class AuthService {
 
   setMarkupValue(value: number){
     this.markupValue = value; 
+  }
+
+  createTransaction(){
+    return this.http.post(this._createTransactionURL, ''); 
+  }
+
+  addProductsToTransaction(products, id){
+    return this.http.post(this._addProductsToTransactionURL + "/" + id, products, {responseType: 'text'}); 
+  }
+
+  getTransactions(){
+    return this.http.get<any>(this._viewTransactionURL);
+  }
+
+  getTransactionDetail(id){
+    return this.http.get<any>(this._viewTransactionDetail + "/" + id);
   }
 
 }
