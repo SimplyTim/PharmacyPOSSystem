@@ -7,7 +7,7 @@
                     <mat-grid-tile colspan="1"><div class="text-inside-grid">Price</div></mat-grid-tile>
                     <mat-grid-tile colspan="1"><div class="text-inside-grid">Quantity</div></mat-grid-tile>
                     
-                    <form [formGroup]="itemsForm">
+                    <form [formGroup]="itemsForm" (keydown.enter)="$event.preventDefault()" (keydown.shift.enter)="$event.preventDefault()" (keydown.enter)="onEnterPress($event)">
                         <div formArrayName="products">
                             <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i">
                                 <mat-grid-tile colspan="2">

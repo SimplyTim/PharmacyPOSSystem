@@ -221,14 +221,19 @@ export class PointOfSaleComponent implements OnInit {
 
   calculateTotalPrice(){
     let productsEntered = this.productForms.value as Array<Object>;
-    let total = 0;
+    let total: number = 0.0;
 
     productsEntered.forEach(element => {
       let enteredProduct = element as product; 
-      total += (enteredProduct.price * enteredProduct.quantity);
+      total += Number(enteredProduct.price);
     });
 
     this.totalPrice = Number(total.toFixed(2));
+  }
+
+  onEnterPress(keyEvent) {
+    if (keyEvent.keyCode === 13)
+      this.input.nativeElement.focus();
   }
 
   calculateItemQuantity(){

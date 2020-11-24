@@ -2,6 +2,7 @@
 <h3>Employee ID: {{data.empId}}</h3>
 <h3>Date: {{data.dateTime}}</h3>
 
+<div mat-dialog-content>
 <div class="example-container mat-elevation-z0">
 
     <mat-table #table [dataSource]="dataSource">
@@ -19,16 +20,15 @@
 
     <!-- Price Column -->
     <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> ${{element.price}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
     </mat-table>
-
-    <mat-paginator [pageSizeOptions]="[8]" showFirstLastButtons></mat-paginator>
+</div>
 </div>
 
 <div mat-dialog-actions style="justify-content: flex-end;">
