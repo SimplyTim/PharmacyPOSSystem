@@ -57,7 +57,7 @@ def createNewEmployee():
     newEmployee.set_password(employeeData['password'])
     db.session.add(newEmployee)
     db.session.commit()
-    return "Employee created successfully.", 201
+    return json.dumps(newEmployee.toDict()), 201
 
 @app.route('/employees', methods=['GET'])
 @jwt_required()

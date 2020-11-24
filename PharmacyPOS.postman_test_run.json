@@ -1,0 +1,884 @@
+{
+	"id": "2b21f778-368d-4513-9f40-b38a25978ba6",
+	"name": "PharmacyPOS",
+	"timestamp": "2020-11-12T06:20:02.909Z",
+	"collection_id": "c2ce8c46-e37d-4b4a-889a-b6debec5bc7d",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 61,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "483e3643-0f06-4206-b29b-dd69c92288f5",
+			"name": "Login",
+			"url": "https://pharmacypos.herokuapp.com/auth",
+			"time": 556,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains access_token": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains access_token": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				556
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains access_token": true
+				}
+			]
+		},
+		{
+			"id": "79314fbb-56d1-4e9b-9f75-2be201aaf112",
+			"name": "Add New Product",
+			"url": "https://pharmacypos.herokuapp.com/product",
+			"time": 192,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status Code = 201": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				192
+			],
+			"allTests": [
+				{
+					"Status Code = 201": true
+				}
+			]
+		},
+		{
+			"id": "8ed50a37-f808-44be-834f-ed8fab66e131",
+			"name": "Add New Employee",
+			"url": "https://pharmacypos.herokuapp.com/employee",
+			"time": 88,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status Code = 201": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				88
+			],
+			"allTests": [
+				{
+					"Status Code = 201": true
+				}
+			]
+		},
+		{
+			"id": "76865a38-0efb-4a1e-933c-52d1400c3e6a",
+			"name": "Create New Transaction",
+			"url": "https://pharmacypos.herokuapp.com/transaction",
+			"time": 213,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status Code = 201": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				213
+			],
+			"allTests": [
+				{
+					"Status Code = 201": true
+				}
+			]
+		},
+		{
+			"id": "efaeacbb-8de3-416a-8377-5f1eb80d415d",
+			"name": "Add Product to Transaction",
+			"url": "https://pharmacypos.herokuapp.com/addtotrans/2",
+			"time": 144,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status Code = 201": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				144
+			],
+			"allTests": [
+				{
+					"Status Code = 201": true
+				}
+			]
+		},
+		{
+			"id": "8263697a-c647-462b-be0e-e2131a307c5e",
+			"name": "Create New Supplier",
+			"url": "https://pharmacypos.herokuapp.com/supplier",
+			"time": 91,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status Code = 201": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				91
+			],
+			"allTests": [
+				{
+					"Status Code = 201": true
+				}
+			]
+		},
+		{
+			"id": "f08855d2-57aa-45e5-b636-b95d37ecf435",
+			"name": "Get All Employees",
+			"url": "https://pharmacypos.herokuapp.com/employees",
+			"time": 88,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains id": true,
+				"Contains empFirstName": true,
+				"Contains empLastName": true,
+				"Contains age": true,
+				"Contains empType": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains empFirstName": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains empLastName": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains age": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains empType": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				88
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains id": true,
+					"Contains empFirstName": true,
+					"Contains empLastName": true,
+					"Contains age": true,
+					"Contains empType": true
+				}
+			]
+		},
+		{
+			"id": "cfb9c2f0-a33f-4559-840e-0092739a27e5",
+			"name": "Get Current Employee",
+			"url": "https://pharmacypos.herokuapp.com/mydetails",
+			"time": 94,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains id": true,
+				"Contains empFirstName": true,
+				"Contains empLastName": true,
+				"Contains age": true,
+				"Contains empType": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains empFirstName": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains empLastName": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains age": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains empType": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				94
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains id": true,
+					"Contains empFirstName": true,
+					"Contains empLastName": true,
+					"Contains age": true,
+					"Contains empType": true
+				}
+			]
+		},
+		{
+			"id": "22a55748-0cc4-4d00-a47b-d83e6f0dc3c0",
+			"name": "Get All Products",
+			"url": "https://pharmacypos.herokuapp.com/products",
+			"time": 85,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains productId": true,
+				"Contains name": true,
+				"Contains price": true,
+				"Contains stocke": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains productId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains name": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains price": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains stocke": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				85
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains productId": true,
+					"Contains name": true,
+					"Contains price": true,
+					"Contains stocke": true
+				}
+			]
+		},
+		{
+			"id": "4826f60c-7616-43d4-81ae-7fc9f7fcf8be",
+			"name": "Get Product",
+			"url": "https://pharmacypos.herokuapp.com/product/6202280985211",
+			"time": 189,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains productId": true,
+				"Contains name": true,
+				"Contains price": true,
+				"Contains stock": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains productId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains name": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains price": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains stock": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				189
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains productId": true,
+					"Contains name": true,
+					"Contains price": true,
+					"Contains stock": true
+				}
+			]
+		},
+		{
+			"id": "1f8346d3-5e76-4e19-aa1a-d069ce3269bb",
+			"name": "Get Markup",
+			"url": "https://pharmacypos.herokuapp.com/getmarkup",
+			"time": 84,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains markupId": true,
+				"Contains markupVal": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains markupId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains markupVal": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				84
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains markupId": true,
+					"Contains markupVal": true
+				}
+			]
+		},
+		{
+			"id": "21e5dd8b-3647-4ae4-989d-31143066bd8f",
+			"name": "Get Transaction Information",
+			"url": "https://pharmacypos.herokuapp.com/transactioninfo/1",
+			"time": 87,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains transactionId": true,
+				"Contains empId": true,
+				"Contains dateTime": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains transactionId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains empId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains dateTime": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				87
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains transactionId": true,
+					"Contains empId": true,
+					"Contains dateTime": true
+				}
+			]
+		},
+		{
+			"id": "aeab0012-341e-47b6-b91c-8ef47f17ba1a",
+			"name": "Get All Transaction Information",
+			"url": "https://pharmacypos.herokuapp.com/transactioninfo",
+			"time": 94,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains transactionId": true,
+				"Contains empId": true,
+				"Contains dateTime": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains transactionId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains empId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains dateTime": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				94
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains transactionId": true,
+					"Contains empId": true,
+					"Contains dateTime": true
+				}
+			]
+		},
+		{
+			"id": "b681e083-597c-41ef-8336-d33273d1d67e",
+			"name": "Get Transaction Products",
+			"url": "https://pharmacypos.herokuapp.com/transaction/2",
+			"time": 116,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains productId": true,
+				"Contains name": true,
+				"Contains price": true,
+				"Contains stock": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains productId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains name": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains price": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains stock": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				116
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains productId": true,
+					"Contains name": true,
+					"Contains price": true,
+					"Contains stock": true
+				}
+			]
+		},
+		{
+			"id": "ec625871-cd22-4c84-9909-259191f48ce2",
+			"name": "Get Supplier",
+			"url": "https://pharmacypos.herokuapp.com/supplier/6",
+			"time": 89,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains suppId": true,
+				"Contains suppName": true,
+				"Contains phone1": true,
+				"Contains phone2": true,
+				"Contains email": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains suppId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains suppName": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains phone1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains phone2": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains email": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				89
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains suppId": true,
+					"Contains suppName": true,
+					"Contains phone1": true,
+					"Contains phone2": true,
+					"Contains email": true
+				}
+			]
+		},
+		{
+			"id": "d66f1fd1-ac5e-4896-967e-239ec6f0a062",
+			"name": "Get Suppliers",
+			"url": "https://pharmacypos.herokuapp.com/suppliers",
+			"time": 85,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status Code = 200": true,
+				"Contains suppId": true,
+				"Contains suppName": true,
+				"Contains phone1": true,
+				"Contains phone2": true,
+				"Contains email": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains suppId": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains suppName": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains phone1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains phone2": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Contains email": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				85
+			],
+			"allTests": [
+				{
+					"Status Code = 200": true,
+					"Contains suppId": true,
+					"Contains suppName": true,
+					"Contains phone1": true,
+					"Contains phone2": true,
+					"Contains email": true
+				}
+			]
+		},
+		{
+			"id": "1c14e7d3-9c81-4601-a2e6-9f154826d94a",
+			"name": "Edit Product",
+			"url": "https://pharmacypos.herokuapp.com/product",
+			"time": 87,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status Code = 201": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				87
+			],
+			"allTests": [
+				{
+					"Status Code = 201": true
+				}
+			]
+		},
+		{
+			"id": "d7818005-fcba-4c93-917a-aa8289b33e6b",
+			"name": "Change Markup",
+			"url": "https://pharmacypos.herokuapp.com/setmarkup",
+			"time": 89,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status Code = 201": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				89
+			],
+			"allTests": [
+				{
+					"Status Code = 201": true
+				}
+			]
+		},
+		{
+			"id": "01825785-14bc-49ed-b876-65acdf8d7484",
+			"name": "Edit Suppliers",
+			"url": "https://pharmacypos.herokuapp.com/supplier",
+			"time": 90,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status Code = 201": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				90
+			],
+			"allTests": [
+				{
+					"Status Code = 201": true
+				}
+			]
+		},
+		{
+			"id": "f19678f3-66a0-45ad-b799-6f1b6d7c0d53",
+			"name": "Delete Product",
+			"url": "https://pharmacypos.herokuapp.com/product/5000283601807",
+			"time": 107,
+			"responseCode": {
+				"code": 204,
+				"name": "NO CONTENT"
+			},
+			"tests": {
+				"Status Code = 204": true
+			},
+			"testPassFailCounts": {
+				"Status Code = 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				107
+			],
+			"allTests": [
+				{
+					"Status Code = 204": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2668,
+	"collection": {
+		"requests": [
+			{
+				"id": "483e3643-0f06-4206-b29b-dd69c92288f5",
+				"method": "POST"
+			},
+			{
+				"id": "79314fbb-56d1-4e9b-9f75-2be201aaf112",
+				"method": "POST"
+			},
+			{
+				"id": "8ed50a37-f808-44be-834f-ed8fab66e131",
+				"method": "POST"
+			},
+			{
+				"id": "76865a38-0efb-4a1e-933c-52d1400c3e6a",
+				"method": "POST"
+			},
+			{
+				"id": "efaeacbb-8de3-416a-8377-5f1eb80d415d",
+				"method": "POST"
+			},
+			{
+				"id": "8263697a-c647-462b-be0e-e2131a307c5e",
+				"method": "POST"
+			},
+			{
+				"id": "f08855d2-57aa-45e5-b636-b95d37ecf435",
+				"method": "GET"
+			},
+			{
+				"id": "cfb9c2f0-a33f-4559-840e-0092739a27e5",
+				"method": "GET"
+			},
+			{
+				"id": "22a55748-0cc4-4d00-a47b-d83e6f0dc3c0",
+				"method": "GET"
+			},
+			{
+				"id": "4826f60c-7616-43d4-81ae-7fc9f7fcf8be",
+				"method": "GET"
+			},
+			{
+				"id": "1f8346d3-5e76-4e19-aa1a-d069ce3269bb",
+				"method": "GET"
+			},
+			{
+				"id": "21e5dd8b-3647-4ae4-989d-31143066bd8f",
+				"method": "GET"
+			},
+			{
+				"id": "aeab0012-341e-47b6-b91c-8ef47f17ba1a",
+				"method": "GET"
+			},
+			{
+				"id": "b681e083-597c-41ef-8336-d33273d1d67e",
+				"method": "GET"
+			},
+			{
+				"id": "ec625871-cd22-4c84-9909-259191f48ce2",
+				"method": "GET"
+			},
+			{
+				"id": "d66f1fd1-ac5e-4896-967e-239ec6f0a062",
+				"method": "GET"
+			},
+			{
+				"id": "1c14e7d3-9c81-4601-a2e6-9f154826d94a",
+				"method": "PUT"
+			},
+			{
+				"id": "d7818005-fcba-4c93-917a-aa8289b33e6b",
+				"method": "PUT"
+			},
+			{
+				"id": "01825785-14bc-49ed-b876-65acdf8d7484",
+				"method": "PUT"
+			},
+			{
+				"id": "f19678f3-66a0-45ad-b799-6f1b6d7c0d53",
+				"method": "DELETE"
+			}
+		]
+	}
+}
