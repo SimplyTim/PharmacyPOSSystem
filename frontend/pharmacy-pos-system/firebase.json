@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "public/pharmacy-pos-system",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
