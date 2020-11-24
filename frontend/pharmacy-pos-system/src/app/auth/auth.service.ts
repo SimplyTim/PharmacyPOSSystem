@@ -56,10 +56,6 @@ export class AuthService {
     localStorage.removeItem('empLastName')
     this.router.navigate(['/login'])
 
-    this._snackBar.open("Logged Out Succesfully", "Close", {
-      duration: 2000,
-      panelClass: ['blue-snackbar']
-    });
   }
 
   getCurrentUser(){

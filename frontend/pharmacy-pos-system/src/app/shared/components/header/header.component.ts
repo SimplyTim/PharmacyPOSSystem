@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../auth/auth.service'
 import { DefaultComponent } from '../../../layouts/default/default.component';
 
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() public onClick: EventEmitter<any> = new EventEmitter(); 
 
-  constructor(public authService: AuthService, private _default: DefaultComponent) { }
+  constructor(public authService: AuthService, private _default: DefaultComponent, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void { 
   }
@@ -22,7 +23,15 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.authService.logoutUser();
+
+    this._snackBar.open("Logged Out Succesfully", "Close", {
+      duration: 2000,
+      panelClass: ['blue-snackbar']
+    });
+
+    
     this._default.setSideBarOpen(false);
+
   }
 
 }
