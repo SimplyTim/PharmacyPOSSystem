@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public/pharmacy-pos-system",
+    "public": "dist/pharmacy-pos-system",
     "ignore": [
       "firebase.json",
       "**/.*",
