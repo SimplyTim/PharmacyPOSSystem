@@ -30,16 +30,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.employeeDataForm.value)
-
     this._auth.registerUser(this.employeeDataForm.value).subscribe(
       (res:any) => {
         const result = res;
 
         this.form.resetForm();
 
-        this._snackBar.open("Registered Succesfully", "Close", {
-          duration: 3000,
+        this._snackBar.open("Registered Employee ID "+ result.id +" Succesfully", "Close", {
+          duration: 9000,
           panelClass: ['blue-snackbar']
         });
         

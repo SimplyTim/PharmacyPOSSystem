@@ -1,0 +1,50 @@
+<mat-form-field appearance="outline" >
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  
+  <div class="example-container mat-elevation-z8">
+    
+      <mat-table #table [dataSource]="dataSource">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Employee ID </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+    
+        <!-- First Name Column -->
+        <ng-container matColumnDef="empFirstName">
+          <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.empFirstName}} </mat-cell>
+        </ng-container>
+    
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="empLastName">
+          <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.empLastName}} </mat-cell>
+        </ng-container>
+    
+        <!-- Age Column -->
+        <ng-container matColumnDef="age">
+          <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="empType">
+            <mat-header-cell *matHeaderCellDef> Employee Type </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.empType}} </mat-cell>
+          </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" colspan="6" *matNoDataRow>
+          <td class="mat-cell">No data matching the search "{{input.value}}"</td>
+        </tr>
+      </mat-table>
+  
+      <mat-paginator [pageSizeOptions]="[8]" showFirstLastButtons></mat-paginator>
+    </div>

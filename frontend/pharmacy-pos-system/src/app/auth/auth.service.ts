@@ -29,6 +29,7 @@ export class AuthService {
   private _rootURL = "https://pharmacypos.herokuapp.com";
   private _viewTransactionURL = "https://pharmacypos.herokuapp.com/transactioninfo";
   private _viewTransactionDetail = "https://pharmacypos.herokuapp.com/transaction";
+  private _viewEmployeesURL = "https://pharmacypos.herokuapp.com/employees"
   private markupValue: number; 
 
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
@@ -71,7 +72,7 @@ export class AuthService {
   }
 
   registerUser(userdetails){
-    return this.http.post(this._registerUrl, userdetails, {responseType: 'text'})
+    return this.http.post(this._registerUrl, userdetails)
   }
 
   getProducts(){
@@ -121,6 +122,10 @@ export class AuthService {
 
   getTransactionDetail(id){
     return this.http.get<any>(this._viewTransactionDetail + "/" + id);
+  }
+
+  getEmployees(){
+    return this.http.get<any>(this._viewEmployeesURL);
   }
 
 }

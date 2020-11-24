@@ -12,6 +12,7 @@ import { RegisterComponent } from './modules/register/register.component';
 import { SettingsComponent } from './modules/settings/settings.component';
 import { PointOfSaleComponent } from './modules/point-of-sale/point-of-sale.component';
 import { TransactionsComponent } from './modules/transactions/transactions.component';
+import { UsersComponent } from './modules/users/users.component';
 
 const routes: Routes = [{
   path: '', 
@@ -55,6 +56,11 @@ const routes: Routes = [{
       path: 'transactions', 
       component: TransactionsComponent,
       canActivate: [AuthGuard]
+    },
+    {
+      path: 'users', 
+      component: UsersComponent,
+      canActivate: [ManagerGuard]
     }
   ]
 }];

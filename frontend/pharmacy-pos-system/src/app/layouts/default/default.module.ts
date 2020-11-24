@@ -35,6 +35,7 @@ import { CourseDialogComponent } from 'src/app/modules/management/course-dialog/
 import { SuccessDialogComponent } from 'src/app/modules/point-of-sale/success-dialog/success-dialog.component';
 import { TransactionDialogComponent } from 'src/app/modules/transactions/transaction-dialog/transaction-dialog.component';
 import { TransactionsComponent } from 'src/app/modules/transactions/transactions.component';
+import { UsersComponent } from 'src/app/modules/users/users.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { TransactionsComponent } from 'src/app/modules/transactions/transactions
     CourseDialogComponent,
     SuccessDialogComponent,
     TransactionsComponent,
-    TransactionDialogComponent
+    TransactionDialogComponent,
+    UsersComponent
     
   ],
   imports: [
