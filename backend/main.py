@@ -10,9 +10,9 @@ from flask.views import MethodView
 import os
 
 from models import db, Product, Employee, Transaction, Supplier, Markup, TransactionDetail
-from codes import DBURI, SECRETKEY
-#DBURI = os.environ.get('DBURI', None)
-#SECRETKEY = os.environ.get('SECRETKEY', None)
+#from codes import DBURI, SECRETKEY
+DBURI = os.environ.get('DBURI', None)
+SECRETKEY = os.environ.get('SECRETKEY', None)
 
 ''' Begin boilerplate code '''
 def create_app():
