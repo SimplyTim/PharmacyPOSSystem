@@ -1,0 +1,2385 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>pharmacy-pos-system documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">pharmacy-pos-system documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>PointOfSaleComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/point-of-sale/point-of-sale.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-point-of-sale</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./point-of-sale.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./point-of-sale.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#activeTransaction">activeTransaction</a>
+                            </li>
+                            <li>
+                                <a href="#amoutPaid">amoutPaid</a>
+                            </li>
+                            <li>
+                                <a href="#filteredOptions">filteredOptions</a>
+                            </li>
+                            <li>
+                                <a href="#input">input</a>
+                            </li>
+                            <li>
+                                <a href="#itemQuantity">itemQuantity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#itemsForm">itemsForm</a>
+                            </li>
+                            <li>
+                                <a href="#name">name</a>
+                            </li>
+                            <li>
+                                <a href="#payment">payment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#productItemNumbers">productItemNumbers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#productList">productList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#productNames">productNames</a>
+                            </li>
+                            <li>
+                                <a href="#totalPrice">totalPrice</a>
+                            </li>
+                            <li>
+                                <a href="#transactionValid">transactionValid</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_filter">_filter</a>
+                            </li>
+                            <li>
+                                <a href="#addProduct">addProduct</a>
+                            </li>
+                            <li>
+                                <a href="#addProductsToTransaction">addProductsToTransaction</a>
+                            </li>
+                            <li>
+                                <a href="#amountPaid">amountPaid</a>
+                            </li>
+                            <li>
+                                <a href="#autoComplete">autoComplete</a>
+                            </li>
+                            <li>
+                                <a href="#autoCompleteID">autoCompleteID</a>
+                            </li>
+                            <li>
+                                <a href="#autoCompleteName">autoCompleteName</a>
+                            </li>
+                            <li>
+                                <a href="#calculateItemQuantity">calculateItemQuantity</a>
+                            </li>
+                            <li>
+                                <a href="#calculatePrice">calculatePrice</a>
+                            </li>
+                            <li>
+                                <a href="#calculateTotalPrice">calculateTotalPrice</a>
+                            </li>
+                            <li>
+                                <a href="#clearAllProducts">clearAllProducts</a>
+                            </li>
+                            <li>
+                                <a href="#clearTransaction">clearTransaction</a>
+                            </li>
+                            <li>
+                                <a href="#createTransaction">createTransaction</a>
+                            </li>
+                            <li>
+                                <a href="#deleteProduct">deleteProduct</a>
+                            </li>
+                            <li>
+                                <a href="#initialiseList">initialiseList</a>
+                            </li>
+                            <li>
+                                <a href="#newTransaction">newTransaction</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onEnterPress">onEnterPress</a>
+                            </li>
+                            <li>
+                                <a href="#openDialog">openDialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#productForms">productForms</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, _auth: <a href="../injectables/AuthService.html">AuthService</a>, dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_filter"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _filter
+                        </b>
+                        <a href="#_filter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_filter(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:128</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>string[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addProduct"></a>
+                    <span class="name">
+                        <b>
+                            addProduct
+                        </b>
+                        <a href="#addProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addProduct()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addProductsToTransaction"></a>
+                    <span class="name">
+                        <b>
+                            addProductsToTransaction
+                        </b>
+                        <a href="#addProductsToTransaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addProductsToTransaction(allProductIDs, transID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="279"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:279</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>allProductIDs</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>transID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="amountPaid"></a>
+                    <span class="name">
+                        <b>
+                            amountPaid
+                        </b>
+                        <a href="#amountPaid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>amountPaid(value)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="293"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:293</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="autoComplete"></a>
+                    <span class="name">
+                        <b>
+                            autoComplete
+                        </b>
+                        <a href="#autoComplete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>autoComplete(value)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:134</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="autoCompleteID"></a>
+                    <span class="name">
+                        <b>
+                            autoCompleteID
+                        </b>
+                        <a href="#autoCompleteID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>autoCompleteID(value)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:143</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="autoCompleteName"></a>
+                    <span class="name">
+                        <b>
+                            autoCompleteName
+                        </b>
+                        <a href="#autoCompleteName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>autoCompleteName(value)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="174"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:174</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calculateItemQuantity"></a>
+                    <span class="name">
+                        <b>
+                            calculateItemQuantity
+                        </b>
+                        <a href="#calculateItemQuantity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calculateItemQuantity()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="240"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:240</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calculatePrice"></a>
+                    <span class="name">
+                        <b>
+                            calculatePrice
+                        </b>
+                        <a href="#calculatePrice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calculatePrice(i)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:206</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>i</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calculateTotalPrice"></a>
+                    <span class="name">
+                        <b>
+                            calculateTotalPrice
+                        </b>
+                        <a href="#calculateTotalPrice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calculateTotalPrice()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="223"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:223</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearAllProducts"></a>
+                    <span class="name">
+                        <b>
+                            clearAllProducts
+                        </b>
+                        <a href="#clearAllProducts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearAllProducts()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:118</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearTransaction"></a>
+                    <span class="name">
+                        <b>
+                            clearTransaction
+                        </b>
+                        <a href="#clearTransaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearTransaction()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createTransaction"></a>
+                    <span class="name">
+                        <b>
+                            createTransaction
+                        </b>
+                        <a href="#createTransaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createTransaction()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="253"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:253</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteProduct"></a>
+                    <span class="name">
+                        <b>
+                            deleteProduct
+                        </b>
+                        <a href="#deleteProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteProduct(i)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>i</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initialiseList"></a>
+                    <span class="name">
+                        <b>
+                            initialiseList
+                        </b>
+                        <a href="#initialiseList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initialiseList()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:139</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newTransaction"></a>
+                    <span class="name">
+                        <b>
+                            newTransaction
+                        </b>
+                        <a href="#newTransaction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>newTransaction()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEnterPress"></a>
+                    <span class="name">
+                        <b>
+                            onEnterPress
+                        </b>
+                        <a href="#onEnterPress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onEnterPress(keyEvent)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="235"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:235</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>keyEvent</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDialog"></a>
+                    <span class="name">
+                        <b>
+                            openDialog
+                        </b>
+                        <a href="#openDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDialog(change)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="302"
+                            class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:302</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>change</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="activeTransaction"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            activeTransaction</b>
+                            <a href="#activeTransaction"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="amoutPaid"></a>
+                        <span class="name">
+                            <b>
+                            amoutPaid</b>
+                            <a href="#amoutPaid"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filteredOptions"></a>
+                        <span class="name">
+                            <b>
+                            filteredOptions</b>
+                            <a href="#filteredOptions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="input"></a>
+                        <span class="name">
+                            <b>
+                            input</b>
+                            <a href="#input"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;focus&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="itemQuantity"></a>
+                        <span class="name">
+                            <b>
+                            itemQuantity</b>
+                            <a href="#itemQuantity"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="itemsForm"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            itemsForm</b>
+                            <a href="#itemsForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="name"></a>
+                        <span class="name">
+                            <b>
+                            name</b>
+                            <a href="#name"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;name&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="payment"></a>
+                        <span class="name">
+                            <b>
+                            payment</b>
+                            <a href="#payment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;payment&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="productItemNumbers"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            productItemNumbers</b>
+                            <a href="#productItemNumbers"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="productList"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            productList</b>
+                            <a href="#productList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="productNames"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            productNames</b>
+                            <a href="#productNames"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalPrice"></a>
+                        <span class="name">
+                            <b>
+                            totalPrice</b>
+                            <a href="#totalPrice"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="transactionValid"></a>
+                        <span class="name">
+                            <b>
+                            transactionValid</b>
+                            <a href="#transactionValid"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="productForms"></a>
+                        <span class="name"><b>productForms</b><a href="#productForms"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>productForms()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/modules/point-of-sale/point-of-sale.component.ts:49</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormArray, FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { MatDialog, MatDialogConfig } from &#x27;@angular/material/dialog&#x27;;
+import { AuthService } from &#x27;../../auth/auth.service&#x27;;
+import { SuccessDialogComponent } from &#x27;./success-dialog/success-dialog.component&#x27;
+
+export type product &#x3D; {
+  &quot;id&quot;: string,
+  &quot;name&quot;: string, 
+  &quot;price&quot;: number, 
+  &quot;quantity&quot;: number
+}
+
+export interface DialogData {
+  change: number;
+}
+
+@Component({
+  selector: &#x27;app-point-of-sale&#x27;,
+  templateUrl: &#x27;./point-of-sale.component.html&#x27;,
+  styleUrls: [&#x27;./point-of-sale.component.css&#x27;]
+})
+export class PointOfSaleComponent implements OnInit {
+  public itemsForm: FormGroup; 
+  public activeTransaction &#x3D; false;
+  public productList; 
+  public productNames: string[]; 
+  public productItemNumbers: string[];
+  totalPrice &#x3D; 0;
+  amoutPaid &#x3D; 0;
+  itemQuantity &#x3D; 0;
+  transactionValid &#x3D; false;
+  filteredOptions: string[];
+  @ViewChild(&#x27;focus&#x27;) input: ElementRef;
+
+  @ViewChild(&#x27;payment&#x27;) payment: ElementRef;
+
+  @ViewChild(&#x27;name&#x27;) name: ElementRef;
+
+  constructor(private formBuilder: FormBuilder, private _auth: AuthService, private dialog: MatDialog) { }
+
+  ngOnInit(): void {
+    this.itemsForm &#x3D; this.formBuilder.group({
+      products: this.formBuilder.array([])
+    })
+
+  }
+
+  get productForms(){
+    return this.itemsForm.get(&#x27;products&#x27;) as FormArray; 
+  }
+
+  addProduct(){
+    const product &#x3D; this.formBuilder.group({
+      id: [],
+      name: [], 
+      price: [], 
+      quantity: []
+    })
+    this.productForms.push(product); 
+  }
+
+  deleteProduct(i){
+    this.productForms.removeAt(i); 
+    this.calculateTotalPrice();
+    this.calculateItemQuantity();
+    this.payment.nativeElement.value &#x3D; &quot;&quot;;
+    this.transactionValid &#x3D; false;
+  }
+
+  newTransaction(){
+    this.itemsForm &#x3D; this.formBuilder.group({
+      products: this.formBuilder.array([])
+    })
+
+    //getting items from backend to check stock count
+    this._auth.getProducts().subscribe(
+      (res:any) &#x3D;&gt; {
+        this.productList &#x3D; res;
+        this.productNames &#x3D; []; 
+        this.productItemNumbers &#x3D; []; 
+        for(let product of this.productList){
+          this.productNames.push(product.name); 
+          this.productItemNumbers.push(product.productId); 
+        }
+        
+        this.activeTransaction &#x3D; true;
+        this.totalPrice &#x3D; 0;
+        this.itemQuantity &#x3D; 0;
+        this.transactionValid &#x3D; false;
+        this.payment.nativeElement.value &#x3D; &quot;&quot;;
+        this.name.nativeElement.value &#x3D; &quot;&quot;;
+        setTimeout(()&#x3D;&gt;{
+          this.input.nativeElement.focus();
+        },0);
+      },
+      error &#x3D;&gt; {
+        console.log(error)
+      }
+    )
+  }
+
+  clearTransaction(){
+    this.activeTransaction &#x3D; false;
+    this.input.nativeElement.value &#x3D; &quot;&quot;;
+    this.payment.nativeElement.value &#x3D; &quot;&quot;;
+    this.name.nativeElement.value &#x3D; &quot;&quot;;
+
+    this.itemsForm &#x3D; this.formBuilder.group({
+      products: this.formBuilder.array([])
+    })
+
+    this.totalPrice &#x3D; 0;
+    this.itemQuantity &#x3D; 0;
+    this.transactionValid &#x3D; false;
+  }
+
+  clearAllProducts(){
+    this.itemsForm &#x3D; this.formBuilder.group({
+      products: this.formBuilder.array([])
+    })
+    this.totalPrice &#x3D; 0;
+    this.itemQuantity &#x3D; 0;
+    this.transactionValid &#x3D; false;
+    this.payment.nativeElement.value &#x3D; &quot;&quot;;
+  }
+
+  private _filter(value: string): string[] {
+    if (!value || value&#x3D;&#x3D;&#x3D;&#x27;&#x27;) return this.productNames;
+    const filterValue &#x3D; value.toString().toLowerCase();
+    return this.productNames.filter(option &#x3D;&gt; option.toLowerCase().includes(filterValue));
+  }
+
+  autoComplete(value){
+    let productEntry &#x3D; value; 
+    this.filteredOptions &#x3D; this._filter(productEntry); 
+  }
+
+  initialiseList(){
+    this.filteredOptions &#x3D; this.productNames;  
+  }
+
+  autoCompleteID(value){
+    let itemFound &#x3D; false;
+    this.productList.forEach(element &#x3D;&gt; {
+      if(value &#x3D;&#x3D;&#x3D; element.productId &amp;&amp; element.stock &gt; 0){
+
+        this.productForms.controls.forEach((element, index) &#x3D;&gt; {
+          if(element.value.id &#x3D;&#x3D; value){
+            this.productForms.at(index).get(&#x27;quantity&#x27;).setValue(element.value.quantity + 1);
+            this.calculatePrice(index);
+            itemFound &#x3D; true;
+          }
+        });
+
+        if(itemFound &#x3D;&#x3D; false){
+          const product &#x3D; this.formBuilder.group({
+            id: [element.productId],
+            name: [element.name], 
+            price: [element.price], 
+            quantity: [1]
+          })
+
+          this.productForms.push(product);
+        }
+        
+        this.input.nativeElement.value &#x3D; &quot;&quot;;
+        this.calculateTotalPrice();
+        this.calculateItemQuantity();
+      }
+    });
+  }
+
+  autoCompleteName(value){
+    let itemFound &#x3D; false;
+    this.productList.forEach(element &#x3D;&gt; {
+      if(value &#x3D;&#x3D;&#x3D; element.name &amp;&amp; element.stock &gt; 0){
+
+        this.productForms.controls.forEach((element, index) &#x3D;&gt; {
+          if(element.value.name &#x3D;&#x3D; value){
+            this.productForms.at(index).get(&#x27;quantity&#x27;).setValue(element.value.quantity + 1);
+            this.calculatePrice(index);
+            itemFound &#x3D; true;
+          }
+        });
+
+        if(itemFound &#x3D;&#x3D; false){
+          const product &#x3D; this.formBuilder.group({
+            id: [element.productId],
+            name: [element.name], 
+            price: [element.price], 
+            quantity: [1]
+          })
+
+          this.productForms.push(product);
+        }
+        
+        this.name.nativeElement.value &#x3D; &quot;&quot;;
+        this.calculateTotalPrice();
+
+        this.calculateItemQuantity();
+      }
+    });
+  }
+
+  calculatePrice(i){
+    let product &#x3D; this.productForms.at(i); 
+    
+    this.productList.forEach(element &#x3D;&gt; {
+      if(product.value.id &#x3D;&#x3D;&#x3D; element.productId){
+        const price &#x3D; element.price * product.value.quantity
+
+        this.productForms.at(i).get(&#x27;price&#x27;).setValue(price.toFixed(2));
+
+        this.calculateTotalPrice();
+        this.calculateItemQuantity();
+        this.payment.nativeElement.value &#x3D; &quot;&quot;;
+        this.transactionValid &#x3D; false;
+      }
+    });
+  }
+
+  calculateTotalPrice(){
+    let productsEntered &#x3D; this.productForms.value as Array&lt;Object&gt;;
+    let total: number &#x3D; 0.0;
+
+    productsEntered.forEach(element &#x3D;&gt; {
+      let enteredProduct &#x3D; element as product; 
+      total +&#x3D; Number(enteredProduct.price);
+    });
+
+    this.totalPrice &#x3D; Number(total.toFixed(2));
+  }
+
+  onEnterPress(keyEvent) {
+    if (keyEvent.keyCode &#x3D;&#x3D;&#x3D; 13)
+      this.input.nativeElement.focus();
+  }
+
+  calculateItemQuantity(){
+    let items &#x3D; this.itemsForm.get(&#x27;products&#x27;).value as Array&lt;Object&gt;;
+    let qty &#x3D; 0;
+
+    items.forEach(element &#x3D;&gt; {
+      let product &#x3D; element as product; 
+
+      qty +&#x3D; product.quantity;
+    });
+
+    this.itemQuantity &#x3D; qty;
+  }
+
+  createTransaction(){
+    let allProductIDs &#x3D; [];
+    let transID;
+
+    let items &#x3D; this.itemsForm.get(&#x27;products&#x27;).value as Array&lt;Object&gt;;
+
+    items.forEach(element &#x3D;&gt; {
+      let product &#x3D; element as product; 
+
+      for(let i&#x3D;0; i&lt;product.quantity;i++){
+        allProductIDs.push({&quot;productId&quot;: product.id})
+      }
+     
+    });
+
+    this._auth.createTransaction().subscribe(
+      (res:any) &#x3D;&gt; {
+        transID &#x3D; res.transactionId;
+        this.addProductsToTransaction(allProductIDs, transID);
+      }, 
+      (error:any) &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+  }
+
+  addProductsToTransaction(allProductIDs, transID){
+    this._auth.addProductsToTransaction(allProductIDs, transID).subscribe(
+      (res:any) &#x3D;&gt; {
+        console.log(res);
+        let change &#x3D; this.amoutPaid - this.totalPrice;
+        this.newTransaction();
+        this.openDialog(change.toFixed(2));
+      }, 
+      (error:any) &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+  }
+
+  amountPaid(value){
+    if(value &gt;&#x3D; this.totalPrice){
+      this.transactionValid &#x3D; true;
+      this.amoutPaid &#x3D; value;
+    }else{
+      this.transactionValid &#x3D; false;
+    }
+  }
+
+  openDialog(change): void {
+    const dialogRef &#x3D; this.dialog.open(SuccessDialogComponent, {
+      width: &#x27;300px&#x27;,
+      data: {&quot;change&quot;: change},
+      autoFocus: false 
+    });
+
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      this.input.nativeElement.focus();
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-grid-list cols&#x3D;&quot;5&quot; rowHeight&#x3D;&quot;1.7:1&quot;&gt;
+    &lt;mat-grid-tile colspan&#x3D;&quot;4&quot; rowspan&#x3D;&quot;3&quot;&gt;
+        &lt;div class&#x3D;&#x27;internalMatGrid&#x27;&gt;
+            &lt;mat-card class&#x3D;&quot;card&quot;&gt;
+                &lt;mat-grid-list cols&#x3D;&quot;5&quot; rowHeight&#x3D;&quot;3:1&quot;&gt;
+                    &lt;mat-grid-tile colspan&#x3D;&quot;2&quot;&gt;&lt;div class&#x3D;&quot;text-inside-grid&quot;&gt;Product&lt;/div&gt;&lt;/mat-grid-tile&gt;
+                    &lt;mat-grid-tile colspan&#x3D;&quot;1&quot;&gt;&lt;div class&#x3D;&quot;text-inside-grid&quot;&gt;Price&lt;/div&gt;&lt;/mat-grid-tile&gt;
+                    &lt;mat-grid-tile colspan&#x3D;&quot;1&quot;&gt;&lt;div class&#x3D;&quot;text-inside-grid&quot;&gt;Quantity&lt;/div&gt;&lt;/mat-grid-tile&gt;
+                    
+                    &lt;form [formGroup]&#x3D;&quot;itemsForm&quot; (keydown.enter)&#x3D;&quot;$event.preventDefault()&quot; (keydown.shift.enter)&#x3D;&quot;$event.preventDefault()&quot; (keydown.enter)&#x3D;&quot;onEnterPress($event)&quot;&gt;
+                        &lt;div formArrayName&#x3D;&quot;products&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let product of productForms.controls; let i&#x3D;index&quot; [formGroupName]&#x3D;&quot;i&quot;&gt;
+                                &lt;mat-grid-tile colspan&#x3D;&quot;2&quot;&gt;
+                                    &lt;mat-form-field appearance&#x3D;&quot;none&quot;&gt;
+                                        &lt;input matInput formControlName&#x3D;&quot;name&quot; [readonly]&#x3D;&quot;true&quot;&gt;
+                                    &lt;/mat-form-field&gt;
+                                &lt;/mat-grid-tile&gt;
+                
+                                &lt;mat-grid-tile&gt;
+                                    &lt;mat-form-field appearance&#x3D;&quot;none&quot;&gt;
+                                        &lt;input matInput formControlName&#x3D;&quot;price&quot; type&#x3D;&quot;number&quot; [readonly]&#x3D;&quot;true&quot;&gt;
+                                        &lt;span matPrefix&gt;$&amp;nbsp;&lt;/span&gt;
+                                    &lt;/mat-form-field&gt;
+                                &lt;/mat-grid-tile&gt;
+                
+                                &lt;mat-grid-tile&gt;
+                                    &lt;mat-form-field appearance&#x3D;&quot;standard&quot;&gt;
+                                        &lt;input matInput formControlName&#x3D;&quot;quantity&quot; type&#x3D;&quot;number&quot; (ngModelChange)&#x3D;&quot;calculatePrice(i)&quot; min&#x3D;&quot;1&quot;&gt;
+                                    &lt;/mat-form-field&gt;
+                                &lt;/mat-grid-tile&gt;
+                                
+                                &lt;mat-grid-tile&gt;
+                                    &lt;button mat-raised-button color&#x3D;&quot;warn&quot; (click)&#x3D;&quot;deleteProduct(i)&quot;&gt;Remove&lt;/button&gt;
+                                &lt;/mat-grid-tile&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/form&gt;
+                &lt;/mat-grid-list&gt;
+            &lt;/mat-card&gt;
+        &lt;/div&gt;
+    &lt;/mat-grid-tile&gt;
+
+    &lt;mat-grid-tile colspan&#x3D;&quot;1&quot; rowspan&#x3D;&quot;5&quot;&gt;
+        &lt;div class&#x3D;&quot;internalMatGrid&quot;&gt;
+            &lt;mat-card id&#x3D;&quot;card&quot;&gt;
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;w-100&quot;&gt;
+                    &lt;input matInput #name [ngModel]&#x3D;&quot;&quot; (ngModelChange)&#x3D;&quot;autoComplete($event)&quot; (ngModelChange)&#x3D;&quot;autoCompleteName($event)&quot; [disabled]&#x3D;&quot;!activeTransaction&quot; (blur)&#x3D;&quot;initialiseList()&quot; [matAutocomplete]&#x3D;&quot;auto&quot;&gt;
+
+                    &lt;mat-autocomplete #auto&#x3D;&quot;matAutocomplete&quot;&gt;      
+                        &lt;mat-option *ngFor&#x3D;&quot;let option of filteredOptions&quot; [value]&#x3D;&quot;option&quot;&gt;
+                        {{option}}
+                        &lt;/mat-option&gt;
+                    &lt;/mat-autocomplete&gt;
+
+                    &lt;mat-label&gt;Item Name&lt;/mat-label&gt;
+                    &lt;mat-icon matSuffix&gt;search&lt;/mat-icon&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;w-100&quot;&gt;
+                    &lt;input matInput [disabled]&#x3D;&quot;!activeTransaction&quot; #focus [ngModel]&#x3D;&quot;&quot; (ngModelChange)&#x3D;&quot;autoCompleteID($event)&quot;&gt;
+                    &lt;mat-label&gt;Item ID&lt;/mat-label&gt;
+                    &lt;mat-icon matSuffix&gt;search&lt;/mat-icon&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;button [disabled]&#x3D;&quot;!activeTransaction&quot; mat-raised-button color&#x3D;&quot;warn&quot; (click)&#x3D;&quot;clearAllProducts()&quot; class&#x3D;&quot;w-100 sidebutton&quot;&gt;
+                    Clear All Products&lt;mat-icon&gt;clear_all&lt;/mat-icon&gt;
+                &lt;/button&gt;
+
+                &lt;button [disabled]&#x3D;&quot;!activeTransaction&quot; mat-raised-button color&#x3D;&quot;warn&quot; (click)&#x3D;&quot;clearTransaction()&quot; class&#x3D;&quot;w-100 sidebutton&quot;&gt;
+                    Cancel Transaction&lt;mat-icon&gt;clear&lt;/mat-icon&gt;
+                &lt;/button&gt;
+
+                &lt;button [disabled]&#x3D;&quot;activeTransaction&quot; mat-raised-button color&#x3D;&quot;primary&quot; class&#x3D;&quot;w-100 sidebutton&quot; (click)&#x3D;&quot;newTransaction()&quot;&gt;
+                    New Transaction&lt;mat-icon&gt;add&lt;/mat-icon&gt;
+                &lt;/button&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;w-100&quot;&gt;
+                    &lt;input matInput [disabled]&#x3D;&quot;!itemQuantity&quot; #payment [ngModel]&#x3D;&quot;&quot; (ngModelChange)&#x3D;&quot;amountPaid($event)&quot; type&#x3D;&quot;number&quot;&gt;
+                    &lt;mat-label&gt;Amount Paid&lt;/mat-label&gt;
+                    &lt;mat-icon matSuffix&gt;attach_money&lt;/mat-icon&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;button [disabled]&#x3D;&quot;!transactionValid&quot; mat-raised-button color&#x3D;&quot;primary&quot; class&#x3D;&quot;w-100 sidebutton&quot; (click)&#x3D;&quot;createTransaction()&quot;&gt;
+                    Finish Transaction&lt;mat-icon&gt;attach_money&lt;/mat-icon&gt; 
+                &lt;/button&gt;  
+            &lt;/mat-card&gt;
+        &lt;/div&gt;
+    &lt;/mat-grid-tile&gt;
+
+    &lt;mat-grid-tile colspan&#x3D;&quot;4&quot; rowspan&#x3D;&quot;1&quot;&gt;
+        &lt;div class&#x3D;&quot;internalMatGrid&quot;&gt;
+            &lt;mat-card id&#x3D;&quot;card&quot;&gt;
+                &lt;mat-grid-list cols&#x3D;&quot;4&quot; rowHeight&#x3D;&quot;7:1&quot;&gt;
+                    &lt;mat-grid-tile colspan&#x3D;&quot;2&quot;&gt;&lt;div class&#x3D;&quot;text-inside-grid&quot;&gt;Total: ${{totalPrice}}&lt;/div&gt;&lt;/mat-grid-tile&gt;
+                    &lt;mat-grid-tile colspan&#x3D;&quot;2&quot;&gt;&lt;div class&#x3D;&quot;text-inside-grid&quot;&gt;Quantity: {{itemQuantity}}&lt;/div&gt;&lt;/mat-grid-tile&gt;
+                &lt;/mat-grid-list&gt;
+            &lt;/mat-card&gt;
+        &lt;/div&gt;
+    &lt;/mat-grid-tile&gt;
+&lt;/mat-grid-list&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./point-of-sale.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.internalMatGrid{
+    width:100%; 
+    height:100%; 
+    padding: 20px;
+}
+
+.card{
+    height:90%; 
+    overflow: auto;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.sidebutton{
+    margin-bottom: 5%;
+    font-size: medium;
+    height: 80px;
+}
+
+.text-inside-grid {
+    position: absolute;
+    left: 0px;
+    color: rgb(85, 83, 83);
+    font-size: large;
+}
+
+/*Custom Scrollbar - Credits to W3Schools*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-grid-list cols="5" rowHeight="1.7:1">    <mat-grid-tile colspan="4" rowspan="3">        <div class=\'internalMatGrid\'>            <mat-card class="card">                <mat-grid-list cols="5" rowHeight="3:1">                    <mat-grid-tile colspan="2"><div class="text-inside-grid">Product</div></mat-grid-tile>                    <mat-grid-tile colspan="1"><div class="text-inside-grid">Price</div></mat-grid-tile>                    <mat-grid-tile colspan="1"><div class="text-inside-grid">Quantity</div></mat-grid-tile>                                        <form [formGroup]="itemsForm" (keydown.enter)="$event.preventDefault()" (keydown.shift.enter)="$event.preventDefault()" (keydown.enter)="onEnterPress($event)">                        <div formArrayName="products">                            <div *ngFor="let product of productForms.controls; let i=index" [formGroupName]="i">                                <mat-grid-tile colspan="2">                                    <mat-form-field appearance="none">                                        <input matInput formControlName="name" [readonly]="true">                                    </mat-form-field>                                </mat-grid-tile>                                                <mat-grid-tile>                                    <mat-form-field appearance="none">                                        <input matInput formControlName="price" type="number" [readonly]="true">                                        <span matPrefix>$&nbsp;</span>                                    </mat-form-field>                                </mat-grid-tile>                                                <mat-grid-tile>                                    <mat-form-field appearance="standard">                                        <input matInput formControlName="quantity" type="number" (ngModelChange)="calculatePrice(i)" min="1">                                    </mat-form-field>                                </mat-grid-tile>                                                                <mat-grid-tile>                                    <button mat-raised-button color="warn" (click)="deleteProduct(i)">Remove</button>                                </mat-grid-tile>                            </div>                        </div>                    </form>                </mat-grid-list>            </mat-card>        </div>    </mat-grid-tile>    <mat-grid-tile colspan="1" rowspan="5">        <div class="internalMatGrid">            <mat-card id="card">                <mat-form-field appearance="outline" class="w-100">                    <input matInput #name [ngModel]="" (ngModelChange)="autoComplete($event)" (ngModelChange)="autoCompleteName($event)" [disabled]="!activeTransaction" (blur)="initialiseList()" [matAutocomplete]="auto">                    <mat-autocomplete #auto="matAutocomplete">                              <mat-option *ngFor="let option of filteredOptions" [value]="option">                        {{option}}                        </mat-option>                    </mat-autocomplete>                    <mat-label>Item Name</mat-label>                    <mat-icon matSuffix>search</mat-icon>                </mat-form-field>                <mat-form-field appearance="outline" class="w-100">                    <input matInput [disabled]="!activeTransaction" #focus [ngModel]="" (ngModelChange)="autoCompleteID($event)">                    <mat-label>Item ID</mat-label>                    <mat-icon matSuffix>search</mat-icon>                </mat-form-field>                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="clearAllProducts()" class="w-100 sidebutton">                    Clear All Products<mat-icon>clear_all</mat-icon>                </button>                <button [disabled]="!activeTransaction" mat-raised-button color="warn" (click)="clearTransaction()" class="w-100 sidebutton">                    Cancel Transaction<mat-icon>clear</mat-icon>                </button>                <button [disabled]="activeTransaction" mat-raised-button color="primary" class="w-100 sidebutton" (click)="newTransaction()">                    New Transaction<mat-icon>add</mat-icon>                </button>                <mat-form-field appearance="outline" class="w-100">                    <input matInput [disabled]="!itemQuantity" #payment [ngModel]="" (ngModelChange)="amountPaid($event)" type="number">                    <mat-label>Amount Paid</mat-label>                    <mat-icon matSuffix>attach_money</mat-icon>                </mat-form-field>                <button [disabled]="!transactionValid" mat-raised-button color="primary" class="w-100 sidebutton" (click)="createTransaction()">                    Finish Transaction<mat-icon>attach_money</mat-icon>                 </button>              </mat-card>        </div>    </mat-grid-tile>    <mat-grid-tile colspan="4" rowspan="1">        <div class="internalMatGrid">            <mat-card id="card">                <mat-grid-list cols="4" rowHeight="7:1">                    <mat-grid-tile colspan="2"><div class="text-inside-grid">Total: ${{totalPrice}}</div></mat-grid-tile>                    <mat-grid-tile colspan="2"><div class="text-inside-grid">Quantity: {{itemQuantity}}</div></mat-grid-tile>                </mat-grid-list>            </mat-card>        </div>    </mat-grid-tile></mat-grid-list></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CourseDialogComponent', 'selector': 'app-course-dialog'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DefaultComponent', 'selector': 'app-default'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'InventoryComponent', 'selector': 'app-inventory'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ManagementComponent', 'selector': 'app-management'},{'name': 'PointOfSaleComponent', 'selector': 'app-point-of-sale'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SuccessDialogComponent', 'selector': 'app-success-dialog'},{'name': 'TransactionDialogComponent', 'selector': 'app-transaction-dialog'},{'name': 'TransactionsComponent', 'selector': 'app-transactions'},{'name': 'UsersComponent', 'selector': 'app-users'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PointOfSaleComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PointOfSaleComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
