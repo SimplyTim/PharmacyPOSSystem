@@ -148,6 +148,7 @@ export class PointOfSaleComponent implements OnInit {
         this.productForms.controls.forEach((element, index) => {
           if(element.value.id == value){
             this.productForms.at(index).get('quantity').setValue(element.value.quantity + 1);
+            this.calculatePrice(index);
             itemFound = true;
           }
         });
@@ -165,7 +166,6 @@ export class PointOfSaleComponent implements OnInit {
         
         this.input.nativeElement.value = "";
         this.calculateTotalPrice();
-
         this.calculateItemQuantity();
       }
     });
@@ -179,6 +179,7 @@ export class PointOfSaleComponent implements OnInit {
         this.productForms.controls.forEach((element, index) => {
           if(element.value.name == value){
             this.productForms.at(index).get('quantity').setValue(element.value.quantity + 1);
+            this.calculatePrice(index);
             itemFound = true;
           }
         });
