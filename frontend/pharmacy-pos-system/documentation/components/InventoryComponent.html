@@ -64,6 +64,13 @@
     <code>src/app/modules/inventory/inventory.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Inventory Component to view the current inventory</p>
+
+    </p>
 
 
     <p class="comment">
@@ -73,6 +80,11 @@
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -182,12 +194,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:69</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of InventoryComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -251,14 +265,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">src/app/modules/inventory/inventory.component.ts:45</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/app/modules/inventory/inventory.component.ts:121</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Filters the table based on the input from the user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -321,14 +337,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/modules/inventory/inventory.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/app/modules/inventory/inventory.component.ts:98</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Gets the inventory from the HTTP request in the auth service and adds it to the table</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -358,10 +376,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:61</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Table data</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -390,10 +414,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:83</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Table Columns</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -426,10 +456,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:69</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Used to autofocus on the search input field </p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -462,10 +498,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/modules/inventory/inventory.component.ts:91</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Table Paginator</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -480,28 +522,98 @@ import { MatPaginator } from &#x27;@angular/material/paginator&#x27;;
 import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
 import { AuthService } from &#x27;../../auth/auth.service&#x27;;
 
+/**
+ *Item Details
+ *
+ * @export
+ * @interface Element
+ */
 export interface Element {
+  /**
+   *Item Name
+   *
+   * @type {string}
+   * @memberof Element
+   */
   name: string;
+  /**
+   *Product ID
+   *
+   * @type {number}
+   * @memberof Element
+   */
   productId: number;
+  /**
+   *Product Price
+   *
+   * @type {number}
+   * @memberof Element
+   */
   price: number;
+  /**
+   *Product Sock
+   *
+   * @type {number}
+   * @memberof Element
+   */
   stock: number;
 }
 
+/**
+ *Inventory Component to view the current inventory
+ *
+ * @export
+ * @class InventoryComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-inventory&#x27;,
   templateUrl: &#x27;./inventory.component.html&#x27;,
   styleUrls: [&#x27;./inventory.component.css&#x27;]
 })
 export class InventoryComponent implements OnInit {
+  /**
+   *Table data
+   *
+   * @memberof InventoryComponent
+   */
   dataSource;
+
+  /**
+   *Used to autofocus on the search input field 
+   *
+   * @type {ElementRef}
+   * @memberof InventoryComponent
+   */
   @ViewChild(&#x27;focus&#x27;) input: ElementRef;
 
+  /**
+   * Creates an instance of InventoryComponent.
+   * @param {AuthService} _auth
+   * @memberof InventoryComponent
+   */
   constructor(private _auth: AuthService) { }
 
+  /**
+   *Table Columns
+   *
+   * @memberof InventoryComponent
+   */
   displayedColumns &#x3D; [&#x27;productId&#x27;, &#x27;name&#x27;, &#x27;price&#x27;, &#x27;stock&#x27;];
 
+  /**
+   *Table Paginator
+   *
+   * @type {MatPaginator}
+   * @memberof InventoryComponent
+   */
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  /**
+   *Gets the inventory from the HTTP request in the auth service and adds it to the table
+   *
+   * @memberof InventoryComponent
+   */
   ngOnInit(): void {
     this._auth.getProducts().subscribe(
       (res:any) &#x3D;&gt; {
@@ -519,6 +631,12 @@ export class InventoryComponent implements OnInit {
     )
   }
 
+  /**
+   *Filters the table based on the input from the user
+   *
+   * @param {Event} event
+   * @memberof InventoryComponent
+   */
   applyFilter(event: Event) {
     const filterValue &#x3D; (event.target as HTMLInputElement).value;
     this.dataSource.filter &#x3D; filterValue.trim().toLowerCase();

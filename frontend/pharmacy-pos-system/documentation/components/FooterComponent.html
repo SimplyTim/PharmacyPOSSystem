@@ -64,6 +64,13 @@
     <code>src/app/shared/components/footer/footer.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Shared webpage footer</p>
+
+    </p>
 
 
     <p class="comment">
@@ -73,6 +80,11 @@
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -156,10 +168,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/shared/components/footer/footer.component.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/components/footer/footer.component.ts:15</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of FooterComponent.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -195,14 +213,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/shared/components/footer/footer.component.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app/shared/components/footer/footer.component.ts:28</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Empty ngOnInit function</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -220,6 +240,13 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 
+/**
+ *Shared webpage footer
+ *
+ * @export
+ * @class FooterComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-footer&#x27;,
   templateUrl: &#x27;./footer.component.html&#x27;,
@@ -227,8 +254,17 @@
 })
 export class FooterComponent implements OnInit {
 
+  /**
+   * Creates an instance of FooterComponent.
+   * @memberof FooterComponent
+   */
   constructor() { }
 
+  /**
+   *Empty ngOnInit function
+   *
+   * @memberof FooterComponent
+   */
   ngOnInit(): void {
   }
 

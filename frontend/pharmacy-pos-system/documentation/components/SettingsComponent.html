@@ -64,6 +64,13 @@
     <code>src/app/modules/settings/settings.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Sets the system wide markup</p>
+
+    </p>
 
 
     <p class="comment">
@@ -73,6 +80,11 @@
                     <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -177,12 +189,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/settings/settings.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/settings/settings.component.ts:32</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of SettingsComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -246,14 +260,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/modules/settings/settings.component.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/modules/settings/settings.component.ts:46</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Gets the current markup using the getMarkupValue from AuthService</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -285,14 +301,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/app/modules/settings/settings.component.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/modules/settings/settings.component.ts:56</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Sets the markup using the user input and the setMarkupValue function from AuthService</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -329,10 +347,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/settings/settings.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/settings/settings.component.ts:32</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Current system markup</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -359,10 +383,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/settings/settings.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/settings/settings.component.ts:25</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>User input for markup</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -377,6 +407,13 @@ import { AuthService } from &#x27;src/app/auth/auth.service&#x27;;
 
 
 
+/**
+ *Sets the system wide markup
+ *
+ * @export
+ * @class SettingsComponent
+ * @implements {AfterViewInit}
+ */
 @Component({
   selector: &#x27;app-settings&#x27;,
   templateUrl: &#x27;./settings.component.html&#x27;,
@@ -384,16 +421,42 @@ import { AuthService } from &#x27;src/app/auth/auth.service&#x27;;
 })
 export class SettingsComponent implements AfterViewInit {
 
+  /**
+   *User input for markup
+   *
+   * @memberof SettingsComponent
+   */
   @ViewChild(&#x27;markupValue&#x27;) input; 
+  /**
+   *Current system markup
+   *
+   * @type {number}
+   * @memberof SettingsComponent
+   */
   public currentMarkupValue: number; 
 
+  /**
+   * Creates an instance of SettingsComponent.
+   * @param {AuthService} _auth
+   * @memberof SettingsComponent
+   */
   constructor(private _auth: AuthService) {}
 
+  /**
+   *Gets the current markup using the getMarkupValue from AuthService
+   *
+   * @memberof SettingsComponent
+   */
   ngAfterViewInit(): void {
     this.currentMarkupValue &#x3D; this._auth.getMarkupValue();
     console.log(this.currentMarkupValue); 
   }
 
+  /**
+   *Sets the markup using the user input and the setMarkupValue function from AuthService
+   *
+   * @memberof SettingsComponent
+   */
   setMargin(){
     let markupValue: number &#x3D; this.input.nativeElement.value as number; 
     this._auth.updateMarkup({&quot;markupVal&quot;: markupValue}).subscribe(

@@ -64,6 +64,13 @@
             <code>src/app/modules/transactions/transactions.component.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface to send the transaction items to the dialog</p>
+
+            </p>
 
 
         <section>
@@ -128,6 +135,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Date &amp; Time</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -157,6 +170,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Employee ID</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -186,6 +205,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Items</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -215,6 +240,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Transaction ID</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -230,16 +261,70 @@ import { AuthService } from &#x27;../../auth/auth.service&#x27;;
 import { TransactionDialogComponent } from &#x27;./transaction-dialog/transaction-dialog.component&#x27;
 
 
+/**
+ *Interface to send transaction details to the dialog
+ *
+ * @export
+ * @interface Element
+ */
 export interface Element {
+  /**
+   *Transaction ID
+   *
+   * @type {string}
+   * @memberof Element
+   */
   transactionId: string;
+  /**
+   *Employee ID
+   *
+   * @type {number}
+   * @memberof Element
+   */
   empId: number;
+  /**
+   *Date &amp; Time
+   *
+   * @type {string}
+   * @memberof Element
+   */
   dateTime: string;
 }
 
+/**
+ *Interface to send the transaction items to the dialog
+ *
+ * @export
+ * @interface DialogData
+ */
 export interface DialogData {
+  /**
+   *Items
+   *
+   * @type {*}
+   * @memberof DialogData
+   */
   items: any;
+  /**
+   *Transaction ID
+   *
+   * @type {number}
+   * @memberof DialogData
+   */
   transactionId: number;
+  /**
+   *Employee ID
+   *
+   * @type {number}
+   * @memberof DialogData
+   */
   empId: number;
+  /**
+   *Date &amp; Time
+   *
+   * @type {string}
+   * @memberof DialogData
+   */
   dateTime: string;
 }
 
@@ -249,13 +334,40 @@ export interface DialogData {
   styleUrls: [&#x27;./transactions.component.css&#x27;]
 })
 export class TransactionsComponent implements OnInit {
+  /**
+   *Stores transaction items for table
+   *
+   * @memberof TransactionsComponent
+   */
   dataSource;
   
+  /**
+   * Creates an instance of TransactionsComponent.
+   * @param {AuthService} _auth
+   * @param {MatDialog} dialog
+   * @memberof TransactionsComponent
+   */
   constructor(private _auth: AuthService, private dialog: MatDialog) { }
 
+  /**
+   *Table columns
+   *
+   * @memberof TransactionsComponent
+   */
   displayedColumns &#x3D; [&#x27;transactionId&#x27;, &#x27;empId&#x27;, &#x27;dateTime&#x27;, &#x27;modification&#x27;];
+  /**
+   *Table paginator
+   *
+   * @type {MatPaginator}
+   * @memberof TransactionsComponent
+   */
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  /**
+   *Gets all transactions and adds them to the table
+   *
+   * @memberof TransactionsComponent
+   */
   ngOnInit(): void {
     this._auth.getTransactions().subscribe(
       (res:any) &#x3D;&gt; {
@@ -268,6 +380,12 @@ export class TransactionsComponent implements OnInit {
     )
   }
 
+  /**
+   *Filters the table based on the user&#x27;s search input
+   *
+   * @param {Event} event
+   * @memberof TransactionsComponent
+   */
   applyFilter(event: Event) {
     const filterValue &#x3D; (event.target as HTMLInputElement).value;
     this.dataSource.filter &#x3D; filterValue.trim().toLowerCase();
@@ -277,6 +395,14 @@ export class TransactionsComponent implements OnInit {
     }
   }
 
+  /**
+   *Gets the data from the row that the user selects the View button and gets the transaction details
+   *
+   * @param {*} transactionId
+   * @param {*} empId
+   * @param {*} dateTime
+   * @memberof TransactionsComponent
+   */
   row(transactionId, empId, dateTime){
 
     this._auth.getTransactionDetail(transactionId).subscribe(
@@ -290,6 +416,15 @@ export class TransactionsComponent implements OnInit {
   }
 
   
+  /**
+   *Opens the transaction details dialog 
+   *
+   * @param {*} data
+   * @param {*} transactionId
+   * @param {*} empID
+   * @param {*} dateTime
+   * @memberof TransactionsComponent
+   */
   openDialog(data, transactionId, empID, dateTime): void {
     const dialogRef &#x3D; this.dialog.open(TransactionDialogComponent, {
       width: &#x27;700px&#x27;,

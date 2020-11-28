@@ -64,6 +64,13 @@
     <code>src/app/modules/point-of-sale/success-dialog/success-dialog.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Success dialog for a completed transaction</p>
+
+    </p>
 
 
     <p class="comment">
@@ -73,6 +80,11 @@
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -174,12 +186,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/modules/point-of-sale/success-dialog/success-dialog.component.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/point-of-sale/success-dialog/success-dialog.component.ts:17</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of SuccessDialogComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -255,14 +269,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/modules/point-of-sale/success-dialog/success-dialog.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/modules/point-of-sale/success-dialog/success-dialog.component.ts:43</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Closed the dialog</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -294,14 +310,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/app/modules/point-of-sale/success-dialog/success-dialog.component.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/modules/point-of-sale/success-dialog/success-dialog.component.ts:35</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Empty ngOnInit function </p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -347,7 +365,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/point-of-sale/success-dialog/success-dialog.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/point-of-sale/success-dialog/success-dialog.component.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -364,6 +382,13 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from &#x27;@angular/material/dialog&#x27;;
 import { DialogData } from &#x27;../point-of-sale.component&#x27;;
 
+/**
+ *Success dialog for a completed transaction
+ *
+ * @export
+ * @class SuccessDialogComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-success-dialog&#x27;,
   templateUrl: &#x27;./success-dialog.component.html&#x27;,
@@ -371,13 +396,30 @@ import { DialogData } from &#x27;../point-of-sale.component&#x27;;
 })
 export class SuccessDialogComponent implements OnInit {
 
+  /**
+   * Creates an instance of SuccessDialogComponent.
+   * 
+   * @param {MatDialogRef&lt;SuccessDialogComponent&gt;} dialogRef
+   * @param {DialogData} data
+   * @memberof SuccessDialogComponent
+   */
   constructor(private dialogRef: MatDialogRef&lt;SuccessDialogComponent&gt;, @Inject(MAT_DIALOG_DATA) public data: DialogData) { 
     dialogRef.disableClose &#x3D; true;
   }
 
+  /**
+   *Empty ngOnInit function 
+   *
+   * @memberof SuccessDialogComponent
+   */
   ngOnInit(): void {
   }
 
+  /**
+   *Closed the dialog
+   *
+   * @memberof SuccessDialogComponent
+   */
   close() {
     this.dialogRef.close();
   } 

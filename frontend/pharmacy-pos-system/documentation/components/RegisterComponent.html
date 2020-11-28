@@ -64,6 +64,13 @@
     <code>src/app/modules/register/register.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Allows managers to register new users to the system</p>
+
+    </p>
 
 
     <p class="comment">
@@ -73,6 +80,11 @@
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -179,12 +191,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/register/register.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/modules/register/register.component.ts:48</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of RegisterComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -260,14 +274,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/app/modules/register/register.component.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/modules/register/register.component.ts:63</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Empty ngOnInit function</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -299,14 +315,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/app/modules/register/register.component.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/modules/register/register.component.ts:71</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>When the manager presses the register button a new user is registered to the system using the registerUser function from AuthService </p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -347,10 +365,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/register/register.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/modules/register/register.component.ts:42</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>EmployeeDataForm</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -383,10 +407,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/register/register.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/register/register.component.ts:28</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Used to clear the form </p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -409,10 +439,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/register/register.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/register/register.component.ts:35</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Status of login error message</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -428,6 +464,13 @@ import { FormControl, FormGroup, NgForm, Validators } from &#x27;@angular/forms&
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
 import { FormGroupDirective } from &#x27;@angular/forms&#x27;;
 
+/**
+ *Allows managers to register new users to the system
+ *
+ * @export
+ * @class RegisterComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-register&#x27;,
   templateUrl: &#x27;./register.component.html&#x27;,
@@ -436,10 +479,26 @@ import { FormGroupDirective } from &#x27;@angular/forms&#x27;;
 
 export class RegisterComponent implements OnInit {
 
+  /**
+   *Used to clear the form 
+   *
+   * @type {NgForm}
+   * @memberof RegisterComponent
+   */
   @ViewChild(&#x27;myFGD&#x27;, {static: true}) form: NgForm;
 
+  /**
+   *Status of login error message
+   *
+   * @memberof RegisterComponent
+   */
   showErrorMessage &#x3D; false;
 
+  /**
+   *EmployeeDataForm
+   *
+   * @memberof RegisterComponent
+   */
   employeeDataForm &#x3D; new FormGroup({
     empFirstName: new FormControl(&#x27;&#x27;),
     empLastName: new FormControl(&#x27;&#x27;),
@@ -448,11 +507,27 @@ export class RegisterComponent implements OnInit {
     password: new FormControl(&#x27;&#x27;)
   })
   
+  /**
+   * Creates an instance of RegisterComponent.
+   * @param {AuthService} _auth
+   * @param {MatSnackBar} _snackBar
+   * @memberof RegisterComponent
+   */
   constructor(private _auth: AuthService, private _snackBar: MatSnackBar) { }
 
+  /**
+   *Empty ngOnInit function
+   *
+   * @memberof RegisterComponent
+   */
   ngOnInit(): void {
   }
 
+  /**
+   *When the manager presses the register button a new user is registered to the system using the registerUser function from AuthService 
+   *
+   * @memberof RegisterComponent
+   */
   onSubmit(){
     this._auth.registerUser(this.employeeDataForm.value).subscribe(
       (res:any) &#x3D;&gt; {
@@ -460,7 +535,7 @@ export class RegisterComponent implements OnInit {
 
         this.form.resetForm();
 
-        this._snackBar.open(&quot;Registered Employee ID &quot;+ result.id +&quot; Succesfully&quot;, &quot;Close&quot;, {
+        this._snackBar.open(&quot;Registered Employee ID &quot;+ result.id +&quot; Successfully&quot;, &quot;Close&quot;, {
           duration: 9000,
           panelClass: [&#x27;blue-snackbar&#x27;]
         });

@@ -64,6 +64,13 @@
             <code>src/app/modules/transactions/transaction-dialog/transaction-dialog.component.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Item information interface</p>
+
+            </p>
 
 
         <section>
@@ -125,6 +132,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Product Name</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -154,6 +167,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Product Price</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -183,6 +202,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Product ID</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -197,30 +222,94 @@ import { SuccessDialogComponent } from &#x27;../../point-of-sale/success-dialog/
 import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
 import { MatPaginator } from &#x27;@angular/material/paginator&#x27;;
 
+/**
+ *Item information interface
+ *
+ * @export
+ * @interface Element
+ */
 export interface Element {
+  /**
+   *Product ID
+   *
+   * @type {number}
+   * @memberof Element
+   */
   productId: number;
+  /**
+   *Product Name
+   *
+   * @type {string}
+   * @memberof Element
+   */
   name: string;
+  /**
+   *Product Price
+   *
+   * @type {number}
+   * @memberof Element
+   */
   price: number;
 }
 
+/**
+ *Dialog to show transaction detail
+ *
+ * @export
+ * @class TransactionDialogComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-transaction-dialog&#x27;,
   templateUrl: &#x27;./transaction-dialog.component.html&#x27;,
   styleUrls: [&#x27;./transaction-dialog.component.css&#x27;]
 })
 export class TransactionDialogComponent implements OnInit {
+  /**
+   *Transaction items for table  
+   *
+   * @memberof TransactionDialogComponent
+   */
   dataSource;
 
+  /**
+   * Creates an instance of TransactionDialogComponent.
+   * @param {MatDialogRef&lt;SuccessDialogComponent&gt;} dialogRef
+   * @param {DialogData} data
+   * @memberof TransactionDialogComponent
+   */
   constructor(private dialogRef: MatDialogRef&lt;SuccessDialogComponent&gt;, @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
+  /**
+   *Table paginator
+   *
+   * @type {MatPaginator}
+   * @memberof TransactionDialogComponent
+   */
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  /**
+   *Table columns 
+   *
+   * @memberof TransactionDialogComponent
+   */
   displayedColumns &#x3D; [&#x27;productId&#x27;, &#x27;name&#x27;, &#x27;price&#x27;];
 
+  /**
+   *Adds the list of transaction items to the table 
+   *
+   * @memberof TransactionDialogComponent
+   */
   ngOnInit(): void {
     this.dataSource &#x3D; new MatTableDataSource&lt;Element&gt;(this.data.items);
     this.dataSource.paginator &#x3D; this.paginator;
   }
 
+  /**
+   *Closes the dialog
+   *
+   * @memberof TransactionDialogComponent
+   */
   close() {
     this.dialogRef.close();
   } 

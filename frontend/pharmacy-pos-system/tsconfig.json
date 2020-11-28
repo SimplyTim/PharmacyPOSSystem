@@ -16,5 +16,6 @@
       "es2018",
       "dom"
     ]
-  }
+  },
+  "exclude": ["src/test.ts", "src/environments/*"]
 }

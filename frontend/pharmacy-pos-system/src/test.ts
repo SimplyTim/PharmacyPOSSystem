@@ -8,6 +8,9 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 
 declare const require: {
+  /**
+   * @ignore
+   */
   context(path: string, deep?: boolean, filter?: RegExp): {
     keys(): string[];
     <T>(id: string): T;

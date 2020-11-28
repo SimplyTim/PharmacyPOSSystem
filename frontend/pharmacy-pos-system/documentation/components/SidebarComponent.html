@@ -64,6 +64,13 @@
     <code>src/app/shared/components/sidebar/sidebar.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Shared webpage sidebar</p>
+
+    </p>
 
 
     <p class="comment">
@@ -73,6 +80,11 @@
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -155,7 +167,7 @@
                                 <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
-                                <a href="#setUserDetials">setUserDetials</a>
+                                <a href="#setUserDetails">setUserDetails</a>
                             </li>
                         </ul>
                     </td>
@@ -180,12 +192,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:31</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of SidebarComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -249,14 +263,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:45</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Sets the username and user type from localstorage when the sidebar is initialized to their respective variables </p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -270,32 +286,34 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="setUserDetials"></a>
+                    <a name="setUserDetails"></a>
                     <span class="name">
                         <b>
-                            setUserDetials
+                            setUserDetails
                         </b>
-                        <a href="#setUserDetials"><span class="icon ion-ios-link"></span></a>
+                        <a href="#setUserDetails"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setUserDetials(username, type)</code>
+<code>setUserDetails(username, type)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:59</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Sets the username and user type </p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -368,7 +386,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -400,10 +418,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:31</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>UserType variable</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -432,10 +456,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/shared/components/sidebar/sidebar.component.ts:25</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Username variable</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -448,6 +478,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Injectable, OnInit } from &#x27;@angular/core&#x27;;
 import { AuthService } from &#x27;../../../auth/auth.service&#x27;
 
+/**
+ *Shared webpage sidebar
+ *
+ * @export
+ * @class SidebarComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-sidebar&#x27;,
   templateUrl: &#x27;./sidebar.component.html&#x27;,
@@ -457,11 +494,31 @@ import { AuthService } from &#x27;../../../auth/auth.service&#x27;
   providedIn: &#x27;root&#x27;
 })
 export class SidebarComponent implements OnInit {
+  /**
+   *Username variable
+   *
+   * @memberof SidebarComponent
+   */
   username &#x3D; &quot;Username&quot;
+  /**
+   *UserType variable
+   *
+   * @memberof SidebarComponent
+   */
   type &#x3D; &quot;Type&quot;
 
+  /**
+   * Creates an instance of SidebarComponent.
+   * @param {AuthService} authService
+   * @memberof SidebarComponent
+   */
   constructor(public authService: AuthService) { }
 
+  /**
+   *Sets the username and user type from localstorage when the sidebar is initialized to their respective variables 
+   *
+   * @memberof SidebarComponent
+   */
   ngOnInit(): void {
     if(localStorage.getItem(&quot;empType&quot;)){
       this.type &#x3D; localStorage.getItem(&quot;empType&quot;);
@@ -469,7 +526,14 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  setUserDetials(username, type){
+  /**
+   *Sets the username and user type 
+   *
+   * @param {*} username
+   * @param {*} type
+   * @memberof SidebarComponent
+   */
+  setUserDetails(username, type){
     document.getElementById(&quot;username&quot;).innerHTML &#x3D; username;
     document.getElementById(&quot;type&quot;).innerHTML &#x3D; type;
   }

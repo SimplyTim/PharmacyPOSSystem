@@ -63,9 +63,21 @@
             <code>e2e/src/app.po.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>app.po.ts</p>
+
+            </p>
 
 
 
+            <p class="comment">
+                <h3>Example</h3>
+            </p>
+            <div class="io-description">
+            </div>
 
             <section>
     <h3 id="index">Index</h3>
@@ -127,17 +139,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="8"
-                            class="link-to-prism">e2e/src/app.po.ts:8</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">e2e/src/app.po.ts:26</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Get the homepage heading element reference</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>{Promise<string>}</p>
 
                     </div>
                 </td>
@@ -166,17 +186,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="4"
-                            class="link-to-prism">e2e/src/app.po.ts:4</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">e2e/src/app.po.ts:16</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Navigate to base url</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Promise&lt;unknown&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>{Promise<unknown>}</p>
 
                     </div>
                 </td>
@@ -195,11 +223,29 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { browser, by, element } from &#x27;protractor&#x27;;
 
+/**
+ *app.po.ts
+ *
+ * @export
+ * @class AppPage
+ */
 export class AppPage {
+  /**
+   *Navigate to base url
+   *
+   * @return {*}  {Promise&lt;unknown&gt;}
+   * @memberof AppPage
+   */
   navigateTo(): Promise&lt;unknown&gt; {
     return browser.get(browser.baseUrl) as Promise&lt;unknown&gt;;
   }
 
+  /**
+   *Get the homepage heading element reference
+   *
+   * @return {*}  {Promise&lt;string&gt;}
+   * @memberof AppPage
+   */
   getTitleText(): Promise&lt;string&gt; {
     return element(by.css(&#x27;app-root .content span&#x27;)).getText() as Promise&lt;string&gt;;
   }

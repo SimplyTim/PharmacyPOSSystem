@@ -61,9 +61,21 @@
                 <code>src/app/auth/manager.guard.ts</code>
             </p>
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>ManagerGuard is used to allow only manager accounts to access certain sections of the site</p>
+
+                </p>
 
 
 
+                <p class="comment">
+                <h3>Example</h3>
+                </p>
+                <div class="io-description">
+                </div>
 
                 <section>
     <h3 id="index">Index</h3>
@@ -104,12 +116,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/auth/manager.guard.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/auth/manager.guard.ts:15</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of ManagerGuard.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -181,17 +195,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/auth/manager.guard.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/auth/manager.guard.ts:31</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>canActivate checks to see if the user that is logged into the system is manage . If they are not a manage then it redirects them to the the dashboard</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>{boolean}</p>
 
                     </div>
                 </td>
@@ -207,13 +229,32 @@
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from &#x27;@angular/router&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
 
+/**
+ *ManagerGuard is used to allow only manager accounts to access certain sections of the site
+ *
+ * @export
+ * @class ManagerGuard
+ * @implements {CanActivate}
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class ManagerGuard implements CanActivate {
 
+  /**
+   * Creates an instance of ManagerGuard.
+   * @param {AuthService} _auth
+   * @param {Router} _router
+   * @memberof ManagerGuard
+   */
   constructor(private _auth: AuthService, private _router: Router) { }
 
+  /**
+   *canActivate checks to see if the user that is logged into the system is manage . If they are not a manage then it redirects them to the the dashboard
+   *
+   * @return {*}  {boolean}
+   * @memberof ManagerGuard
+   */
   canActivate(): boolean {
     if(this._auth.loggedIn() &amp;&amp; localStorage.getItem(&#x27;empType&#x27;) &#x3D;&#x3D;&#x3D; &#x27;Manager&#x27;){
       return true

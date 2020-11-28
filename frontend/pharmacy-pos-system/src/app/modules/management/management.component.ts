@@ -12,6 +12,13 @@ export type product = {
   "stock": number
 }
 
+/**
+ *Management component to manage inventory
+ *
+ * @export
+ * @class ManagementComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
@@ -19,14 +26,55 @@ export type product = {
 })
 export class ManagementComponent implements OnInit {
 
+  /**
+   *FormGroup for the products entered
+   *
+   * @type {FormGroup}
+   * @memberof ManagementComponent
+   */
   public myForm: FormGroup; 
+  /**
+   *List of all products in the inventory
+   *
+   * @memberof ManagementComponent
+   */
   public productList; 
+  /**
+   *String array to store the names of all the products in the inventory
+   *
+   * @type {string[]}
+   * @memberof ManagementComponent
+   */
   public productNames: string[]; 
+  /**
+   *String array to store the item numbers of the products in the inventory
+   *
+   * @type {string[]}
+   * @memberof ManagementComponent
+   */
   public productItemNumbers: string[]; 
+  /**
+   *Stores the names of the products that contains the substring entered by the user
+   *
+   * @type {string[]}
+   * @memberof ManagementComponent
+   */
   filteredOptions: string[];
 
+  /**
+   * Creates an instance of ManagementComponent.
+   * @param {FormBuilder} formBuilder
+   * @param {AuthService} _auth
+   * @param {MatDialog} dialog
+   * @memberof ManagementComponent
+   */
   constructor(private formBuilder: FormBuilder, private _auth: AuthService, private dialog: MatDialog) { }
 
+  /**
+   *Gets all the products and stores the various items in productNames, productItemNumbers and productList
+   *
+   * @memberof ManagementComponent
+   */
   ngOnInit(): void {
 
     this.myForm = this.formBuilder.group({
@@ -49,10 +97,21 @@ export class ManagementComponent implements OnInit {
     )
   }
 
+  /**
+   *Gets the items entered by the user in the product form 
+   *
+   * @readonly
+   * @memberof ManagementComponent
+   */
   get productForms(){
     return this.myForm.get('products') as FormArray; 
   }
 
+  /**
+   *Adds a new blank line to the product form  for the user to input the details
+   *
+   * @memberof ManagementComponent
+   */
   addProduct(){
 
     const product = this.formBuilder.group({
@@ -65,17 +124,37 @@ export class ManagementComponent implements OnInit {
     this.productForms.push(product); 
   }
 
+  /**
+   *Deletes a product from the product from
+   *
+   * @param {*} i
+   * @memberof ManagementComponent
+   */
   deleteProduct(i){
     this.productForms.removeAt(i); 
   }
 
 
+  /**
+   *Gets the user input and returns a filtered list of all the items that contain the substring
+   *
+   * @private
+   * @param {string} value
+   * @return {*}  {string[]}
+   * @memberof ManagementComponent
+   */
   private _filter(value: string): string[] {
     if (!value || value==='') return this.productNames;
     const filterValue = value.toString().toLowerCase();
     return this.productNames.filter(option => option.toLowerCase().includes(filterValue));
   }
 
+  /**
+   *Creates a new product using the AuthService createProduct function
+   *
+   * @param {*} createdProducts
+   * @memberof ManagementComponent
+   */
   createProduct(createdProducts):void{
     this._auth.createProduct(createdProducts).subscribe(
       (res:any) => {
@@ -87,6 +166,12 @@ export class ManagementComponent implements OnInit {
     )
   }
 
+  /**
+   *Updates a product using the AuthService updateProduct function
+   *
+   * @param {*} updatedProducts
+   * @memberof ManagementComponent
+   */
   updateProduct(updatedProducts){
     this._auth.updateProduct(updatedProducts).subscribe(
       (res:any) => {
@@ -98,6 +183,11 @@ export class ManagementComponent implements OnInit {
     )
   }
 
+  /**
+   *Updates the stock by creating new products and updating old products
+   *
+   * @memberof ManagementComponent
+   */
   updateStock(){
     let productsEntered = this.productForms.value as Array<Object>;
     let productsCreated = []; 
@@ -134,6 +224,12 @@ export class ManagementComponent implements OnInit {
     }
   }
 
+  /**
+   *Autofills fields of the product form
+   *
+   * @param {*} i
+   * @memberof ManagementComponent
+   */
   public autofill(i){
     let productValues = this.productForms.at(i).value; 
     this.productList.forEach(element => {
@@ -146,6 +242,13 @@ export class ManagementComponent implements OnInit {
     });
   }
 
+  /**
+   *Calculates sales price
+   *
+   * @param {*} i
+   * @return {*} 
+   * @memberof ManagementComponent
+   */
   public calculateSP(i){
     let productValues = this.productForms.at(i).value;  
     let markupPercentage: number = (this._auth.getMarkupValue()/100) as number; 
@@ -156,16 +259,32 @@ export class ManagementComponent implements OnInit {
     this.productForms.at(i).get('price').setValue(sellingPrice);
   }
 
+  /**
+   *Auto completes filtered list 
+   *
+   * @param {*} i
+   * @memberof ManagementComponent
+   */
   autoComplete(i){
     let productEntry = this.productForms.at(i).value.name; 
     console.log(productEntry); 
     this.filteredOptions = this._filter(productEntry); 
   }
 
+  /**
+   *Initialize the filtered list
+   *
+   * @memberof ManagementComponent
+   */
   initialiseList(){
     this.filteredOptions = this.productNames;  
   }
 
+  /**
+   *Opens the success dialog
+   *
+   * @memberof ManagementComponent
+   */
   openDialog() {
 
     const dialogConfig = new MatDialogConfig();

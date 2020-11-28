@@ -64,6 +64,13 @@
     <code>src/app/modules/users/users.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>List of users registered on the system</p>
+
+    </p>
 
 
     <p class="comment">
@@ -73,6 +80,11 @@
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -179,12 +191,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/users/users.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/modules/users/users.component.ts:68</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of UsersComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -248,14 +262,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/app/modules/users/users.component.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/modules/users/users.component.ts:114</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Filter the table based on the user search input</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -318,14 +334,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/app/modules/users/users.component.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/app/modules/users/users.component.ts:96</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Gets all employees registered to the system and adds them to the table</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -355,10 +373,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/users/users.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/modules/users/users.component.ts:68</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Users data for table</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -387,10 +411,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/modules/users/users.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/modules/users/users.component.ts:82</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Table Columns </p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -423,10 +453,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/users/users.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/modules/users/users.component.ts:89</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Table paginator</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -441,27 +477,96 @@ import { MatPaginator } from &#x27;@angular/material/paginator&#x27;;
 import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
 import { AuthService } from &#x27;../../auth/auth.service&#x27;;
 
+/**
+ *Interface for employee information
+ *
+ * @export
+ * @interface Element
+ */
 export interface Element {
+  /**
+   *Employee ID Number
+   *
+   * @type {number}
+   * @memberof Element
+   */
   id: number;
+  /**
+   *Employee First Name
+   *
+   * @type {string}
+   * @memberof Element
+   */
   empFirstName : string;
+  /**
+   *Employee Last Name
+   *
+   * @type {string}
+   * @memberof Element
+   */
   empLastName : string;
+  /**
+   *Employee Age
+   *
+   * @type {number}
+   * @memberof Element
+   */
   age: number;
+  /**
+   *Employee Type
+   *
+   * @type {string}
+   * @memberof Element
+   */
   empType: string;
 }
 
+/**
+ *List of users registered on the system
+ *
+ * @export
+ * @class UsersComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-users&#x27;,
   templateUrl: &#x27;./users.component.html&#x27;,
   styleUrls: [&#x27;./users.component.css&#x27;]
 })
 export class UsersComponent implements OnInit {
+  /**
+   *Users data for table
+   *
+   * @memberof UsersComponent
+   */
   dataSource;
 
+  /**
+   * Creates an instance of UsersComponent.
+   * @param {AuthService} _auth
+   * @memberof UsersComponent
+   */
   constructor(private _auth: AuthService) { }
 
+  /**
+   *Table Columns 
+   *
+   * @memberof UsersComponent
+   */
   displayedColumns &#x3D; [&#x27;id&#x27;, &#x27;empFirstName&#x27;, &#x27;empLastName&#x27;, &#x27;age&#x27;, &#x27;empType&#x27;];
+  /**
+   *Table paginator
+   *
+   * @type {MatPaginator}
+   * @memberof UsersComponent
+   */
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  /**
+   *Gets all employees registered to the system and adds them to the table
+   *
+   * @memberof UsersComponent
+   */
   ngOnInit(): void {
     this._auth.getEmployees().subscribe(
       (res:any) &#x3D;&gt; {
@@ -474,6 +579,12 @@ export class UsersComponent implements OnInit {
     )
   }
 
+  /**
+   *Filter the table based on the user search input
+   *
+   * @param {Event} event
+   * @memberof UsersComponent
+   */
   applyFilter(event: Event) {
     const filterValue &#x3D; (event.target as HTMLInputElement).value;
     this.dataSource.filter &#x3D; filterValue.trim().toLowerCase();

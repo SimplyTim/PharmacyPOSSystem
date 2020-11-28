@@ -60,7 +60,19 @@
             <code>src/app/auth/token-interceptor.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>TokenInterceptorService is used to add the JWT Token to all requests in the AuthService</p>
 
+            </p>
+
+            <p class="comment">
+                <h3>Example</h3>
+            </p>
+            <div class="io-description">
+            </div>
 
             <section>
     <h3 id="index">Index</h3>
@@ -116,12 +128,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/auth/token-interceptor.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/auth/token-interceptor.service.ts:16</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of TokenInterceptorService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -181,14 +195,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">src/app/auth/token-interceptor.service.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/app/auth/token-interceptor.service.ts:33</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Adds the JWT Token to the HTTP header in all requests</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -235,7 +251,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>{Observable&lt;HttpEvent<any>&gt;}</p>
+
                     </div>
                 </td>
             </tr>
@@ -268,7 +285,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/auth/token-interceptor.service.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/auth/token-interceptor.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -286,13 +303,33 @@ import { HttpRequest,HttpHandler,HttpEvent,HttpInterceptor } from &#x27;@angular
 import { AuthService } from &#x27;../auth/auth.service&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 
+/**
+ *TokenInterceptorService is used to add the JWT Token to all requests in the AuthService
+ *
+ * @export
+ * @class TokenInterceptorService
+ * @implements {HttpInterceptor}
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class TokenInterceptorService implements HttpInterceptor {
 
+  /**
+   * Creates an instance of TokenInterceptorService.
+   * @param {AuthService} auth
+   * @memberof TokenInterceptorService
+   */
   constructor(public auth: AuthService) { }
 
+  /**
+   *Adds the JWT Token to the HTTP header in all requests
+   *
+   * @param {HttpRequest&lt;any&gt;} request
+   * @param {HttpHandler} next
+   * @return {*}  {Observable&lt;HttpEvent&lt;any&gt;&gt;}
+   * @memberof TokenInterceptorService
+   */
   intercept(request: HttpRequest&lt;any&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;any&gt;&gt; {
     
     request &#x3D; request.clone({

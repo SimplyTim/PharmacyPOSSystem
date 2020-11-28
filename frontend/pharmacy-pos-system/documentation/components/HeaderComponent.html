@@ -64,6 +64,13 @@
     <code>src/app/shared/components/header/header.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Shared webpage header</p>
+
+    </p>
 
 
     <p class="comment">
@@ -73,6 +80,11 @@
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -192,12 +204,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/shared/components/header/header.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/shared/components/header/header.component.ts:26</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of HeaderComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -273,9 +287,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/shared/components/header/header.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/shared/components/header/header.component.ts:26</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Custom Angular property that emits a custom event within the app-header selector  </p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -308,14 +328,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/shared/components/header/header.component.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/app/shared/components/header/header.component.ts:60</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Used to logout the user when they click the logout button</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -347,14 +369,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/app/shared/components/header/header.component.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/shared/components/header/header.component.ts:42</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Empty ngOnInit function</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -388,14 +412,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/app/shared/components/header/header.component.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/app/shared/components/header/header.component.ts:51</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Triggers a custom onClick event to the default layout component </p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -459,7 +485,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/components/header/header.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/shared/components/header/header.component.ts:35</a></div>
                             </td>
                         </tr>
 
@@ -477,6 +503,13 @@ import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
 import { AuthService } from &#x27;../../../auth/auth.service&#x27;
 import { DefaultComponent } from &#x27;../../../layouts/default/default.component&#x27;;
 
+/**
+ *Shared webpage header
+ *
+ * @export
+ * @class HeaderComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: &#x27;app-header&#x27;,
   templateUrl: &#x27;./header.component.html&#x27;,
@@ -484,21 +517,50 @@ import { DefaultComponent } from &#x27;../../../layouts/default/default.componen
 })
 export class HeaderComponent implements OnInit {
 
+  /**
+   *Custom Angular property that emits a custom event within the app-header selector  
+   *
+   * @type {EventEmitter&lt;any&gt;}
+   * @memberof HeaderComponent
+   */
   @Output() public onClick: EventEmitter&lt;any&gt; &#x3D; new EventEmitter(); 
 
+  /**
+   * Creates an instance of HeaderComponent.
+   * @param {AuthService} authService
+   * @param {DefaultComponent} _default
+   * @param {MatSnackBar} _snackBar
+   * @memberof HeaderComponent
+   */
   constructor(public authService: AuthService, private _default: DefaultComponent, private _snackBar: MatSnackBar) { }
 
+  /**
+   *Empty ngOnInit function
+   *
+   * @memberof HeaderComponent
+   */
   ngOnInit(): void { 
   }
 
+  /**
+   *Triggers a custom onClick event to the default layout component 
+   *
+   * @param {*} event
+   * @memberof HeaderComponent
+   */
   public onButtonClick(event):void{
     this.onClick.emit()
   }
 
+  /**
+   *Used to logout the user when they click the logout button
+   *
+   * @memberof HeaderComponent
+   */
   logout(){
     this.authService.logoutUser();
 
-    this._snackBar.open(&quot;Logged Out Succesfully&quot;, &quot;Close&quot;, {
+    this._snackBar.open(&quot;Logged Out Successfully&quot;, &quot;Close&quot;, {
       duration: 2000,
       panelClass: [&#x27;blue-snackbar&#x27;]
     });

@@ -61,9 +61,21 @@
                 <code>src/app/auth/auth.guard.ts</code>
             </p>
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>AuthGuard checks if a user is logged into the system before it allows them to access any functionality</p>
+
+                </p>
 
 
 
+                <p class="comment">
+                <h3>Example</h3>
+                </p>
+                <div class="io-description">
+                </div>
 
                 <section>
     <h3 id="index">Index</h3>
@@ -104,12 +116,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/auth/auth.guard.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/auth/auth.guard.ts:15</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of AuthGuard.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -118,6 +132,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -132,6 +147,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code><p>This service contains the HTTP request response methods</p>
+</code>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>_router</td>
@@ -144,6 +163,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code><p>Service for navigation</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -181,18 +204,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/auth/auth.guard.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/app/auth/auth.guard.ts:33</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>canActivate checks to see if a user is logged into the system. If they are not then it logs them out</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -207,13 +237,34 @@
 import { CanActivate, Router } from &#x27;@angular/router&#x27;;
 import { AuthService } from &#x27;../auth/auth.service&#x27;;
 
+/**
+ *AuthGuard checks if a user is logged into the system before it allows them to access any functionality
+ *
+ * @export
+ * @class AuthGuard
+ * @implements {CanActivate}
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class AuthGuard implements CanActivate {
 
+
+  /**
+   * Creates an instance of AuthGuard.
+   * @param {AuthService} _auth This service contains the HTTP request response methods
+   * @param {Router} _router Service for navigation
+   * @memberof AuthGuard
+   */
   constructor(private _auth: AuthService, private _router: Router) { }
 
+
+  /**
+   *canActivate checks to see if a user is logged into the system. If they are not then it logs them out
+   *
+   * @return {boolean}
+   * @memberof AuthGuard
+   */
   canActivate(): boolean {
     if(this._auth.loggedIn()){
       return true
